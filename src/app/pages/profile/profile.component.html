@@ -1,0 +1,128 @@
+<!--***** admin-pannel-area ******-->
+<section class="admin-panel">
+  <div class="container">
+    <!--**** admin-pannel-main-area *****-->
+    <div class="admin-main">
+      <!--***** admin-profile ******-->
+      <div class="admin-profile">
+        <!--***** admin-profile-mdile ******-->
+        <div class="admin-profile-top">
+          <div class="profile-img">
+            <img [src]="admin?.profileImg ? admin?.profileImg : imgPlaceHolder" [alt]="'Picked Image'" />
+          </div>
+          <div class="upload-btn">
+            <button class="clearfix" (click)="profileImagePicker.click()">
+              Pick Image <span><i class="fa fa-camera"></i></span>
+            </button>
+            <input [hidden]="true" #profileImagePicker type="file" (change)="fileChangeEvent($event)"
+              accept="image/*" />
+          </div>
+
+          <div class="upload-btn change-password">
+            <button (click)="openChangePasswordDialog()" class="clearfix">
+              Change Password <span><i class="fa fa-lock"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!--***** admin-profile-end ******-->
+
+      <!--****** admin-form-area **********-->
+      <div class="admin-form-area">
+        <!--****** admin-form **********-->
+        <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+          <!--****** admin-personal-information **********-->
+          <div class="form-info">
+            <!--****** admin-field-title **********-->
+            <div class="field-title">
+              <h3>Personal Information:</h3>
+            </div>
+            <!--name-->
+            <div class="name">
+              <mat-form-field appearance="outline">
+                <mat-label class="mat-label">Name</mat-label>
+                <input matInput type="text" placeholder="Enter Your Name" formControlName="name" />
+                <mat-error>Enter Your Name</mat-error>
+              </mat-form-field>
+            </div>
+
+            <!--user-name-->
+            <div class="user-name">
+              <mat-form-field appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input matInput type="text" placeholder="Enter User Name" formControlName="username" readonly />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <!--created at-->
+            <div class="created">
+              <mat-form-field appearance="outline">
+                <mat-label>Created At</mat-label>
+                <input matInput type="text" placeholder="Created At" [value]="admin?.createdAt | date" readonly />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+            <!--Updated at-->
+            <div class="updated">
+              <mat-form-field appearance="outline">
+                <mat-label>Updated At</mat-label>
+                <input matInput type="text" placeholder="Updated At" [value]="admin?.updatedAt | date" readonly />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!--****** Contact Information **********-->
+          <div class="form-info">
+            <!--****** admin-field-title **********-->
+            <div class="field-title">
+              <h3>Contact Information:</h3>
+            </div>
+            <!--name-->
+            <div class="num">
+              <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="text" placeholder="Enter Your Phone Number" formControlName="phoneNo" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+
+            <!--user-name-->
+            <div class="email">
+              <mat-form-field appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input matInput type="email" placeholder="Enter User Name" formControlName="email" />
+                <mat-error></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="change-btn">
+            <button type="submit">Update Profile</button>
+          </div>
+        </form>
+      </div>
+      <!--*** end *****-->
+
+      <div class="progress">
+        <div class="progress-info">
+          <h4>Role :</h4>
+          <div class="editor">
+            <h2>
+              <span><i class="fa fa-user-edit"></i></span> {{ admin?.role }}
+            </h2>
+          </div>
+
+          <div class="education">
+            <h2>Permissions:</h2>
+            <div class="edu-info" *ngFor="let d of admin?.permissions">
+              <h3>
+                <span><i class="fas fa-check"></i></span> {{ d }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

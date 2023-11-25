@@ -1,0 +1,53 @@
+
+.dialog-container {
+  width: 350px;
+}
+
+
+
+.btn-round {
+  margin: auto;
+  width: 150px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 50px;
+}
+
+
+.actions-around {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  button {
+    ::ng-deep {
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 599px) {
+
+  .dialog-container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .btn-round {
+    margin: auto;
+    width: 130px;
+    padding: 5px;
+    font-size: 14.5px;
+    border-radius: 50px;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+
+
+
+}

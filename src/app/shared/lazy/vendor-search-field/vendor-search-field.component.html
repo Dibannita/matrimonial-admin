@@ -1,0 +1,35 @@
+<form #searchForm=ngForm class="from">
+  <mat-label>Select Vendor</mat-label>
+  <div class="cutomer-search" (click)="onClickSearchArea($event)">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <input
+        [value]="vendor ? (vendor?.name + ' (' + vendor?.phone + ')') : ''"
+        ngModel
+        type="text"
+        #searchInput
+        name="searchTerm"
+        matInput
+        (focus)=handleFocus($event)
+        placeholder="Search with name or phone"
+      />
+    </mat-form-field>
+
+    <!---suggesstion-area-->
+    <div
+      class="suggesstion-area"
+      [class]="searchVendors.length && isOpen ? 'active' : 'inactive'"
+
+    >
+      <ul>
+        <li *ngFor="let data of searchVendors" (click)="onSelectItem(data)">
+          <div class="suggesstion-left">
+            <div class="sug-product-name">
+              <h5>{{data.name}} </h5>
+              <p>{{data.phone}} </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</form> <!-- END USer Search -->

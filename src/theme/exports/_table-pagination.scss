@@ -1,0 +1,94 @@
+.prginator-area {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 25px 10px 20px;
+
+  .dataTables_length {
+    label {
+      span {
+        margin-right: 5px;
+        font-size: 12px;
+        color: #5e5873;
+        font-weight: 400;
+      }
+
+      .custom-select {
+        max-width: 80px;
+        min-height: calc(1.5em + 0.5rem + 2px);
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border-radius: 0.2rem;
+        border: 1px solid #ced4da;
+      }
+    }
+  }
+
+  .count-area {
+    display: flex;
+    gap: 15px;
+
+    .dataTables_info {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #5e5873;
+      font-weight: 400;
+    }
+
+    .dataTables_paginate {
+      .pagination {
+        display: flex;
+
+        li {
+          list-style: none;
+          margin-left: 10px;
+
+          a {
+            color: #fff;
+            background: $bg-primary;
+            border-color: $bg-primary;
+            border-radius: 5px;
+            padding: 0.375rem 0.75rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.button {
+  // display: flex;
+  // gap: 10px;
+  // justify-content: center;
+  // margin-bottom: 0;
+}
+
+.bottom-border {
+  margin-bottom: 30px;
+  // border-bottom: 5px solid $bg-primary
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+// t
+
+.button-style {
+  font-size: 12px !important;
+  font-weight: 400;
+  color: #637381;
+}
+
+::ng-deep .data-pagination .ngx-pagination .current {
+  color: #fff;
+  background: $bg-primary;
+  border-color: $bg-primary;
+  border-radius: 5px;
+  padding: 0.375rem 0.75rem;
+}
+
+
+
+
+

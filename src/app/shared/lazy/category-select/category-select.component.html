@@ -1,0 +1,28 @@
+
+<mat-form-field appearance="outline">
+  <mat-select
+    (selectionChange)="onSelectionChange($event)"
+    [required]="required"
+    [formControl]="selectCtrl"
+    [placeholder]="placeholder"
+    msInfiniteScroll
+    (infiniteScroll)="getNextTestBatch()"
+    [complete]="dataList.length === totalData"
+    (closed)="onClear()">
+    <mat-option>
+      <ngx-mat-select-search
+        #matSearchSelect
+        [formControl]="searchCtrl"
+        [searching]="searching"
+        [alwaysRestoreSelectedOptionsMulti]="true"
+        [disableScrollToActiveOnOptionsChanged]="true">
+        <mat-icon ngxMatSelectSearchClear (click)="onClear()">delete</mat-icon>
+      </ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let bank of filteredDataList | async" [value]="bank">
+      {{bank.name}}
+    </mat-option>
+  </mat-select>
+  <mat-error>This field is required</mat-error>
+</mat-form-field>
+

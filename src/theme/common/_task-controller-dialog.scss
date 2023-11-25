@@ -1,0 +1,38 @@
+@import "src/theme/exports/top-input-header";
+
+.dialog-container {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: -10px;
+}
+
+form {
+  width: 100%;
+  //margin: 16px auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    padding: 4px 24px;
+    border-radius: 25px;
+  }
+}
+.row-input {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 0px 10px;
+}
+
+@media(max-width:500px){
+  .row-input{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

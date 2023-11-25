@@ -1,0 +1,26 @@
+<div style="position: relative; width: 100%;">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Update Order Status</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off" #templateForm="ngForm" fxLayout="column"
+    fxLayoutAlign="space-around center">
+
+    <mat-form-field class="form-field w-100" appearance="outline">
+      <mat-label>Order Status</mat-label>
+      <mat-select formControlName="orderStatus" required>
+        <mat-option *ngFor="let c of orderStatus" [value]="c.value">{{c.viewValue}}</mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <div class="action">
+      <button type="button" mat-raised-button color="warn" (click)="onCloseDialog(null)">
+        Cancel
+      </button>
+      <button mat-raised-button color="primary" type="submit">{{ 'Update Order Status' }}</button>
+    </div>
+  </form>
+</div>

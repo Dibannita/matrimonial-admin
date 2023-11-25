@@ -1,0 +1,17 @@
+@import "src/theme/variables";
+
+.dialog-container {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: -10px;
+}
+
+.main {
+  p {
+    font-family: $font-en-nunito;
+  }
+}

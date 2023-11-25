@@ -1,0 +1,54 @@
+@import "../variables";
+
+.paid {
+  width: 85px;
+  padding: 5px 3px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: #00cc0d;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #1c5e21;
+}
+
+.unpaid {
+  width: 85px;
+  padding: 5px 3px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: #ff346d;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #6a1d33;
+}
+
+.pending {
+  font-weight: 600;
+  font-style: italic;
+  color: #1d1d1d;
+}
+
+.cancel {
+  font-weight: 600;
+  font-style: italic;
+  color: #b70129;
+}
+
+.refund, .returned {
+  font-weight: 600;
+  font-style: italic;
+  color: #ff9508;
+}
+
+.confirm, .shipping, .processing {
+  font-weight: 600;
+  font-style: italic;
+  color: #0036a2;
+}
+
+.delivered {
+  font-weight: 600;
+  font-style: italic;
+  color: #007900;
+}
+

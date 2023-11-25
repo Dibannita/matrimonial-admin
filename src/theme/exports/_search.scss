@@ -1,0 +1,76 @@
+@import "../variables";
+
+/**
+SEARCH
+ */
+.search {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1299 !important;
+
+  .search-form {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    // border: 1px solid #006EA4;
+    border-radius: 8px;
+    // border-right: none;
+
+
+    input {
+      width: 100%;
+      height: 45px;
+      outline: none;
+      border: none;
+      padding: 0 60px 0 20px;
+      font-size: 17px;
+      background: #ffeaff;
+    }
+
+    input.color {
+      background: aliceblue;
+    }
+
+    input.sm {
+      width: 100%;
+      height: 38px;
+      outline: none;
+      border: none;
+      padding: 0 60px 0 20px;
+      font-size: 17px;
+      background: aliceblue;
+    }
+
+
+    .icon {
+      height: 55px;
+      line-height: 55px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: center;
+      font-size: 24px;
+      color: #ffffff;
+      background: $color-primary;
+      width: 70px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .icon.sm {
+      height: 38px;
+      line-height: 38px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: center;
+      font-size: 30px;
+      color: #ffffff;
+      background: $color-primary;
+      width: 40px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

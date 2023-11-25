@@ -1,0 +1,177 @@
+<section class="admin-data-sec">
+  <div class="close">
+    <button mat-mini-fab color="accent" (click)="onConfirmDialog()" matTooltip="Done" style="margin-right: 8px">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" (click)="onCancelDialog()" matTooltip="Cancel">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="top-data-header">
+    <div class="title">
+      <h2>All Products</h2>
+    </div>
+
+    <form class="table-search" #searchForm="ngForm" style="z-index: 20">
+      <input type="text" #searchInput name="searchTerm" autocomplete="off" ngModel placeholder="Search" />
+      <button><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <!-- END TOP DATA HEADER -->
+
+  <div class="action-multiple">
+    <div class="date-filter">
+      <mat-form-field class="mat-date-input-field" appearance="outline" (click)="picker.open()">
+        <mat-label>FilterData Date Range</mat-label>
+        <mat-date-range-input [formGroup]="dataFormDateRange" [rangePicker]="picker" [max]="today">
+          <input matStartDate formControlName="start" placeholder="Start date" readonly />
+          <input matEndDate formControlName="end" placeholder="End date" readonly
+            (dateChange)="endChangeRegDateRange($event)" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="
+            dataFormDateRange.controls.start.hasError('matStartDateInvalid')
+          ">Invalid start date
+        </mat-error>
+        <mat-error *ngIf="dataFormDateRange.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuCat">
+        Category
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuCat="matMenu">
+        <button *ngFor="let data of categories; let i = index" mat-menu-item
+          (click)="filterData(data._id, i, 'category')" [class.dropdown-active]="activeFilter1 === i">
+          {{ data.name }}
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuPublisher">
+        Publisher
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuPublisher="matMenu">
+        <button *ngFor="let data of publishers; let i = index" mat-menu-item
+          (click)="filterData(data._id, i, 'publisher')" [class.dropdown-active]="activeFilter2 === i">
+          {{ data.name }}
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuSort">
+        Sort By
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuSort="matMenu">
+        <button mat-menu-item (click)="sortData({ updatedAt: -1 }, 1)" [class.dropdown-active]="activeSort === 1">
+          Last Update
+        </button>
+        <button (click)="sortData({ name: 1 }, 2)" mat-menu-item [class.dropdown-active]="activeSort === 2">
+          A-Z
+        </button>
+        <button (click)="sortData({ salePrice: 1 }, 3)" mat-menu-item [class.dropdown-active]="activeSort === 3">
+          Sale Price (Low ~ High)
+        </button>
+        <button (click)="sortData({ salePrice: -1 }, 4)" mat-menu-item [class.dropdown-active]="activeSort === 4">
+          Sale Price (High ~ Low)
+        </button>
+        <button (click)="sortData({ quantity: 1 }, 5)" mat-menu-item [class.dropdown-active]="activeSort === 5">
+          Quantity (Low ~ High)
+        </button>
+        <button (click)="sortData({ quantity: -1 }, 6)" mat-menu-item [class.dropdown-active]="activeSort === 6">
+          Quantity (High ~ Low)
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <hr class="center-square" />
+
+  <div class="table-wrapper space">
+    <div class="table-action" >
+      <div class="left" *ngIf="filter || activeSort">
+        <button mat-stroked-button color="accent" (click)="onRemoveAllQuery()">
+          <mat-icon>close</mat-icon>
+          Clear FilterData
+        </button>
+      </div>
+    </div>
+    <!-- END Table Action -->
+
+    <table>
+      <tr>
+        <th class="t-checkbox">
+          <mat-checkbox #matCheckbox (change)="onAllSelectChange($event)"></mat-checkbox>
+        </th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Unit</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Brand</th>
+        <th>Regular Price</th>
+        <th>Discount</th>
+        <th>Sale Price</th>
+      </tr>
+      <tr *ngFor="
+          let data of products
+            | paginate
+              : {
+                  itemsPerPage: productsPerPage,
+                  currentPage: currentPage,
+                  totalItems: totalProducts
+                };
+          let i = index
+        ">
+        <td class="t-checkbox">
+          <mat-checkbox class="t-mat-checkbox" [(ngModel)]="data.select"
+            (ngModelChange)="onCheckChange($event, i, data._id)"></mat-checkbox>
+        </td>
+        <td>
+          <img checkImageDefault class="table-image" [src]="data && data?.images ? data.images[0] : ''" [alt]="" />
+        </td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.unit ? data.unit : "N/A" }}</td>
+        <td>{{ data.category?.name }}</td>
+        <td>
+          {{
+            data.subCategory && data.subCategory?.name
+              ? data.subCategory?.name
+              : "N/A"
+          }}
+        </td>
+        <td>{{ data.brand?.name }}</td>
+        <td>Tk{{ data.salePrice | number : "" : "bn" }}</td>
+        <td>
+          <a (click)="openProductDiscountDialog(data)" matTooltip="Click to Edit Discount" class="table-navigate"
+            [style.color]="
+              data.discountAmount && data.discountAmount > 0 ? 'green' : 'red'
+            ">
+            {{ data | productDiscount : "default" }}
+          </a>
+        </td>
+        <td>Tk{{ data | price : "salePrice" | number : "" : "bn" }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="pagination-container">
+    <pagination-controls class="data-pagination" [autoHide]="true" [maxSize]="15" (pageChange)="onPageChanged($event)">
+    </pagination-controls>
+  </div>
+  <!-- END PAGINATION -->
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+    <p style="color: white">Loading...</p>
+  </ngx-spinner>
+</section>

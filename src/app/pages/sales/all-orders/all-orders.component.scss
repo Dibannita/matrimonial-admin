@@ -1,0 +1,22 @@
+@import "src/theme/exports/table-scroll2";
+@import "src/theme/exports/search-table2";
+@import "src/theme/exports/top-data-header2";
+@import "src/theme/exports/top-action-multiple2";
+@import "src/theme/exports/ng-class2";
+@import "src/theme/exports/top-basic-info";
+
+.date-multi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.unavailable{
+  font-size: 16px;
+}
+
+.action-multiple{
+  margin-bottom: 25px;
+}

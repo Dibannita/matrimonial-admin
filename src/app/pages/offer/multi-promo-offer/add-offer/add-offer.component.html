@@ -1,0 +1,145 @@
+<div class="header" *ngIf="!viewOnly">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      <mat-icon>done</mat-icon>
+      {{id ? 'Update' : 'Save'}} Deal
+    </button>
+  </div>
+
+  <section class="admin-data-sec">
+
+    <div class="top-data-header" *ngIf="!viewOnly">
+      <div class="title">
+        <h2> {{id ? 'Update' : 'Create New '}} Promo Offer</h2>
+      </div>
+    </div> <!-- END TOP DATA HEADER -->
+
+    <!-- <hr class="center-square"> -->
+
+
+    <form class="area-border" #formElement="ngForm" [formGroup]="dataForm" >
+
+      <div class="form-img-avatar">
+        <img matTooltip="Main Banner Image" (click)="openGalleryDialog('image')" [src]="pickedImage" alt="">
+        <!--      <img matTooltip="Mobile Banner Image" (click)="openGalleryDialog('mobileImage')" [src]="pickedMobileImage" alt="">-->
+      </div>
+
+
+      <mat-form-field appearance="outline" class="w-100 px-1" >
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput placeholder="Enter title" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+  <div class="div-one">
+      <mat-form-field appearance="outline" class="w-100 px-1" (click)="startDateTime.open()">
+        <mat-label>Start Date Time</mat-label>
+        <input readonly matInput [ngxMatDatetimePicker]="startDateTime" placeholder="Enter start Date Time"
+               formControlName="startDateTime">
+        <mat-datepicker-toggle matSuffix [for]="startDateTime"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #startDateTime [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+                                 [stepMinute]="1" [touchUi]="false" [color]="'primary'" [enableMeridian]="true">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 px-1"  (click)="endDateTime.open()">
+        <mat-label>End Date Time</mat-label>
+        <input readonly matInput [ngxMatDatetimePicker]="endDateTime" placeholder="Enter end Date Time"
+               formControlName="endDateTime">
+        <mat-datepicker-toggle matSuffix [for]="endDateTime"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #endDateTime [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+                                 [stepMinute]="1" [touchUi]="false" [color]="'primary'" [enableMeridian]="true">
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+  </div>
+
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Description</mat-label>
+        <textarea formControlName="description" matInput placeholder="Enter description" [rows]="4"></textarea>
+      </mat-form-field>
+
+
+
+
+    </form> <!-- User Info Form -->
+
+
+    <div class="table-wrapper space">
+
+      <div class="table-action dual" *ngIf="!viewOnly">
+        <div class="left"></div>
+        <div class="right">
+          <button mat-raised-button color="accent" (click)="openProductListDialog()">
+            <mat-icon>add</mat-icon>
+            Add Product
+          </button>
+        </div>
+      </div> <!-- END Table Action -->
+
+      <table>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Category</th>
+                 <th>Sub Category</th>
+          <th>Publisher</th>
+          <th>Regular Price</th>
+          <th>Discount</th>
+          <th>Remove Discount</th>
+          <th>Sale Price</th>
+          <th *ngIf="!viewOnly">Action</th>
+        </tr>
+        <tr
+          *ngFor="let data of selectedProducts; let i = index">
+          <td>
+            <img checkImageDefault class="table-image" [src]="data && data?.images ? data.images[0] : ''" [alt]="">
+          </td>
+          <td>{{data.name}}</td>
+          <td>{{data.category?.name}}</td>
+        <td>{{data.subCategory?.name}}</td>
+          <td>{{data.publisher?.name}}</td>
+          <td>TK{{data.salePrice | number : '': 'bn'}}</td>
+          <td>
+            <div class="input-area">
+              <mat-form-field class="small-input" appearance="outline" style="margin-right: 5px;">
+                <input matInput
+                       type="text"
+                       [(ngModel)]="data.offerDiscountAmount"
+                       digitOnly
+                       pattern="^\d+(\.\d{1,2})?$"
+                       [decimal]="true">
+              </mat-form-field>
+
+
+              <mat-form-field class="small-select" appearance="outline">
+                <mat-select [(ngModel)]="data.offerDiscountType">
+                  <mat-option [value]="1">%</mat-option>
+                  <mat-option [value]="2">Tk</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+            <!--          <a class="table-navigate" [style.color]="data.discountAmount && data.discountAmount > 0 ? 'green' : 'red'">-->
+            <!--            {{data | productDiscount : 'default'}}-->
+            <!--          </a>-->
+          </td>
+          <td class="t-checkbox">
+            <mat-checkbox class="t-mat-checkbox" [(ngModel)]="data.resetDiscount"></mat-checkbox>
+          </td>
+          <td>TK{{getSalePrice(data)| number : '' : 'bn'}}</td>
+
+          <td class="td-action" *ngIf="!viewOnly">
+            <button mat-mini-fab matTooltip="Remove" color="warn" (click)="removeProduct(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <!-- LOADING TEMPLATE -->
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+      <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+
+  </section>

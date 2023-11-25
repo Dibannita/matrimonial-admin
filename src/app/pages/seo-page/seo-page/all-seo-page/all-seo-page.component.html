@@ -1,0 +1,164 @@
+<section class="admin-data-sec">
+  <div class="top-data-header">
+    <div class="title">
+      <h2>All SeoPage</h2>
+    </div>
+
+    <form class="table-search" #searchForm="ngForm">
+      <input
+        type="text"
+        #searchInput
+        name="searchTerm"
+        autocomplete="off"
+        ngModel
+        placeholder="Search"
+      />
+      <button><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="action">
+      <div class="sort">
+        <button
+          mat-raised-button
+          color="primary"
+          [matMenuTriggerFor]="menuSort"
+        >
+          Sort By
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuSort="matMenu">
+          <button
+            mat-menu-item
+            (click)="sortData({ createdAt: -1 }, 1)"
+            [class.dropdown-active]="activeSort === 1"
+          >
+            Created At
+          </button>
+          <button
+            (click)="sortData({ name: 1 }, 2)"
+            mat-menu-item
+            [class.dropdown-active]="activeSort === 2"
+          >
+            Most A-Z
+          </button>
+        </mat-menu>
+      </div>
+
+      <button
+        mat-raised-button
+        color="accent"
+        [routerLink]="['../', 'add-seo-page']"
+      >
+        <mat-icon>add</mat-icon>
+        Add New SeoPage
+      </button>
+    </div>
+  </div>
+  <!-- END TOP DATA HEADER -->
+
+  <hr class="center-square"/>
+
+  <div class="table-wrapper space">
+    <div class="table-action" [class.dual]="activeSort || filter">
+      <div class="left" *ngIf="activeSort || filter">
+        <button mat-stroked-button color="accent" (click)="onRemoveAllQuery()">
+          <mat-icon>close</mat-icon>
+          Clear FilterData
+        </button>
+      </div>
+
+      <div class="right" *ngIf="selectedIds && selectedIds.length">
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="openConfirmDialog('delete')"
+          matTooltip="Delete"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <!-- END Table Action -->
+
+    <table>
+      <tr>
+        <th class="t-checkbox" class="mat-check">
+          <mat-checkbox
+            #matCheckbox
+            (change)="onAllSelectChange($event)"
+          ></mat-checkbox>
+        </th>
+        <th>Image</th>
+        <!--        <th>Mobile Image</th>-->
+        <th>SEO Name</th>
+        <th>SEO Description</th>
+        <th>Page Name</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+      <tr
+        *ngFor="
+          let data of seoPages
+            | paginate
+              : {
+                  itemsPerPage: seoPagesPerPage,
+                  currentPage: currentPage,
+                  totalItems: totalSeoPages
+                };
+          let i = index
+        "
+      >
+        <td class="t-checkbox">
+          <mat-checkbox
+            class="t-mat-checkbox"
+            [(ngModel)]="data.select"
+            (ngModelChange)="onCheckChange($event, i, data._id)"
+          ></mat-checkbox>
+        </td>
+        <td>
+          <img checkImageDefault class="table-image" [src]="data.image" [alt]="data.image">
+        </td>
+        <!--        <td>-->
+        <!--          <img checkImageDefault class="table-image" [src]="data.mobileImage" [alt]="data.image">-->
+        <!--        </td>-->
+        <td>{{ data.name }}</td>
+        <td>{{ data.seoDescription }}</td>
+        <td>{{ data.pageName }}</td>
+        <td>{{ data.createdAt | date }}</td>
+        <td class="td-action">
+          <button
+            [routerLink]="['../', 'edit-seo-page', data._id]"
+            mat-mini-fab
+            matTooltip="Edit"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!--          <button mat-mini-fab matTooltip="Delete">-->
+          <!--            <mat-icon>delete</mat-icon>-->
+          <!--          </button>-->
+          <!--          <a style="margin-left: 5px;" mat-mini-fab color="primary" [routerLink]="['/blog/', data?.slug]"-->
+          <!--             target="_blank" mat-icon-button>-->
+          <!--            <mat-icon>visibility</mat-icon>-->
+          <!--          </a>-->
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="pagination-container">
+    <pagination-controls
+      class="data-pagination"
+      [autoHide]="true"
+      [maxSize]="15"
+      (pageChange)="onPageChanged($event)"
+    >
+    </pagination-controls>
+  </div>
+  <!-- END PAGINATION -->
+
+</section>
+
+<!-- TEMPLATE NGX SPINNER-->
+<ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="ball-scale-pulse" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

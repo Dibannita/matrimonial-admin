@@ -1,0 +1,28 @@
+@import "../variables";
+
+.top-input-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  .title {
+    h2 {
+      font-family: $font-en-primary;
+      color: #6f6f6f;
+      font-size: 28px;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 599px){
+  .top-input-header {
+    .title {
+      h2 {
+        font-size: 18px;
+      }
+    }
+
+  }
+}

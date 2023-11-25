@@ -1,0 +1,169 @@
+<div class="section1" *ngIf="USER_ROLE === 'super_admin'">
+  <div class="section1-main">
+    <!---card-->
+    <div
+      class="card"
+      routerLink="sales/sales-list"
+      [routerLink]="['../sales/sales-list']"
+    >
+      <div class="card-top">
+        <div class="card-top-left">
+          <h3>Total Orders</h3>
+        </div>
+        <div class="card-top-right">
+          <div class="card-icon">
+            <mat-icon class="material-symbols-outlined">
+              point_of_sale
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number" matTooltip="Total Orders">
+          <h3>
+            {{
+              saleDashboard?.totalOrders
+                ? (saleDashboard?.totalOrders | number : "" : "bn")
+                : 0
+            }}
+          </h3>
+        </div>
+        <div class="card-activity">
+          <h5 matTooltip="Today Sale">
+            <mat-icon>show_chart</mat-icon>
+
+          </h5>
+        </div>
+      </div>
+    </div>
+    <!---card-->
+    <div class="card" [routerLink]="['../sales/sales-list']">
+      <div class="card-top">
+        <div class="card-top-left">
+          <h3>Pending Orders</h3>
+        </div>
+        <div class="card-top-right">
+          <div class="card-icon">
+            <mat-icon>task</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number" matTooltip="Pending Orders">
+          <h3>
+            {{
+              saleDashboard?.totalPendingOrders
+                ? (saleDashboard?.totalPendingOrders | number : "" : "bn")
+                : 0
+            }}
+          </h3>
+        </div>
+        <div class="card-activity">
+          <h5 matTooltip="Total Invoice">
+            <mat-icon>show_chart</mat-icon>
+
+          </h5>
+        </div>
+      </div>
+    </div>
+    <!---card-->
+    <div class="card">
+      <div class="card-top">
+        <div class="card-top-left">
+          <h3>Today Orders</h3>
+        </div>
+        <div class="card-top-right">
+          <div class="card-icon">
+            <mat-icon>leaderboard</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number" matTooltip="Today Orders">
+          <h3>
+            {{
+              saleDashboard?.countTodayAddedOrder
+                ? (saleDashboard?.countTodayAddedOrder | number : "" : "bn")
+                : 0
+            }}
+          </h3>
+        </div>
+        <div class="card-activity">
+          <h5 matTooltip="Work direction done percentage today">
+            <mat-icon>show_chart</mat-icon>
+            <!--            {{0}}%-->
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section2-main">
+    <!---card-->
+    <div class="card" [routerLink]="['../expense/expense-list']">
+      <div class="card-top" style="background-color: rgb(47 94 179)">
+        <div class="card-top-left">
+          <h3>Total Products</h3>
+        </div>
+        <div class="card-top-right">
+          <div class="card-icon">
+            <mat-icon class="material-symbols-outlined"> inventory_2 </mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number" matTooltip="Total Products">
+          <h3 style="color: rgb(47 94 179)">
+            {{
+              saleDashboard?.totalProducts
+                ? (saleDashboard?.totalProducts | number : "" : "bn")
+                : 0
+            }}
+          </h3>
+        </div>
+        <div class="card-activity">
+          <h5 matTooltip="Today Expense">
+            <mat-icon style="color: rgb(47 94 179)">show_chart</mat-icon>
+
+          </h5>
+        </div>
+      </div>
+    </div>
+    <!---card-->
+    <div class="card">
+      <div class="card-top" style="background-color: green">
+        <div class="card-top-left">
+          <h3>Monthly Delivered Orders</h3>
+        </div>
+        <div class="card-top-right">
+          <div class="card-icon">
+            <mat-icon class="material-symbols-outlined">flowsheet</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-number" matTooltip="Monthly Delivered Orders">
+          <h3 style="color: green">
+            {{
+              saleDashboard?.monthlyDeliveredOrders > 0
+                ? (saleDashboard?.monthlyDeliveredOrders | number : "" : "bn")
+                : 0
+            }}
+          </h3>
+        </div>
+        <div class="card-activity">
+          <h5 matTooltip="Total Loss">
+            <mat-icon style="color: #ef0000b8">show_chart</mat-icon>
+
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="donut">
+  <app-donut></app-donut>
+</div>
+

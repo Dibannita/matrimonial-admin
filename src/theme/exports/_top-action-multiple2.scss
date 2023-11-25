@@ -1,0 +1,12 @@
+.action-multiple {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+
+  .sort {
+    margin-top: 10px;
+  }
+}

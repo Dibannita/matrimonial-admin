@@ -1,0 +1,379 @@
+<section class="admin-data-sec">
+  <div class="top-data-header">
+    <div class="title">
+      <h2>All Orders</h2>
+      <div class="checkbox" *ngIf="admin?.showTotalOrderValue">
+        <mat-checkbox [(ngModel)]="showCalculation" (ngModelChange)="onChangeShowCalculation($event)" color="primary">
+          Show Total Amount
+        </mat-checkbox>
+      </div>
+    </div>
+
+    <form class="table-search" #searchForm=ngForm>
+      <input type="text"
+             #searchInput
+             name="searchTerm"
+             autocomplete="off"
+             ngModel placeholder="Search with Order No or Phone No">
+      <button><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="action">
+
+      <button *ngIf="checkAddPermission" mat-raised-button color="accent" [routerLink]="['../', 'add-order']">
+        <mat-icon>add</mat-icon>
+        Add Order
+      </button>
+    </div>
+
+  </div> <!-- END TOP DATA HEADER -->
+
+  <div class="date-multi">
+    <div class="date-filter">
+      <mat-form-field class="mat-date-input-field" appearance="outline" (click)="picker.open()">
+        <mat-label>Filter Created  Date Range</mat-label>
+        <mat-date-range-input [formGroup]="dataFormDateRange" [rangePicker]="picker" [max]="today">
+          <input matStartDate formControlName="start" placeholder="Start date" readonly>
+          <input matEndDate formControlName="end" placeholder="End date" readonly
+                 (dateChange)="endChangeRegDateRange($event)">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="dataFormDateRange.controls.start.hasError('matStartDateInvalid')">Invalid start date
+        </mat-error>
+        <mat-error *ngIf="dataFormDateRange.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="date-filter">
+      <mat-form-field class="mat-date-input-field" appearance="outline" (click)="picker2.open()">
+        <mat-label>Filter Delivery Date Range</mat-label>
+        <mat-date-range-input [formGroup]="dataFormDeliveryRange" [rangePicker]="picker2" [max]="today">
+          <input matStartDate formControlName="start" placeholder="Start date" readonly>
+          <input matEndDate formControlName="end" placeholder="End date" readonly
+                 (dateChange)="endChangeDeliveryDateRange($event)">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker2></mat-date-range-picker>
+
+        <mat-error *ngIf="dataFormDeliveryRange.controls.start.hasError('matStartDateInvalid')">Invalid start date
+        </mat-error>
+        <mat-error *ngIf="dataFormDeliveryRange.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="action-multiple">
+
+
+
+<!--    <div class="sort">-->
+<!--      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuCouriers">-->
+<!--        &lt;!&ndash;        Payment Type&ndash;&gt;-->
+<!--        {{couriers[activeFilter8]?.name ? couriers[activeFilter8]?.name : 'Courier'}}-->
+<!--        <mat-icon>arrow_drop_down</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #menuCouriers="matMenu">-->
+<!--        <button *ngFor="let data of couriers; let i = index" mat-menu-item-->
+<!--                (click)="filterData(data.name, i, 'couriers')"-->
+<!--                [class.dropdown-active]="activeFilter8 === i">-->
+<!--          {{data?.name}}-->
+<!--        </button>-->
+<!--      </mat-menu>-->
+<!--    </div>-->
+
+
+<!--    <div class="sort">-->
+<!--      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuDateByReport">-->
+<!--        {{dateByReport[activeFilter7]?.viewValue ? dateByReport[activeFilter7]?.viewValue : 'Filter By'}}-->
+<!--        <mat-icon>arrow_drop_down</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #menuDateByReport="matMenu">-->
+<!--        <button *ngFor="let data of dateByReport; let i = index" mat-menu-item-->
+<!--                (click)="filterData(data.value, i, 'dateByReport')"-->
+<!--                [class.dropdown-active]="activeFilter7 === i">-->
+<!--          {{data.viewValue}}-->
+<!--        </button>-->
+<!--      </mat-menu>-->
+<!--    </div>-->
+
+
+
+<!--    <div class="sort">-->
+
+<!--      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuYear">-->
+<!--        {{years[activeFilter5]?.viewValue ? years[activeFilter5]?.viewValue : 'Years'}}-->
+<!--        &lt;!&ndash;      Years&ndash;&gt;-->
+<!--        <mat-icon>arrow_drop_down</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #menuYear="matMenu">-->
+<!--        <button *ngFor="let data of years; let i = index" mat-menu-item-->
+<!--                (click)="filterData(data.value, i, 'year')"-->
+<!--                [class.dropdown-active]="activeFilter5 === i">-->
+<!--          {{data.viewValue}}-->
+<!--        </button>-->
+<!--      </mat-menu>-->
+<!--    </div>-->
+
+
+<!--    <div class="sort">-->
+<!--      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuMonth">-->
+<!--        {{months[activeFilter6]?.viewValue ? months[activeFilter6]?.viewValue : 'Months'}}-->
+
+<!--        <mat-icon>arrow_drop_down</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #menuMonth="matMenu">-->
+<!--        <button *ngFor="let data of months; let i = index" mat-menu-item-->
+<!--                (click)="filterData(data.value, i, 'month')"-->
+<!--                [class.dropdown-active]="activeFilter6 === i">-->
+<!--          {{data.viewValue}}-->
+<!--        </button>-->
+<!--      </mat-menu>-->
+<!--    </div>-->
+
+
+
+
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuCat">
+        <!--        Payment Status-->
+        {{paymentStatus[activeFilter1]?.viewValue ? paymentStatus[activeFilter1]?.viewValue : ' Payment Status'}}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuCat="matMenu">
+        <button *ngFor="let data of paymentStatus; let i = index" mat-menu-item
+                (click)="filterData(data.value, i, 'paymentStatus')"
+                [class.dropdown-active]="activeFilter1 === i">
+          {{data.viewValue}}
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuBrand">
+        <!--        Payment Type-->
+        {{paymentTypes[activeFilter2]?.viewValue ? paymentTypes[activeFilter2]?.viewValue : 'Payment Type'}}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuBrand="matMenu">
+        <button *ngFor="let data of paymentTypes; let i = index" mat-menu-item
+                (click)="filterData(data.value, i, 'paymentType')"
+                [class.dropdown-active]="activeFilter2 === i">
+          {{data.viewValue}}
+        </button>
+      </mat-menu>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuDeliveryStatus">
+        <!--        Urgent Order Status-->
+        {{orderStatus[activeFilter3]?.viewValue ? orderStatus[activeFilter3]?.viewValue : 'Urgent Order Status'}}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuDeliveryStatus="matMenu">
+        <button *ngFor="let data of orderStatus; let i = index" mat-menu-item
+                (click)="filterData(data.value, i, 'orderStatus')"
+                [class.dropdown-active]="activeFilter3 === i">
+          {{data.viewValue}}
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuCity">
+
+        {{areas[activeFilter4]?.name ? areas[activeFilter4]?.name : 'Area'}}
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuCity="matMenu">
+        <button *ngFor="let data of areas; let i = index" mat-menu-item
+                (click)="filterData(data.name, i, 'area')"
+                [class.dropdown-active]="activeFilter4 === i">
+          {{data?.name}}
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="sort">
+      <button mat-raised-button color="primary" [matMenuTriggerFor]="menuSort">
+        Sort By
+        <!--        {{months[activeFilter6]?.viewValue ? months[activeFilter6]?.viewValue : 'Months'}}-->
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menuSort="matMenu">
+        <button mat-menu-item (click)="sortData({updatedAt: -1}, 1)" [class.dropdown-active]="activeSort === 1">
+          Last Update
+        </button>
+        <button (click)="sortData({createdAt: 1}, 2)" mat-menu-item [class.dropdown-active]="activeSort === 2">
+          First to Last
+        </button>
+        <button (click)="sortData({grandTotal: 1}, 3)" mat-menu-item [class.dropdown-active]="activeSort === 3">
+          Order Amount (Low ~ High)
+        </button>
+        <button (click)="sortData({grandTotal: -1}, 4)" mat-menu-item [class.dropdown-active]="activeSort === 4">
+          Order Amount (High ~ Low)
+        </button>
+        <!--        <button (click)="sortData({quantity: 1}, 5)" mat-menu-item [class.dropdown-active]="activeSort === 5">-->
+        <!--          Quantity (Low ~ High)-->
+        <!--        </button>-->
+        <!--        <button (click)="sortData({quantity: -1}, 6)" mat-menu-item [class.dropdown-active]="activeSort === 6">-->
+        <!--          Quantity (High ~ Low)-->
+        <!--        </button>-->
+      </mat-menu>
+    </div>
+
+
+
+
+
+    <div class="sort">
+      <button mat-raised-button color="accent" (click)="exportToExcel()" *ngIf="admin?.downloadExcel">
+        Export as Excel
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </div>
+    <button mat-raised-button color="warn" >
+      <mat-icon>file_download</mat-icon>
+      Download Pdf
+    </button>
+
+
+  </div>
+
+  <hr class="center-square">
+
+  <div class="table-wrapper space">
+
+    <div class="table-action" [class.dual]="activeSort || filter">
+      <div class="left" *ngIf="activeSort || filter">
+        <button mat-stroked-button color="accent" (click)="onRemoveAllQuery()">
+          <mat-icon>close</mat-icon>
+          Clear FilterData
+        </button>
+      </div>
+
+      <div class="right" *ngIf="selectedIds && selectedIds.length">
+        <button *ngIf="checkEditPermission" mat-stroked-button color="primary" matTooltip="Change-Order-Status" (click)="openUpdateOrderStatusDialogs('Change-Order-Status')">
+          Change Order Status
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+
+        <!--        <button *ngIf="checkDeletePermission" mat-stroked-button color="warn" (click)="openConfirmDialog('delete')"-->
+        <!--                matTooltip="Delete">-->
+        <!--          <mat-icon>delete</mat-icon>-->
+        <!--        </button>-->
+
+
+
+        <!-- <button [disabled]="data._id === adminId || !checkEditPermission"
+                         mat-mini-fab matTooltip="Edit" color="accent"
+                         (click)="openUpdateOrderStatusDialog(data)">
+                   <mat-icon>edit</mat-icon>
+                 </button> -->
+
+
+
+
+
+
+      </div>
+    </div> <!-- END Table Action -->
+
+
+    <div class="top-basic-info" *ngIf="showCalculation">
+      <div class="bottom">
+        <p>Total Amount: {{(calculation?.grandTotal ?? 0) | number: '':'bn'}} Tk</p>
+      </div>
+    </div> <!-- END Basic Count -->
+
+
+    <table>
+      <tr>
+        <th class="t-checkbox">
+          <mat-checkbox #matCheckbox (change)="onAllSelectChange($event)"></mat-checkbox>
+        </th>
+        <th>Order No</th>
+        <th>Phone No</th>
+        <th>Name</th>
+        <th>Order Date and Time</th>
+        <th>Note</th>
+        <!--        <th>City</th>-->
+        <th>Payment Type</th>
+        <th>Payment Status</th>
+        <th>Order Status</th>
+        <th>Grand total</th>
+        <th>Actions</th>
+      </tr>
+      <tr
+        *ngFor="let data of orders | paginate: { itemsPerPage: ordersPerPage, currentPage: currentPage, totalItems: totalOrders } ; let i = index">
+        <td class="t-checkbox">
+          <mat-checkbox class="t-mat-checkbox" [(ngModel)]="data.select"
+                        (ngModelChange)="onCheckChange($event, i, data._id)"></mat-checkbox>
+        </td>
+        <td>{{data.orderId}}</td>
+        <td>{{data.phoneNo}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.createdAt | date: 'd MMM, y, h:mm a'}}</td>
+        <!--        <td>{{data.deliveryDate ? (data.deliveryDate | date: 'd MMM, y, h:mm a') : '-'}}</td>-->
+        <!--        <td><span >{{data?.deliveringDateAdmin ? data?.deliveringDateAdmin : "Unavailable" | bnDate   }} </span>-->
+        <td><span >{{data?.noteByAdmin | slice:0:20}} </span>
+          <a  class="add-date" style="color: blue;font-style:italic; cursor: pointer;display: block"  (click)="openUpdatedeliveryDateDialog(data)">Change</a>
+        </td>
+        <!--        <td>{{data.city}}</td>-->
+        <td>{{data.paymentType | slugToNormal : '_'}}</td>
+        <td>
+          <div [ngClass]="data.paymentStatus === 'paid' ? 'paid' : 'unpaid'">
+            {{data.paymentStatus}}
+          </div>
+        </td>
+        <td [ngClass]="ngClassService.getDeliveryStatusColor(data.orderStatus)">
+          {{data.orderStatus | orderStatus}}
+        </td>
+
+        <td>Tk{{data.grandTotal | number : '': 'bn'}}</td>
+        <td class="td-action">
+          <!--          <button [disabled]="data._id === adminId || !checkEditPermission"-->
+          <!--                  [routerLink]="['../', 'edit-order', data._id]" mat-mini-fab matTooltip="Edit">-->
+          <!--            <mat-icon>edit</mat-icon>-->
+          <!--          </button>-->
+          <button [disabled]="data._id === adminId || !checkEditPermission"
+                  mat-mini-fab matTooltip="Edit" color="accent"
+                  (click)="openUpdateOrderStatusDialog(data)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <a style="margin-left: 5px;" mat-mini-fab color="primary" [routerLink]="['../','order-details', data._id]"
+             mat-icon-button  matTooltip="View Details">
+            <mat-icon>visibility</mat-icon>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="pagination-container">
+    <pagination-controls
+      class="data-pagination"
+      [autoHide]="true"
+      [maxSize]="15"
+      (pageChange)="onPageChanged($event)">
+    </pagination-controls>
+  </div>     <!-- END PAGINATION -->
+
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+</section>

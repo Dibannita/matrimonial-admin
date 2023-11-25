@@ -1,0 +1,88 @@
+@import "src/theme/variables";
+
+.page-list {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    .page-title {
+      h4 {
+        font-family: $font-en-primary;
+        font-weight: 700;
+        color: #212b36;
+        font-size: 25px;
+        line-height: 0.5;
+      }
+
+      h6 {
+        font-family: $font-en-primary;
+        font-size: 18px;
+        color: #555;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.page-header .btn-added {
+  font-family: $font-en-primary;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: $bg-primary;
+  padding: 10px 25px;
+  color: $color-table-font-color;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+
+  img {
+    width: 22px;
+    color: $color-table-font-color;
+  }
+
+  &:hover {
+    background: #212b36;
+  }
+}
+
+@media(max-width:450px){
+
+  .page-header .btn-added  {
+    padding: 10px 9px;
+  font-size: 10px;
+
+  }
+
+  .page-list {
+    .page-header {
+
+
+      .page-title {
+        h4 {
+
+
+          font-size: 17px;
+
+        }
+
+        h6 {
+
+          font-size: 16px;
+
+        }
+      }
+    }
+  }
+
+  .page-header .btn-added img {
+    width: 16px;
+
+  }
+  .font-size {
+    font-size: 10px;
+  }
+}

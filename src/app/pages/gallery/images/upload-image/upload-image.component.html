@@ -1,0 +1,77 @@
+<div class="dialog-container">
+  <div class="header">
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+
+    <div class="top-view">
+      <mat-form-field appearance="outline" class="mat-select-folder">
+        <mat-label>Select Folder</mat-label>
+        <mat-select [(ngModel)]="selectedFolder" name="food">
+          <mat-option value="Default">Default</mat-option>
+          <mat-option *ngFor="let f of folders" [value]="f.name">
+            {{f.name | titlecase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="check-option">
+        <mat-checkbox [(ngModel)]="isCheckConvert">Compress to Webp</mat-checkbox>
+      </div>
+    </div>
+
+    <div class="input-options" *ngIf="isCheckConvert">
+      <mat-form-field appearance="outline">
+        <mat-label>Quality (optional)</mat-label>
+        <input type="text"
+               digitOnly
+               [(ngModel)]="quality"
+               matInput [placeholder]="'Enter quality between (1 ~ 100)'">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Width (optional)</mat-label>
+        <input type="text"
+               digitOnly
+               [(ngModel)]="width"
+               matInput [placeholder]="'Enter width'">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Height (optional)</mat-label>
+        <input type="text"
+               digitOnly
+               [(ngModel)]="height"
+               matInput [placeholder]="'Enter height'">
+      </mat-form-field>
+    </div>
+
+
+    <div class="custom-dropzone" ngx-dropzone  (change)="onSelect($event)">
+      <ngx-dropzone-label>
+        <div class="label">
+          <h2>Upload or Drug and Drop Here</h2>
+        </div>
+      </ngx-dropzone-label>
+
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+<!--        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>-->
+        <ngx-dropzone-label>{{ f.type }}</ngx-dropzone-label>
+      </ngx-dropzone-image-preview>
+    </div>
+
+    <div class="action">
+      <button type="button" mat-raised-button color="primary" (click)="onUploadImages()">
+        Upload Now
+      </button>
+    </div>
+
+  </div>
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="timer" [fullScreen]="false">
+    <p style="color: white"> Uploading... </p>
+  </ngx-spinner>
+
+</div>

@@ -1,0 +1,27 @@
+
+.header-dialog {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+
+form {
+  width: 450px;
+  margin: 20px auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    ::ng-deep {
+      span {
+        color: #FFFFFF;
+      }
+    }
+  }
+}

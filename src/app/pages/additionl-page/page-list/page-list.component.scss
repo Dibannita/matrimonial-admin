@@ -1,0 +1,10 @@
+.decorate-list{
+  padding-bottom: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  &:hover{
+    background-color: #bfb9a6;
+  }
+}

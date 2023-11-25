@@ -1,0 +1,43 @@
+<form autocomplete="off" class="view" #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+  <div class="data-info">
+    <h4>{{product?.name}}</h4>
+    <p>Old Price: {{product | price : 'salePrice'}}</p>
+    <p>New Price: {{newPrice | number : '' : 'bn'}}</p>
+  </div> <!-- END! Product Info -->
+
+  <div>
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Discount Type</mat-label>
+      <mat-select formControlName="discountType">
+        <mat-option *ngFor="let data of discountTypes" [value]="data.value">
+          {{data.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Discount Amount</mat-label>
+      <input formControlName="discountAmount" matInput placeholder="Enter discount amount" type="number"
+        pattern="^\d+(\.\d{1,2})?$" digitOnly [decimal]="true" [required]="dataForm.value.discountType">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </div> <!-- END! Variation Options -->
+
+
+  <div class="action">
+    <button type="button" mat-raised-button [color]="'warn'" (click)="onCancelDialog()">
+      Cancel
+    </button>
+    <button mat-raised-button [color]="'primary'" type="submit">
+      Confirm
+    </button>
+  </div>
+
+
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

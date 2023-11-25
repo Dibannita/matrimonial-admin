@@ -1,0 +1,49 @@
+<div class="top-input-header">
+  <div class="title">
+    <h2>{{id ? 'Edit' : 'Add New'}} Story</h2>
+  </div>
+</div> <!-- END Input Form Header -->
+
+
+<form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" fxLayout="row wrap" fxLayoutAlign="center">
+
+  <div class="form-img-avatar" (click)="openGalleryDialog()">
+    <img [src]="pickedImage" alt="">
+  </div>
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100" >
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput placeholder="Enter title" required>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100" >
+    <mat-label>Select Type</mat-label>
+    <mat-select formControlName="type" required>
+      <mat-option *ngFor="let data of storyTypes" [value]="data.value" >
+        {{data.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is required.</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100">
+    <mat-label>Url</mat-label>
+    <input formControlName="url" matInput placeholder="Enter url">
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" type="submit">
+    {{id ? 'Update Story' : 'Add Story'}}
+  </button>
+
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+

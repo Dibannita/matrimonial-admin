@@ -1,0 +1,355 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/matrimonial/general-info">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">General Info</p>
+          </li>
+
+          <li routerLink="/matrimonial/address">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">Address</p>
+          </li>
+
+          <li routerLink="/matrimonial/educational-qualification">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">Educational Qualification</p>
+          </li>
+
+          <li routerLink="/matrimonial/pledge">
+            <div class="circle-top">
+              <div class="circle-top-child">4</div>
+            </div>
+            <p class="text">Pledge</p>
+          </li>
+
+          <li routerLink="/matrimonial/contact">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>Educational Qualification</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-select-box">
+                <p>
+                  <label for="Education_Method"
+                    >Your Education Method <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="Education_Method"
+                    formControlName="yourEducationMethod"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of educationMethod" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('yourEducationMethod').touched &&
+                    dataForm.get('yourEducationMethod').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="Highest_educational"
+                    >Highest educational qualification <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="Highest_educational"
+                    formControlName="highestEducation"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of heightEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('highestEducation').touched &&
+                    dataForm.get('highestEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="Equivalent_Passing">
+                    SSC / Dakhil / Equivalent Passing year
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Equivalent_Passing"
+                    formControlName="sscPassingYear"
+                    placeholder="Equivalent Passing year"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscPassingYear').touched &&
+                    dataForm.get('sscPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+                <p class="extra-text">
+                  Please provide your real birth date. If there is a fabricated
+                  birth date in NID or birth registration, do not provide it.
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="Group">Group <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="Group" formControlName="sscGroup">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of groupData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscGroup').touched &&
+                    dataForm.get('sscGroup').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="Result">Result <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="Result" formControlName="sscResult">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of resultData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscResult').touched &&
+                    dataForm.get('sscResult').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="Subject">
+                    What is the subject of your diploma?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Subject"
+                    placeholder="Subject"
+                    formControlName="diplomaSubject"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaSubject').touched &&
+                    dataForm.get('diplomaSubject').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="institution">
+                    Name of educational institution
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="institution"
+                    placeholder="Institution"
+                    formControlName="diplomaInstitution"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaInstitution').touched &&
+                    dataForm.get('diplomaInstitution').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="Passing_year">
+                    Passing year
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Passing_year"
+                    placeholder="Passing year"
+                    formControlName="diplomaPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaPassingYear').touched &&
+                    dataForm.get('diplomaPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="Other_educational">
+                    Other educational qualifications
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="Other_educational"
+                    cols="30"
+                    rows="5"
+                    placeholder=" Other education"
+                    formControlName="otherEducationalQualifications"
+                  ></textarea>
+                </div>
+
+                <p class="extra-text">
+                  Write the details including the name of the educational
+                  institution, subject, passing year. If there is nothing, leave
+                  it empty.
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+<!--              <div class="input-box">-->
+<!--                <p>-->
+<!--                  <label for="Islamic_education">-->
+<!--                    Islamic educational titles-->
+<!--                  </label>-->
+<!--                </p>-->
+
+<!--                <div class="input-doc">-->
+<!--                  <input type="text" id="Islamic_education" formControlName="islamicEducationalTitles" />-->
+<!--                </div>-->
+
+<!--                <p class="extra-text">-->
+<!--                  Leave the field blank if you do not have a title. If yes, you-->
+<!--                  can select one or more.-->
+<!--                </p>-->
+<!--              </div>-->
+              <!-- END! input-box -->
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Select Educational Titles</mat-label>
+                <mat-select formControlName="islamicEducationalTitles" multiple>
+                  <mat-option *ngFor="let item of islamicTitles" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit">
+                <span *ngIf="!isLoader">Save & Next</span>
+                <div class="loader" *ngIf="isLoader"></div>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

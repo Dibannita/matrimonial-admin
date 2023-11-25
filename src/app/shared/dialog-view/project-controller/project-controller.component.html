@@ -1,0 +1,38 @@
+<div class="dialog-container">
+
+  <div class="close">
+    <button mat-icon-button type="button" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="top-input-header">
+    <div class="title">
+      <h2>{{project ? 'Edit' : 'Add'}} Project</h2>
+    </div>
+  </div> <!-- END Input Form Header -->
+
+
+  <form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Note</mat-label>
+      <textarea formControlName="note" matInput placeholder="Enter description" [rows]="3"></textarea>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">
+      {{project ? 'Update Project' : 'Add Project'}}
+    </button>
+
+  </form>
+
+
+</div>

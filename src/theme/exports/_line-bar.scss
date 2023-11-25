@@ -1,0 +1,133 @@
+@import "src/theme/variables";
+
+/* --- line-bar --- */
+.line-bar {
+  width: 100%;
+  position: sticky;
+  top: -20px;
+  left: 0;
+  background: #fff;
+}
+
+/* --- line-bar-parent --- */
+.line-bar-parent {
+  width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+/* --- line-bar-child --- */
+.line-bar-child {
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+    gap: 40px;
+    margin: auto;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: #e8e8e8;
+      left: 31px;
+      top: 25%;
+      z-index: -1;
+      width: 90%;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+
+      .circle-top {
+        width: 35px;
+        height: 35px;
+        background: #f1f1f1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .circle-top-child {
+          width: 17px;
+          height: 17px;
+          background: #a1a1a1;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: $font-en-primary;
+          font-size: 11px;
+          font-weight: 400;
+          color: #e9e9e9;
+
+          &.active {
+            background-color: $color-primary;
+            color: #fff;
+          }
+        }
+      }
+
+      &:first-child {
+        .circle-top {
+          .circle-top-child {
+            padding-right: 2px;
+            padding-top: 1px;
+          }
+        }
+      }
+
+      p {
+        font-family: $font-en-primary;
+        font-size: 15px;
+        font-weight: 400;
+        color: #151515;
+        letter-spacing: 0.5px;
+        line-height: 15px;
+        padding-bottom: 8px;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  }
+
+  &.line-bar-child-second {
+    min-width: 1268px;
+    max-width: 1268px;
+
+    ul {
+      &::after {
+        top: 21%;
+        z-index: -1;
+        width: 96%;
+        height: 2px;
+      }
+
+      li {
+        justify-content: flex-start;
+
+        p {
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}

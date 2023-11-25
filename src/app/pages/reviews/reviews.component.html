@@ -1,0 +1,48 @@
+<div class="header">
+  <h2>Review LIst</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Product Image'}}</th>
+      <th scope="col">{{'Product Name'}}</th>
+      <th scope="col">{{'User Name'}}</th>
+      <th scope="col">{{'Review Date'}}</th>
+      <th scope="col">{{'Review'}}</th>
+      <th scope="col">{{'Status'}}</th>
+      <th scope="col">{{'Rating'}}</th>
+      <th scope="col">{{'Action'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of allReviews; let i = index">
+      <td [attr.data-label]="'Product Image'">
+        <img [src]="data.product?.images && data.product.images.length > 0 ? data.product?.images[0] : '/assets/images/placeholder/test.png'" alt="" class="img-thumb">
+      </td>
+      <td [attr.data-label]="'Product Name'">{{data.product?.name}}</td>
+      <td [attr.data-label]="'User Name'">{{data.user?.name}}</td>
+      <td [attr.data-label]="'Review Date'">{{data?.reviewDate | date}}</td>
+      <td [attr.data-label]="'Review'">{{data.review }}</td>
+      <td [attr.data-label]="'Status'">{{ data.status ? 'Approved' : 'Not Approved' }}</td>
+      <td [attr.data-label]="'Rating'">{{data.rating}}</td>
+
+      <!--      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>-->
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;" [routerLink]="['reply-review', data._id]" mat-mini-fab>
+          <mat-icon>reply</mat-icon>
+        </button>
+        <!--        <button mat-mini-fab color="primary" (click)="openComponentDialog(data.product)">-->
+        <!--          <mat-icon>visibility</mat-icon>-->
+        <!--        </button>-->
+      </td>
+    </tr><!-- End Table Body -->
+  </table>
+</div>

@@ -1,0 +1,290 @@
+<div class="header">
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    <mat-icon>done</mat-icon>
+    {{id ? 'Update' : 'Save'}} Order
+  </button>
+</div>
+
+<section class="admin-data-sec">
+
+  <div class="top-data-header">
+    <div class="title">
+      <h2> {{id ? 'Update' : 'Create New '}} Order</h2>
+    </div>
+  </div> <!-- END TOP DATA HEADER -->
+
+  <hr class="center-square">
+
+
+  <form #formElement="ngForm" [formGroup]="dataForm" fxLayout="row wrap" fxLayoutAlign="center">
+    <div class="div-one">
+      <mat-form-field appearance="outline" class="w-50 px-1">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput placeholder="Enter full name" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-50 px-1">
+        <mat-label>Phone No</mat-label>
+        <input formControlName="phoneNo" matInput placeholder="Enter phone no" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="div-one">
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Enter email" type="email">
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Payment Type</mat-label>
+        <mat-select formControlName="paymentType" required>
+          <mat-option *ngFor="let data of paymentTypes" [value]="data.value">
+            {{data.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>This field is required.</mat-error>
+      </mat-form-field>
+
+
+    </div>
+
+    <div class="div-two">
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Payment Status</mat-label>
+        <mat-select formControlName="paymentStatus" required>
+          <mat-option *ngFor="let data of paymentStatus" [value]="data.value">
+            {{data.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>This field is required.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Order Status</mat-label>
+        <mat-select formControlName="orderStatus" required (selectionChange)="onOrderStatusChange($event)">
+          <mat-option *ngFor="let data of orderStatus" [value]="data.value">
+            {{data.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>This field is required.</mat-error>
+      </mat-form-field>
+
+<!--      <mat-form-field appearance="outline" class="w-100 px-1">-->
+<!--        <mat-label>City</mat-label>-->
+<!--        <mat-select formControlName="city" required>-->
+<!--          <mat-option *ngFor="let data of cities" [value]="data">-->
+<!--            {{data}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--        <mat-error>This field is required.</mat-error>-->
+<!--      </mat-form-field>-->
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Areas</mat-label>
+        <mat-select formControlName="area" required>
+          <mat-option *ngFor="let data of areas" [value]="data.name">
+            {{data.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>This field is required.</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Shipping Address</mat-label>
+      <textarea formControlName="shippingAddress" matInput placeholder="Enter full address" [rows]="3"></textarea>
+    </mat-form-field>
+
+    <div class="div-one">
+      <mat-form-field appearance="outline" (click)="picker.open()" class="w-100 px-1">
+        <mat-label>Choose Delivery date</mat-label>
+        <input readonly formControlName="preferredDate" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Preferred Delivery Time</mat-label>
+        <mat-select formControlName="preferredTime" disableRipple>
+          <mat-option *ngFor="let data of allDeliverTimes" [value]="data.value" required>
+            {{data.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div class="check-option w-100 px-1">
+      <mat-checkbox formControlName="hasOrderTimeline" color="primary" (change)="onChangeTimeline($event)">Enable order
+        timeline</mat-checkbox>
+    </div>
+
+    <ng-container *ngIf="dataForm.value.hasOrderTimeline">
+      <div class="title w-100 px-1">
+        <h2>Order Timeline</h2>
+      </div>
+
+      <div class="div-two">
+        <mat-form-field appearance="outline" class="w-100 px-1" (click)="processingDate.open()">
+          <input readonly [required]="dataForm.value.hasOrderTimeline === true" matInput
+            [ngxMatDatetimePicker]="processingDate" placeholder="Expected processing date"
+            formControlName="processingDate">
+          <mat-datepicker-toggle matSuffix [for]="processingDate"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #processingDate [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+            [stepMinute]="1" [stepSecond]="1" [touchUi]="false" [color]="'primary'">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 px-1" (click)="shippingDate.open()">
+          <input readonly [required]="dataForm.value.hasOrderTimeline === true" matInput
+            [ngxMatDatetimePicker]="shippingDate" placeholder="Expected shipping date" formControlName="shippingDate">
+          <mat-datepicker-toggle matSuffix [for]="shippingDate"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #shippingDate [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+            [stepMinute]="1" [stepSecond]="1" [touchUi]="false" [color]="'primary'">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100 px-1" (click)="deliveringDate.open()">
+          <input readonly [required]="dataForm.value.hasOrderTimeline === true" matInput
+            [ngxMatDatetimePicker]="deliveringDate" placeholder="Expected delivering date"
+            formControlName="deliveringDate">
+          <mat-datepicker-toggle matSuffix [for]="deliveringDate"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #deliveringDate [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+            [stepMinute]="1" [stepSecond]="1" [touchUi]="false" [color]="'primary'">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+    </ng-container>
+
+  </form> <!-- User Info Form -->
+
+
+
+  <div class="table-wrapper space">
+
+    <div class="table-action dual">
+      <div class="left"></div>
+      <div class="right">
+        <button mat-raised-button color="accent" (click)="openProductListDialog()">
+          <mat-icon>add</mat-icon>
+          Add Product
+        </button>
+      </div>
+    </div> <!-- END Table Action -->
+
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Unit</th>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Brand</th>
+        <th>Sale Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let data of selectedProducts; let i = index">
+        <td>
+          <img checkImageDefault class="table-image" [src]="data && data?.images ? data.images[0] : ''" [alt]="">
+        </td>
+        <td>{{data.name}}</td>
+        <td>{{data.unit ? data.unit : 'N/A'}}</td>
+        <td>{{data.category?.name}}</td>
+        <td>{{data.subCategory && data.subCategory?.name ? data.subCategory?.name : 'N/A'}}</td>
+        <td>{{data.brand?.name}}</td>
+        <td>Tk{{data.salePrice | number : '': 'bn'}}</td>
+        <td>
+          <div class="quantity-btn ">
+            <div>
+              <button id="cart-mines" type="button" (click)="decrementQty(i)">-</button>
+            </div>
+            <div>
+              <input type="text" name="item" [value]="data.selectedQty" id="cart-value">
+            </div>
+            <div>
+              <button type="button" id="cart-plus" (click)="incrementQty(i)">+</button>
+            </div>
+          </div>
+        </td>
+        <td class="td-action">
+          <button mat-mini-fab matTooltip="Remove" color="warn" (click)="removeProduct(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="bottom-action">
+    <div class="item" style="border-bottom: none;">
+      <div class="left">
+        Sub Total (TK)
+      </div>
+      <div class="right">
+        <mat-form-field appearance="legacy" class="w-100" floatLabel="never">
+          <input readonly matInput placeholder="Enter amount" [value]="cartSubTotal | number : '' : 'bn'">
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="item" style="border-bottom: none;">
+      <div class="left">
+        Delivery Charge (Tk)
+      </div>
+      <div class="right">
+        <mat-form-field appearance="legacy" class="w-100" floatLabel="never">
+          <input digitOnly pattern="^\d+(\.\d{1,2})?$" [decimal]="true" type="number" matInput
+            placeholder="Enter amount" [(ngModel)]="deliveryCharge">
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- <div class="item" style="border-bottom: none;">
+      <div class="left">
+        Discount (-€)
+      </div>
+      <div class="right">
+        <mat-form-field appearance="legacy" class="w-100" floatLabel="never">
+          <input readonly matInput placeholder="Enter amount" [value]="discount | number : '' : 'bn'">
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div> -->
+
+    <div class="item" style="border-bottom: none;">
+      <div class="left">
+        Additional Discount (-Tk)
+      </div>
+      <div class="right">
+        <mat-form-field appearance="legacy" class="w-100" floatLabel="never">
+          <input digitOnly pattern="^\d+(\.\d{1,2})?$" [decimal]="true" type="number" matInput
+            placeholder="Enter amount" [(ngModel)]="additionalDiscount">
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="left">
+        Grand Total (Tk)
+      </div>
+      <div class="right">
+        <p>{{grandTotal | number : '' : 'bn'}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+</section>

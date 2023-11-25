@@ -1,0 +1,164 @@
+<section class="admin-data-sec">
+  <div class="top-data-header">
+    <div class="title">
+      <h2>All Images</h2>
+    </div>
+
+    <form class="table-search" #searchForm=ngForm>
+      <input type="text"
+             #searchInput
+             name="searchTerm"
+             autocomplete="off"
+             ngModel placeholder="Search">
+      <button><i class="fa fa-search"></i></button>
+    </form>
+
+    <div class="action">
+
+      <div class="sort">
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="menuCat">
+          Folder
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuCat="matMenu">
+          <button *ngFor="let data of fileFolders; let i = index" mat-menu-item
+                  (click)="filterData(data.name, i, 'folder')"
+                  [class.dropdown-active]="activeFilter1 === i">
+            {{data.name}}
+          </button>
+        </mat-menu>
+      </div>
+
+
+      <div class="sort">
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="menuSort">
+          Sort By
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menuSort="matMenu">
+          <button mat-menu-item (click)="sortData({size: -1}, 1)" [class.dropdown-active]="activeSort === 1">
+            Big Size
+          </button>
+          <button mat-menu-item (click)="sortData({size: 1}, 2)" [class.dropdown-active]="activeSort === 2">
+            Small Size
+          </button>
+
+        </mat-menu>
+      </div>
+
+      <button *ngIf="checkAddPermission" mat-raised-button color="primary" (click)="openComponentDialog()">
+        <mat-icon>add</mat-icon>
+        Upload Image
+      </button>
+    </div>
+
+  </div> <!-- END TOP DATA HEADER -->
+
+  <hr class="center-square">
+
+
+  <div class="action-top" [class.dual]="activeSort || filter">
+    <div class="left" *ngIf="activeSort || filter || selectedIds.length">
+      <button mat-stroked-button color="accent" (click)="onRemoveAllQuery()">
+        <mat-icon>close</mat-icon>
+        Clear Selection or Filter
+      </button>
+    </div>
+
+    <div class="right" *ngIf="selectedIds && selectedIds.length">
+
+      <button *ngIf="checkEditPermission" mat-stroked-button color="primary" [matMenuTriggerFor]="menu">
+        Change Folder
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button *ngFor="let data of fileFolders; let i = index" mat-menu-item
+                (click)="openConfirmDialog('edit', {folder: data._id})">
+          {{data.name}}
+        </button>
+      </mat-menu>
+
+      <button *ngIf="selectedImages.length === 1" mat-stroked-button color="primary"
+              (click)="openAddNewFolderDialog()"
+              matTooltip="Edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button *ngIf="checkDeletePermission" mat-stroked-button color="warn" (click)="openConfirmDialog('delete')"
+              matTooltip="Delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div> <!-- END TOP Action -->
+
+
+  <section class="image-previews" *ngIf="selectedImages && selectedImages.length">
+    <swiper [slidesPerView]="1"
+            [breakpoints]="{
+        '0':{
+          slidesPerView: 1,
+          spaceBetween: 15
+        },
+        '600':{
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        '800':{
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        '1100':{
+          slidesPerView: 4,
+          spaceBetween: 20
+        }
+      }"
+            [navigation]="true"
+            class="mySwiper feature-carousel"
+    >
+      <ng-template swiperSlide *ngFor="let data of selectedImages">
+        <div class="img-thumb">
+          <img checkImageDefault [src]="data.url" [alt]="data.name">
+        </div>
+      </ng-template>
+    </swiper>
+
+  </section> <!-- END IMAGE VIEW -->
+
+
+  <div class="content">
+
+    <div class="main">
+
+      <div class="gallery">
+        <figure
+          class="thumb"
+          *ngFor="let data of galleries | paginate: { itemsPerPage: galleriesPerPage, currentPage: currentPage, totalItems: totalGalleries };
+           let i = index"
+          (click)="onSelectImage(data)">
+          <img [src]="data.url" [alt]="data.name" class="image">
+          <div class="overlay" [fxHide]="checkSelected(data)">
+            <mat-icon>check</mat-icon>
+          </div>
+          <div class="caption">{{data.name}} ~{{data.size}}kb</div>
+        </figure>
+      </div> <!-- END GALLERY -->
+
+      <div class="pagination-container">
+        <pagination-controls
+          class="data-pagination"
+          [autoHide]="true"
+          [maxSize]="15"
+          (pageChange)="onPageChanged($event)">
+        </pagination-controls>
+      </div>     <!-- END PAGINATION -->
+    </div> <!-- END MAIN VIEW -->
+
+  </div>
+
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+</section>

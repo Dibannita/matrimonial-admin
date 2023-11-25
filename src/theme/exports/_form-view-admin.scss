@@ -1,0 +1,39 @@
+@import "../variables";
+.form-section {
+  width: 95%;
+  margin: 16px auto;
+  max-width: 850px;
+}
+
+.header-dialog {
+  h1  {
+    font-family: $font-en-primary;
+    text-align: center;
+  }
+}
+
+form{
+  width: 100%;
+  margin: 20px auto;
+
+  .imag-view {
+    img {
+      cursor: pointer;
+      border: 2px solid #c9c9c9;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      border-radius: 85px;
+      transition: 0.3s all linear;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  mat-form-field{
+    width: 100%;
+  }
+
+}

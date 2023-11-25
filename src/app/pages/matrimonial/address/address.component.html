@@ -1,0 +1,229 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/matrimonial/general-info">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">General Info</p>
+          </li>
+
+          <li routerLink="/matrimonial/address">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">Address</p>
+          </li>
+
+          <li routerLink="/matrimonial/educational-qualification">
+            <div class="circle-top">
+              <div class="circle-top-child">3</div>
+            </div>
+            <p class="text">Educational Qualification</p>
+          </li>
+
+
+          <li routerLink="/matrimonial/pledge">
+            <div class="circle-top">
+              <div class="circle-top-child">4</div>
+            </div>
+            <p class="text">Pledge</p>
+          </li>
+
+          <li routerLink="/matrimonial/contact">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>Address</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-box">
+                <p>
+                  <label for="Permanent_Address">
+                    Permanent Address
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Permanent_Address"
+                    placeholder="Address"
+                    formControlName="permanentAddress"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('permanentAddress').touched &&
+                    dataForm.get('permanentAddress').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+                <div class="input-doc input-doc-second">
+                  <input
+                    type="text"
+                    id="please-enter"
+                    formControlName="permanentAddressArea"
+                    placeholder="Please enter your area name"
+                  />
+                </div>
+
+                <p class="extra-text">
+                  Write the name of the village or area without entering the
+                  house number. Example- Mirpur 10, Baghmara.
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-checkbox">
+                <p>
+                  <label for="Permanent_Address">
+                    Permanent Address
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="in-check">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    (click)="onPermanentAddressCheck()"
+                  />
+
+                  <label for="remember" (click)="onPermanentAddressCheck()"
+                    >Same as permanent address</label
+                  >
+                </div>
+
+                <div *ngIf="permanentAddressCheck" class="show-input">
+<!--                  <div class="input-custom-select-box">-->
+<!--                    <select id="Biodata" formControlName="permanentAddressSame">-->
+<!--                      <option selected value="" hidden>-->
+<!--                        Select your location...-->
+<!--                      </option>-->
+<!--                      <option value="1">Category 1</option>-->
+<!--                      <option value="2">Category 2</option>-->
+<!--                      <option value="3">Category 3</option>-->
+<!--                      <option value="4">Category 4</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
+
+
+                  <div class="input-doc">
+                    <input
+                      type="text"
+                      id="Present_Address"
+                      placeholder="Address"
+                      formControlName="presentAddress"
+                    />
+                  </div>
+
+                  <p
+                    class="required"
+                    *ngIf="
+                    dataForm.get('presentAddress').touched &&
+                    dataForm.get('presentAddress').invalid
+                  "
+                  >
+                    <i>This felid is required</i>
+                  </p>
+
+
+                  <div class="input-doc input-doc-second">
+                    <input
+                      type="text"
+                      id="Peresent_Address"
+                      placeholder="Address"
+                      formControlName="presentAddressArea"
+                    />
+                  </div>
+                  <p
+                    class="required"
+                    *ngIf="
+                      dataForm.get('presentAddressArea').touched &&
+                      dataForm.get('presentAddressArea').invalid
+                    "
+                  >
+                    <i>This felid is required</i>
+                  </p>
+                </div>
+
+                <p class="extra-text">
+                  Write the name of the village or area without entering the
+                  house number. Example- Mirpur 10, Baghmara.
+                </p>
+              </div>
+              <!-- END! input-checkbox -->
+
+              <div class="input-box">
+                <p>
+                  <label for="growUp">
+                    Where did you grow up?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="growUp"
+                    placeholder="Grow up"
+                    formControlName="whereDidYouGrowUp"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('whereDidYouGrowUp').touched &&
+                    dataForm.get('whereDidYouGrowUp').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+            </div>
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit">
+                <span *ngIf="!isLoader">Save & Next</span>
+
+                <div class="loader" *ngIf="isLoader"></div>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

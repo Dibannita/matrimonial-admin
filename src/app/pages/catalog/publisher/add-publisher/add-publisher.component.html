@@ -1,0 +1,52 @@
+<section class="add-list">
+    <div class="page-header">
+      <div class="page-title">
+        <h4>Publisher {{ id ? "Update" : "Add" }}</h4>
+      </div>
+      <div class="checkbox">
+        <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+      </div>
+    </div>
+  </section>
+
+<section class="from-section">
+  <div class="grid">
+    <form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" class="area-border">
+
+
+      <div class="form-img-avatar">
+        <img matTooltip="Main Banner Image" (click)="openGalleryDialog('image')" [src]="pickedImage" alt="">
+        <!--      <img matTooltip="Mobile Banner Image" (click)="openGalleryDialog('mobileImage')" [src]="pickedMobileImage" alt="">-->
+      </div>
+
+
+      <div class="from">
+        <mat-label>Publisher name</mat-label>
+        <mat-form-field appearance="outline">
+          <input formControlName="name" matInput required/>
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="from">
+        <mat-label>Slug</mat-label>
+        <mat-form-field appearance="outline">
+          <input formControlName="slug" matInput required autoSlug />
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="btn">
+        <button mat-raised-button type="submit" class="btn-submit">
+          {{ id ? "Update" : "Submit" }}
+        </button>
+        <button type="button" [routerLink]="['../']" mat-raised-button class="btn-submit color">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+

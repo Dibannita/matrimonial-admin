@@ -1,0 +1,34 @@
+@import "src/theme/variables";
+
+.top-data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+
+  .title {
+    h2 {
+      font-family: $font-en-primary;
+      color: #6f6f6f;
+      font-size: 28px;
+    }
+  }
+
+  .action {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+
+    .date-filter {
+      width: 260px;
+      mat-form-field.mat-form-field {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}

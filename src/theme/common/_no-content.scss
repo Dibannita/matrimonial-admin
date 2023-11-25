@@ -1,0 +1,50 @@
+@import "src/theme/variables";
+
+.no-content {
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+
+  .icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 120px;
+    background: $color-secondary;
+    display: grid;
+    place-items: center;
+
+    span {
+      color: #cac3e1;
+      font-size: 64px;
+    }
+  }
+
+  .desc {
+    margin-top: 16px;
+
+    h3 {
+      color: #404040;
+      margin: 0;
+      line-height: 1.4;
+      font-family: $font-en-nunito;
+      font-weight: 800;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    p {
+      font-family: $font-en-nunito;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+

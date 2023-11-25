@@ -1,0 +1,149 @@
+@import 'src/theme/variables';
+
+.page-title {
+  display: block;
+  margin-bottom: 50px;
+}
+
+.page-title h4 {
+  color: #555555;
+  font-family: $open-sans;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  line-height: 22px;
+}
+
+.section1 {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.section1-title {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.section1-title h3 {
+  color: #46454b;
+  font-family: $open-sans;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  display: block;
+  line-height: 30px;
+  letter-spacing: -0.3px;
+}
+
+.section1-main {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 60px 30px;
+  grid-template-rows: auto;
+}
+
+@media(max-width: 1500px) {
+  .section1-main {
+    grid-gap: 60px 20px;
+  }
+}
+
+@media(max-width: 1450px) {
+  .section1-main {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 60px 20px;
+  }
+}
+
+@media(max-width: 850px) {
+  .section1-main {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 60px 20px;
+  }
+}
+
+@media(max-width: 550px) {
+  .section1-main {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 40px 20px;
+  }
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px 15px;
+  min-height: 100px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 3px 2px 0 rgb(0 0 0 / 6%);
+  position: relative;
+  cursor: pointer;
+}
+
+.card-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  height: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #efefef;
+}
+
+.card-text {
+  display: block;
+  text-align: right;
+}
+
+.card-text h3 {
+  color: #737275;
+  font-family: $open-sans;
+  font-size: 15px;
+  margin-top: 3px !important;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 0 !important;
+  font-style: normal;
+}
+
+.card-text span {
+  color: #737275;
+  font-family: $open-sans;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-bottom: 5px !important;
+  font-style: normal;
+}
+
+.card-icon {
+  display: block;
+}
+
+.card-icon span {
+  background-color: #f79c1f;
+  width: 80px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  border-radius: 4px;
+  position: absolute;
+  top: -16px;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 10%);
+}
+
+.total {
+  background-color: #e43c38 !important;
+}
+
+.merchant {
+  background-color: #242a2f !important;
+}
+
+

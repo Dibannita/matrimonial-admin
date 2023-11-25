@@ -1,0 +1,149 @@
+<section class="section-1">
+
+  <div class="section1-main">
+
+    <div class="section1-details" *ngIf="order?.orderTimeline?.refunded?.success && order?.orderStatus === OrderStatusEnum.REFUND">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.refunded?.date | date : 'medium'}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span class="bg-warn">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-warn">
+            Refunded
+          </h3>
+          <span>
+            Your order has been refunded.
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM REFUND VIEW -->
+
+
+    <div class="section1-details" *ngIf="order?.orderTimeline?.canceled?.success && order?.orderStatus === OrderStatusEnum.CANCEL">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.canceled?.date | date : 'medium'}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span class="bg-danger">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 class="text-danger">
+            Canceled
+          </h3>
+          <span>
+            Your order has been canceled.
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM CANCEL VIEW -->
+
+    <div class="section1-details">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.delivered?.success && order?.orderStatus === OrderStatusEnum.DELIVERED ? (order?.orderTimeline?.delivered?.date | date : 'medium') : (order?.orderTimeline?.delivered?.expectedDate | date : 'medium')}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span [class.bg-active]="order?.orderTimeline?.delivered?.success && order?.orderStatus === OrderStatusEnum.DELIVERED">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 [class.text-active]="order?.orderTimeline?.delivered?.success && order?.orderStatus === OrderStatusEnum.DELIVERED">
+            {{order?.orderTimeline?.delivered?.success && order?.orderStatus === OrderStatusEnum.DELIVERED ? 'Delivered' : 'Delivery (Expected Date)'}}
+          </h3>
+          <span>
+            {{order?.orderTimeline?.delivered?.success && order?.orderStatus === OrderStatusEnum.DELIVERED ? 'Your order has been delivered.' : 'Your order has not yet been delivered.'}}
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM VIEW -->
+
+
+
+    <div class="section1-details">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.shipped?.success && order?.orderStatus > OrderStatusEnum.PROCESSING ? (order?.orderTimeline?.shipped?.date | date : 'medium') : (order?.orderTimeline?.shipped?.expectedDate | date : 'medium')}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span [class.bg-active]="order?.orderTimeline?.shipped?.success && order?.orderStatus > OrderStatusEnum.PROCESSING">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 [class.text-active]="order?.orderTimeline?.shipped?.success && order?.orderStatus > OrderStatusEnum.PROCESSING">
+            {{order?.orderTimeline?.shipped?.success && order?.orderStatus > OrderStatusEnum.PROCESSING ? 'Shipped' : 'Shipping (Expected Date)'}}
+          </h3>
+          <span>
+            {{order?.orderTimeline?.shipped?.success && order?.orderStatus > OrderStatusEnum.PROCESSING ? 'Your order has been picked by a delivery man and shipped.' : 'Your order has not been picked by a delivery man or shipped yet.'}}
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM VIEW -->
+
+
+    <div class="section1-details">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.processed?.success && order?.orderStatus > OrderStatusEnum.CONFIRM ? (order?.orderTimeline?.processed?.date | date : 'medium') : (order?.orderTimeline?.processed?.expectedDate | date : 'medium')}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span [class.bg-active]="order?.orderTimeline?.processed?.success && order?.orderStatus > OrderStatusEnum.CONFIRM">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 [class.text-active]="order?.orderTimeline?.processed?.success && order?.orderStatus > OrderStatusEnum.CONFIRM">
+            {{order?.orderTimeline?.processed?.success && order?.orderStatus > OrderStatusEnum.CONFIRM ? 'Processed' : 'Processing (Expected Date)'}}
+          </h3>
+          <span>
+            {{order?.orderTimeline?.processed?.success && order?.orderStatus > OrderStatusEnum.CONFIRM ? 'Your order has been processed.' : 'Your order has not been processed yet.'}}
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM VIEW -->
+
+    <div class="section1-details">
+      <div class="date">
+        <span>
+          {{order?.orderTimeline?.confirmed?.success && order?.orderStatus > OrderStatusEnum.PENDING ? (order?.orderTimeline?.confirmed?.date | date : 'medium') : (order?.createdAt | date : 'medium')}}
+        </span>
+      </div>
+      <div class="other-details after-none">
+        <div class="icon">
+          <span [class.bg-active]="order?.orderTimeline?.confirmed?.success && order?.orderStatus > OrderStatusEnum.PENDING">
+            <i class="fa fa-check"></i>
+          </span>
+        </div>
+        <div class="other-text-details">
+          <h3 [class.text-active]="order?.orderTimeline?.confirmed?.success && order?.orderStatus > OrderStatusEnum.PENDING">
+            {{order?.orderTimeline?.confirmed?.success && order?.orderStatus > OrderStatusEnum.PENDING ? 'Confirmed' : 'Pending'}}
+          </h3>
+          <span>
+            {{order?.orderTimeline?.confirmed?.success && order?.orderStatus > OrderStatusEnum.PENDING ? 'Your order has been placed and confirmed.' : 'Your order has been not yet been confirmed.'}}
+          </span>
+        </div>
+      </div>
+    </div> <!-- ITEM VIEW -->
+
+  </div>
+
+</section>

@@ -1,0 +1,129 @@
+<div class="header" *ngIf="!viewOnly">
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    <mat-icon>done</mat-icon>
+    {{id ? 'Update' : 'Save'}} Special
+  </button>
+</div>
+
+<section class="admin-data-sec">
+
+  <div class="top-data-header" *ngIf="!viewOnly">
+    <div class="title">
+      <h2> {{id ? 'Update' : 'Create New '}} Special</h2>
+    </div>
+  </div> <!-- END TOP DATA HEADER -->
+
+  <hr class="center-square">
+
+
+  <form #formElement="ngForm" [formGroup]="dataForm" fxLayout="row wrap" fxLayoutAlign="center">
+
+    <div class="form-img-avatar" (click)="openGalleryDialog()">
+      <img [src]="pickedImage" alt="" style="margin: 0px auto 15px auto;">
+    </div>
+
+
+    <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100">
+      <mat-label>Title</mat-label>
+      <input formControlName="name" matInput placeholder="Enter Name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput placeholder="Enter description" [rows]="4"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="50">
+      <mat-label>Discount Type</mat-label>
+      <mat-select formControlName="discountType">
+        <mat-option *ngFor="let discount of discountType" [value]="discount.value">{{discount.viewValue}}</mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="50">
+      <mat-label>Discount</mat-label>
+      <input formControlName="discountAmount" digitOnly matInput placeholder="Enter Discount">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </form> <!-- User Info Form -->
+
+
+  <div class="table-wrapper space">
+
+    <div class="table-action dual">
+      <div class="left">Total Amount- {{totalAmount}}</div>
+      <div class="right" *ngIf="!viewOnly">
+        <button mat-raised-button color="accent" (click)="openProductListDialog()">
+          <mat-icon>add</mat-icon>
+          Add Product
+        </button>
+      </div>
+    </div> <!-- END Table Action -->
+
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Brand</th>
+        <th>Regular Price</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th *ngIf="!viewOnly">Action</th>
+      </tr>
+      <tr *ngFor="let data of selectedProducts; let i = index">
+        <td>
+          <img checkImageDefault class="table-image" [src]="data && data?.images ? data.images[0] : ''" [alt]="">
+        </td>
+        <td>{{data.name}}</td>
+        <td>{{data.category?.name}}</td>
+        <!--        <td>{{data.subCategory?.name}}</td>-->
+        <td>{{data.brand?.name}}</td>
+        <td>Tk{{data.hasVariations?data.selectedVariation.price:data.salePrice}}</td>
+        <!-- <td>
+          <div class="select-box">
+            <select (change)="selectedVariation($event, i,data)">
+              <option *ngIf="!data.hasVariations" value="" disabled selected>No Variation Found</option>
+              <ng-container *ngIf="data.hasVariations">
+                <option *ngFor="let d of data?.variationsOptions,let i=index" value="{{i}}"
+                        [attr.selected]="checkVariationSelection(d,data?.selectedVariation)"
+                        [attr.disabled]="disableVariationSelection(d)"
+                >
+                  <button>{{getVariations(d.variations)}} - <sub>€</sub>{{d.price}}</button>
+                </option>
+              </ng-container>
+
+            </select>
+          </div>
+        </td> -->
+        <td>
+          <div class="cart-action">
+            <button class="left" (click)="changeCartQuantity(i,'descries')">
+              <span class="material-icons">remove</span>
+            </button>
+            <p>{{data?.quantity}}</p>
+            <button class="right" (click)="changeCartQuantity(i,'increase')">
+              <span class="material-icons">add</span>
+            </button>
+          </div>
+        </td>
+
+        <td>Tk{{data | price : 'regularPrice': data?.quantity:data.selectedVariation}}</td>
+        <td class="td-action" *ngIf="!viewOnly">
+          <button mat-mini-fab matTooltip="Remove" color="warn" (click)="removeProduct(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+
+</section>

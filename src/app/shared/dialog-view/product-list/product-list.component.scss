@@ -1,0 +1,19 @@
+@import "src/theme/exports/table-scroll";
+@import "src/theme/exports/search-table";
+@import "src/theme/exports/top-data-header";
+@import "src/theme/exports/top-action-multiple";
+
+
+
+.close {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  text-align: center;
+
+  //button {
+  //  background: #ffc9c9;
+  //}
+}

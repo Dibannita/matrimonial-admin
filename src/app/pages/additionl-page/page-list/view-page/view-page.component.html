@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="form">
+    <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+          autocomplete="off">
+
+
+      <div class="width">
+        <mat-form-field appearance="outline" class="">
+          <mat-label>Page Name</mat-label>
+          <input matInput formControlName="name" required>
+          <mat-error>Name is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class=" check-option">
+        <mat-checkbox formControlName="isHtml" (change)="onCheckChange($event)">Want to paste HTML?</mat-checkbox>
+      </div>
+
+      <div class="width">
+        <mat-form-field *ngIf="dataForm.value.isHtml" appearance="outline">
+          <mat-label>Paste HTML Code</mat-label>
+          <textarea
+            (ngModelChange)="onChangeBaseHtml($event)"
+            formControlName="htmlBase"
+            matInput
+            [rows]="6">
+        </textarea>
+        </mat-form-field>
+      </div>
+
+
+      <div class="html-view" *ngIf="dataForm.value.isHtml">
+        <div class="description" [innerHTML]="dataForm.value.description | safeHtmlCustom"></div>
+      </div>
+
+      <div class="editor" *ngIf="!dataForm.value.isHtml">
+        <quill-editor #editor
+                      [modules]="modules"
+                      [sanitize]="true"
+                      classes="additional"
+                      formControlName="description"></quill-editor>
+      </div>
+
+
+      <div class="button"
+           [style.margin-top]="!dataForm.value.isHtml ? '20px' : '10px'">
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>check</mat-icon>
+          {{'Save Page' | uppercase}}
+        </button>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+
+

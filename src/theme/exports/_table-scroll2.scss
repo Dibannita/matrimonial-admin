@@ -1,0 +1,97 @@
+@import "src/theme/variables";
+
+.table-wrapper {
+  overflow-x:auto;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 10px 0;
+
+  &.space {
+    padding: 10px;
+  }
+
+  .table-action {
+
+    display: flex;
+    justify-content: flex-end;
+    margin: 8px 0;
+
+    &.dual {
+      justify-content: space-between;
+    }
+
+    .left {
+      display: flex;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .right {
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+  }
+}
+.table-wrapper table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+  font-family: $font-en-primary;
+}
+
+
+.table-wrapper table tr {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.table-wrapper table th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1d;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.table-wrapper table td {
+  padding: 10px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 13px;
+
+  .input-area {
+    .small-input {
+      width: 65px;
+    }
+
+    .small-select {
+      width: 65px;
+    }
+  }
+}
+
+::ng-deep.table-wrapper .mat-checkbox-frame, ::ng-deep.table-wrapper .mat-checkbox-background {
+  border-color: #c3daff;
+  background-color: #c3daff;
+}
+
+::ng-deep.table-wrapper .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #3b86ff !important;
+}
+
+.table-wrapper .t-checkbox {
+  width: 60px;
+}
+
+.table-wrapper .table-image {
+  width: 120px;
+  height: 90px;
+  object-fit: scale-down;
+}

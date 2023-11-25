@@ -1,0 +1,48 @@
+<div class="top-input-header">
+  <div class="title">
+    <h2>Edit {{data?.gallery?.type === 'image' ? 'Image' : 'Video'}} Info </h2>
+  </div>
+</div> <!-- END Input Form Header -->
+
+
+<div class="info" *ngIf="data && data.gallery">
+  <a [href]="data.gallery.url" target="_blank">
+    <img checkImageDefault
+         [src]="data?.gallery?.type === 'image' ? data.gallery.url : '/assets/images/png/video-play.png'" alt="">
+  </a>
+  <div class="name">
+    <h3>Size: {{data.gallery.size}} kb</h3>
+  </div>
+</div>
+
+<form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" fxLayout="row wrap" fxLayoutAlign="center">
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput placeholder="Enter full name" required>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100">
+    <mat-label>Folder</mat-label>
+    <mat-select formControlName="folder" required>
+      <mat-option *ngFor="let data of fileFolders" [value]="data._id">
+        {{data.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is required.</mat-error>
+  </mat-form-field>
+
+
+  <button mat-raised-button color="primary" type="submit">
+    {{id ? 'Update Folder' : 'Add Folder'}}
+  </button>
+
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="false">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+

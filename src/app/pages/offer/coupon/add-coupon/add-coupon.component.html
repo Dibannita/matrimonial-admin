@@ -1,0 +1,97 @@
+<div class="top-input-header">
+  <div class="title">
+    <h2>{{ id ? "Update" : "Add New" }} Coupon</h2>
+  </div>
+</div>
+<!-- END Input Form Header -->
+
+<form class="area-border" #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="form-img-avatar">
+    <img matTooltip="Main Banner Image" (click)="openGalleryDialog('image')" [src]="pickedImage" alt="">
+  </div>
+
+
+  <div class="div-one">
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter full name" required/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Coupon Code</mat-label>
+      <input formControlName="couponCode" matInput placeholder="Enter Coupon Code" required/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="div-two">
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Discount Type</mat-label>
+      <mat-select formControlName="discountType">
+        <mat-option *ngFor="let data of discountTypes" [value]="data.value">
+          {{ data.viewValue }}
+        </mat-option>
+      </mat-select>
+      <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Discount Amount</mat-label>
+      <input formControlName="discountAmount" matInput placeholder="Enter discount amount" type="number"
+             pattern="^\d+(\.\d{1,2})?$" digitOnly/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Minimum Amount</mat-label>
+      <input formControlName="minimumAmount" matInput placeholder="Enter minimum amount" type="number"
+             pattern="^\d+(\.\d{1,2})?$" digitOnly/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="div-one">
+    <mat-form-field appearance="outline" class="w-100 px-1" (click)="startDateTime.open()">
+      <mat-label>Start Date Time</mat-label>
+      <input readonly matInput [ngxMatDatetimePicker]="startDateTime" placeholder="Enter start Date Time"
+             formControlName="startDateTime"/>
+      <mat-datepicker-toggle matSuffix [for]="startDateTime"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #startDateTime [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+                               [stepMinute]="1" [touchUi]="false" [color]="'primary'" [enableMeridian]="true">
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1" (click)="endDateTime.open()">
+      <mat-label>End Date Time</mat-label>
+      <input readonly matInput [ngxMatDatetimePicker]="endDateTime" placeholder="Enter end Date Time"
+             formControlName="endDateTime"/>
+      <mat-datepicker-toggle matSuffix [for]="endDateTime"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #endDateTime [showSpinners]="true" [showSeconds]="false" [stepHour]="1" [stepMinute]="1"
+                               [touchUi]="false" [color]="'primary'" [enableMeridian]="true">
+      </ngx-mat-datetime-picker>
+    </mat-form-field>
+  </div>
+
+  <div class="px-1 w-100">
+    <quill-editor #editor [modules]="modules" [sanitize]="true" classes="additional" formControlName="description">
+    </quill-editor>
+  </div>
+
+
+  <div class="btn">
+    <button mat-raised-button type="submit" class="btn-submit">
+      {{ id ? "Update" : "Submit" }}
+    </button>
+    <button type="button" [routerLink]="['../']" mat-raised-button class="btn-submit color">
+      Cancel
+    </button>
+  </div>
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>

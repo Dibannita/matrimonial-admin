@@ -1,0 +1,69 @@
+<div class="dialog-container">
+
+  <div class="close">
+    <button mat-icon-button type="button" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="top-input-header">
+    <div class="title">
+      <h2>{{task ? 'Edit' : 'Add'}} Task</h2>
+    </div>
+  </div> <!-- END Input Form Header -->
+
+
+  <form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+    <div class="row-input">
+      <mat-form-field appearance="outline" (click)="taskDate.open()" class="w-100 px-1">
+        <mat-label>Task Date</mat-label>
+        <input readonly [matDatepicker]="taskDate" formControlName="date" matInput
+               placeholder="Enter task date" [min]="today">
+        <mat-datepicker-toggle matSuffix [for]="taskDate"></mat-datepicker-toggle>
+        <mat-datepicker #taskDate></mat-datepicker>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>Project</mat-label>
+        <mat-select formControlName="project">
+          <mat-option *ngFor="let data of projects" [value]="data.name" >
+            {{data.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>This field is required.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Track Task Time</mat-label>
+      <input formControlName="time" matInput
+             type="number"
+             digitOnly
+             placeholder="Enter time in minute">
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100 px-1">
+      <mat-label>Note</mat-label>
+      <textarea formControlName="note" matInput placeholder="Enter description" [rows]="3"></textarea>
+    </mat-form-field>
+
+
+    <button mat-raised-button color="primary" type="submit">
+      {{task ? 'Update Task' : 'Add Task'}}
+    </button>
+
+  </form>
+
+
+</div>

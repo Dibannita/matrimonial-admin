@@ -1,0 +1,186 @@
+<section class="page-list">
+    <div class="page-header">
+      <div class="page-title">
+        <h4>MULTI PROMO OFFER LIST</h4>
+        <h6>Manage your multi promo offer</h6>
+      </div>
+      <div class="page-btn">
+        <div class="page-btn">
+          <a routerLink="/offer/add-multi-promo-offer" class="btn btn-added"><img src="/assets/images/svg/plus.svg" alt="img"
+              class="me-1" /><span>Add Multi Promo Offer</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="table-section">
+    <div class="mat-elevation-z8">
+      <div class="table-top">
+        <div class="search-set">
+          <div (click)="onToggle()" class="filter-show">
+            <a class="btn btn-filter">
+              <span *ngIf="!toggleMenu" class="material-symbols-outlined">filter_alt</span>
+              <a>
+                <a *ngIf="toggleMenu" class="close-button">
+                  <span class="material-symbols-outlined">close</span>
+                </a>
+              </a>
+            </a>
+          </div>
+          <div class="search-input">
+            <a class="btn btn-searchset">
+              <mat-icon class="mat-icons">search</mat-icon>
+            </a>
+            <form class="table-search" #searchForm="ngForm">
+              <input type="search" #searchInput name="searchTerm" autocomplete="off" ngModel placeholder="Search..." />
+            </form>
+          </div>
+        </div>
+        <div class="wordset">
+          <ul>
+            <li>
+              <button mat-raised-button color="accent" matTooltip="Export as Excel" (click)="exportToAllExcel()">
+                <mat-icon>download</mat-icon>
+                Download
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="container filter-area" [class]="toggleMenu ? 'filter-show' : 'filter-hide'">
+        <div>
+          <div class="filler">
+            <div class="date-filter">
+              <mat-form-field class="mat-date-input-field" appearance="outline" (click)="picker.open()">
+                <mat-label class="filter-date">Filter Date</mat-label>
+                <mat-date-range-input [formGroup]="dataFormDateRange" [rangePicker]="picker" [max]="today">
+                  <input matStartDate formControlName="start" placeholder="Start date" readonly />
+                  <input matEndDate formControlName="end" placeholder="End date" readonly
+                    (dateChange)="endChangeRegDateRange($event)" />
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+  
+                <mat-error *ngIf="
+                      dataFormDateRange.controls.start.hasError(
+                        'matStartDateInvalid'
+                      )
+                    ">Invalid start date
+                </mat-error>
+                <mat-error *ngIf="
+                      dataFormDateRange.controls.end.hasError('matEndDateInvalid')
+                    ">Invalid end date
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="left" style="margin-bottom: 10px" *ngIf="filter || activeSort">
+          <div>
+            <button mat-stroked-button (click)="onRemoveAllQuery()">
+              <mat-icon>close</mat-icon>
+              Clear FilterData
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="button-area" *ngIf="selectedIds && selectedIds.length">
+        <div class="delete-area">
+          <button *ngIf="checkDeletePermission" mat-stroked-button color="warn" (click)="openConfirmDialog('delete')"
+            matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="table-responsive">
+          <table>
+            <tr class="table-row">
+              <th class="t-checkbox">
+                <mat-checkbox #matCheckbox (change)="onAllSelectChange($event)" class="mat-check"></mat-checkbox>
+              </th>
+  
+              <th>Images</th>
+              <th>Title</th>
+              <th>Slug</th>
+              <th>Products</th>
+              <th>Start Date</th>
+              <th>End Date </th>
+              <th>Created At</th>
+  
+              <th>Action</th>
+            </tr>
+  
+            <tr *ngFor="
+                  let data of promoOffers
+                    | paginate
+                      : {
+                          itemsPerPage: MultiPromoOffersPerPage,
+                          currentPage: currentPage,
+                          totalItems: totalMultiPromoOffers
+                        };
+                  let i = index
+                " class="table-hover">
+              <td class="t-checkbox">
+                <mat-checkbox class="t-mat-checkbox" [(ngModel)]="data.select"
+                  (ngModelChange)="onCheckChange($event, i, data._id)"></mat-checkbox>
+              </td>
+  
+              <td class="product-img">
+                <img checkImageDefault [src]="data?.bannerImage" alt="" />
+              </td>
+  
+  
+              <td>{{ data.title || "-"}}</td>
+              <td>{{ data.slug || "-"}}</td>
+              <td style="font-weight: 600; color: green">{{data.products.length}}</td>
+              <td>{{ data.startDateTime || "-" | date  }}</td>
+              <td>{{ data.endDateTime || "-" | date }}</td>
+              <td>{{ data.createdAt || "-" | date }}</td>
+  
+              <td class="button">
+                <button mat-mini-fab color="accent" [routerLink]="['../edit-multi-promo-offer/', data._id]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <!-- <button class="view" mat-mini-fab color="accent" [routerLink]="['../view-promo-offer/', data._id]">
+                  <mat-icon>visibility</mat-icon>
+                </button> -->
+  
+                <a style="margin-left: 5px;" mat-mini-fab color="primary"
+                matTooltip="View Details"
+                [routerLink]="['../', 'view-multi-promo-offer', data._id]"
+                [queryParams]="{viewOnly: 'yes'}"
+                mat-icon-button>
+               <mat-icon>visibility</mat-icon>
+             </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="prginator-area">
+        <div class="dataTables_length">
+          <label>
+            <span>Show per page:</span>
+            <select class="custom-select" (change)="onSelectShowPerPage(val.value)" #val>
+              <option *ngFor="let data of number">
+                {{ data.num }}
+              </option>
+            </select>
+          </label>
+        </div>
+        <div class="count-area">
+          <div class="pagination-container">
+            <pagination-controls class="data-pagination" [autoHide]="true" [maxSize]="15"
+              (pageChange)="onPageChanged($event)">
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-border"></div>
+    </div>
+  </section>
+  

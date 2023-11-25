@@ -1,0 +1,25 @@
+@import "/src/theme/exports/_add-from.scss";
+
+
+.form-img-avatar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  img {
+    cursor: pointer;
+    border: 2px solid #c9c9c9;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 85px;
+    transition: 0.3s all linear;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+

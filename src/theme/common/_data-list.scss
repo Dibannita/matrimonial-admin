@@ -1,0 +1,144 @@
+@import "src/theme/variables";
+@import "src/theme/exports/top-action-multiple";
+
+main {
+  .header {
+    padding: 12px 0 16px 0;
+    h2 {
+      margin: 0;
+      font-family: $font-en-nunito;
+      font-weight: 800;
+      font-size: 22px;
+      background: #ff754214;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: $bg-primary;
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  margin-bottom: 16px;
+}
+@media(max-width:950px){
+  .content{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(max-width:600px){
+  .content{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.card {
+  width: 100%;
+  height: 70px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 88px;
+  position: relative;
+
+  &:hover {
+    .right-txt {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .right-action {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .left {
+    width: 30px;
+    margin-right: 20px;
+    margin-left: 16px;
+
+    // mat-checkbox ::ng-deep .mat-checkbox-inner-container {
+    //   width: 30px;
+    //   height: 30px;
+    // }
+  }
+
+  .mid {
+    flex: 1;
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      span {
+        color: $color-secondary;
+      }
+    }
+
+    h2, p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    h2 {
+      color: #222;
+      font-size: 14px;
+      text-transform: capitalize;
+
+    }
+
+    p {
+      color: #ffa000;
+      font-size: 13px;
+      font-family: $font-en-nunito;
+    }
+
+
+  }
+
+  .right-txt, .right-action {
+    min-width: 88px;
+    height: 100%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    position: absolute;
+    right: 0px;
+    visibility: visible;
+    opacity: 1;
+
+    &.green {
+      background: #17c16a;
+      transition: all 0.8s ease-out 0s;
+      &:hover{
+        background-color: #544193;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      margin: 0;
+      font-family: $font-en-poppins;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+  }
+
+  .right-action {
+    visibility: hidden;
+    opacity: 0;
+
+    button {
+      color: #FFFFFF;
+    }
+  }
+}
+

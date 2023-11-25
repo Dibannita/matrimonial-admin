@@ -1,0 +1,30 @@
+.table {
+
+  .total-order {
+    max-width: 430px;
+    width: 200px;
+    margin: 30px 30px 30px auto;
+
+    td {
+      font-family: "Nunito", sans-serif;
+      width: 72%;
+      color: #637381;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px;
+      border-right: 1px solid #F8F8F8;
+      background: #FAFBFE;
+    }
+    .number-color {
+      color: #212B36;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .total {
+      color: #5E5873;
+      font-weight: 600;
+    }
+  }
+}

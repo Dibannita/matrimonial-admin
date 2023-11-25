@@ -1,0 +1,60 @@
+.container {
+  display: block;
+  max-width: 1900px;
+  width: 96%;
+  margin: auto;
+}
+
+th {
+  font-family: $font-en-primary;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.table-row {
+  background-color: #151515;
+  color: #fff !important;
+}
+
+.table-hover {
+  &:hover {
+    background-color: #f5f5f5;
+}
+}
+
+td {
+  font-family: $font-en-primary;
+  padding: 10px;
+  color: #637381;
+  font-weight: 400;
+  border-bottom: 1px solid #e9ecef;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.mat-elevation-z8 {
+  margin: 0 0 25px;
+  border: 1px solid #e8ebed;
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  background: #fafbfe;
+  border-bottom: 1px solid #e9ecef;
+  border-collapse: collapse;
+}
+
+.table-responsive {
+  overflow-x: auto !important;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

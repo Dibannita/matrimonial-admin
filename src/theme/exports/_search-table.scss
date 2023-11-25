@@ -1,0 +1,37 @@
+@import "../variables";
+
+.table-search{
+  display: block;
+  max-width: 500px;
+  min-width: 300px;
+  width: 100%;
+  position: relative;
+}
+.table-search input{
+  display: block;
+  min-width: 300px;
+  width: 100%;
+  background-color: #ef642514;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ef642514;
+  color: #9ea2b7;
+  font-family: $font-en-primary;
+  font-weight: 500;
+  font-size: 16px;
+  outline: none;
+}
+.table-search button{
+  background-color: rgba(239, 100, 37, 0.24);
+  color: $color-primary;
+  padding: 9px 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 17px;
+  position: absolute;
+  top: 0;
+  outline: none;
+  border: 1px solid transparent;
+  right: 0;
+}

@@ -1,0 +1,87 @@
+@import "../variables";
+
+.top-data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+
+  .title {
+    h2 {
+      font-family: $font-en-primary;
+      color: #6f6f6f;
+      font-size: 28px;
+    }
+
+    .additional {
+      padding-left: 3px;
+      margin-top: 2px;
+
+      h4 {
+        font-size: 16px;
+        color: #808080;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px;
+        color: #808080;
+      }
+    }
+  }
+
+  .action {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+
+    .date-filter {
+      width: 260px;
+      mat-form-field.mat-form-field {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 599px){
+  .top-data-header {
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      h2 {
+        font-size: 22px;
+      }
+
+      .additional {
+        h4 {
+          font-size: 15px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 5px;
+      align-items: center;
+      .date-filter {
+        width: 100%;
+
+      }
+    }
+  }
+}

@@ -1,0 +1,353 @@
+<form
+  #formElement="ngForm"
+  [formGroup]="dataForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+>
+  <div class="top-input">
+    <div class="title">
+      <h2>{{ id ? "Edit" : "Add New" }} Jobs</h2>
+    </div>
+    <div class="action-btn">
+      <button mat-stroked-button color="warn" type="button">Discard</button>
+
+      <button mat-raised-button color="primary" type="submit">
+        {{ id ? "Update" : "Save"
+        }}{{
+        dataForm.value.status
+          ? " (" + (dataForm.value.status | titlecase) + ")"
+          : ""
+        }}
+      </button>
+    </div>
+  </div>
+  <!-- END Input Form Header -->
+
+  <div class="page-slug">
+    <div class="checkbox">
+      <mat-checkbox
+        [(ngModel)]="autoSlug"
+        (change)="autoGenerateSlug()"
+        [ngModelOptions]="{ standalone: true }"
+        color="primary"
+      >Auto Slug</mat-checkbox
+      >
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="main">
+      <mat-card class="content-main content-1">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Job Post Name</mat-label>
+          <input
+            formControlName="name"
+            matInput
+            placeholder="Enter Job Name"
+            required
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Slug</mat-label>
+          <input formControlName="slug" matInput required autoSlug />
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Job Type</mat-label>
+          <input
+            formControlName="jobType"
+            matInput
+            placeholder="Enter Job Type (Full-Time/Part-Time)"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Job Role</mat-label>
+          <input
+            formControlName="jobRole"
+            matInput
+            placeholder="Enter Job Role"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Salary Range Start</mat-label>
+          <input
+            formControlName="salaryTo"
+            matInput
+            digitOnly
+            placeholder="Enter Salary Range Start"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Salary Range End</mat-label>
+          <input
+            formControlName="salaryFrom"
+            matInput
+            digitOnly
+            placeholder="Enter Salary Range End"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Educational Requirements</mat-label>
+          <input
+            formControlName="requiredEducation"
+            matInput
+            placeholder="Enter Educational Requirements"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Experience</mat-label>
+          <input
+            formControlName="experience"
+            matInput
+            placeholder="Enter Experience"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Company Name</mat-label>
+          <input
+            formControlName="companyName"
+            matInput
+            placeholder="Enter Company Name"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Job Post By</mat-label>
+          <input
+            formControlName="jobPostBy"
+            matInput
+            placeholder="Job Post By(HR/Manager)"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Address</mat-label>
+          <input
+            formControlName="address"
+            matInput
+            required
+            placeholder="Enter Address"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Estimate Deadline Time</mat-label>
+          <input
+            formControlName="deadline"
+            matInput
+            placeholder="Enter Estimate Deadline Time"
+            type="text"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Job Vacancy</mat-label>
+          <input
+            formControlName="vacancy"
+            matInput
+            digitOnly
+            placeholder="Enter Job Vacancy"
+          />
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+
+      </mat-card>
+      <!-- END CONTENT PART 1 -->
+
+      <mat-card class="content-main content-2">
+        <div class="title">
+          <h4>Media</h4>
+        </div>
+
+        <div class="content-main content-2">
+          <div
+            class="image-container"
+            [ngClass]="{ 'border-dashed': !chooseImage.length }"
+          >
+            <div class="picker" *ngIf="!chooseImage.length">
+              <div class="action">
+                <div class="icon">
+                  <span class="material-icons">cloud_upload</span>
+                </div>
+                <button
+                  type="button"
+                  mat-stroked-button
+                  color="accent"
+                  (click)="openGalleryDialog()"
+                >
+                  Pick Images
+                </button>
+                <p>Maximum 10 Image you can upload</p>
+              </div>
+            </div>
+            <!-- END Picker Area -->
+
+            <div
+              *ngIf="chooseImage && chooseImage.length"
+              class="img-preview-container"
+              cdkDropList
+              cdkDropListOrientation="horizontal"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div class="preview" *ngFor="let data of chooseImage" cdkDrag>
+                <img [src]="data" [alt]="data" />
+                <div class="overlay-ac">
+                  <button
+                    type="button"
+                    mat-icon-button
+                    color="warn"
+                    (click)="removeSelectImage(data)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="add-more" *ngIf="chooseImage.length < 10">
+                <div class="icon">
+                  <span class="material-icons">cloud_upload</span>
+                </div>
+                <button
+                  type="button"
+                  mat-stroked-button
+                  color="accent"
+                  (click)="openGalleryDialog()"
+                >
+                  Pick Images
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <!-- END CONTENT PART 2 -->
+
+
+      <mat-card class="content-main content-1">
+        <div class="">
+          <h4>Job Description</h4>
+
+          <quill-editor
+            #editor
+            [modules]="modules"
+            [sanitize]="true"
+            classes="additional"
+            formControlName="description"
+          ></quill-editor>
+        </div>
+
+
+      </mat-card>
+
+
+
+<!--      <mat-card class="content-main content-5">-->
+<!--        <div class="title">-->
+<!--          <h4>SEO</h4>-->
+<!--        </div>-->
+
+<!--        <div class="input-area" fxLayout="row wrap">-->
+<!--          <mat-form-field appearance="outline" class="w-100 px-1">-->
+<!--            <mat-label>Title</mat-label>-->
+<!--            <input-->
+<!--              formControlName="seoTitle"-->
+<!--              matInput-->
+<!--              placeholder="Enter seo title"-->
+<!--            />-->
+<!--            <mat-error>This field is required</mat-error>-->
+<!--          </mat-form-field>-->
+
+<!--          <mat-form-field appearance="outline" class="w-100 px-1">-->
+<!--            <mat-label>Keywords</mat-label>-->
+<!--            <input-->
+<!--              formControlName="seoKeywords"-->
+<!--              matInput-->
+<!--              placeholder="Enter seo keywords with comma"-->
+<!--            />-->
+<!--            <mat-error>This field is required</mat-error>-->
+<!--          </mat-form-field>-->
+
+<!--          <mat-form-field appearance="outline" class="w-100">-->
+<!--            <mat-label>Description</mat-label>-->
+<!--            <textarea-->
+<!--              formControlName="seoDescription"-->
+<!--              matInput-->
+<!--              placeholder="Enter seo description"-->
+<!--              [rows]="6"-->
+<!--            ></textarea>-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+<!--      </mat-card>-->
+      <!-- END CONTENT PART 3 -->
+    </div>
+    <!-- END! MAIN AREA -->
+
+    <div class="sidebar">
+      <mat-card class="content-sidebar content-sidebar-0">
+        <div class="title">
+          <h4>Status</h4>
+        </div>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Select Status</mat-label>
+          <mat-select formControlName="status" required>
+            <mat-option *ngFor="let data of productStatus" [value]="data.value">
+              {{ data.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+      </mat-card>
+      <!-- END CONTENT SIDEBAR 2 -->
+
+    </div>
+    <!-- END! SIDE AREA -->
+  </div>
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.5)"
+  size="medium"
+  color="#fff"
+  type="ball-atom"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>

@@ -1,0 +1,13 @@
+@import "src/theme/variables";
+
+#chart {
+  max-width: 1150px;
+  margin: 60px auto;
+}
+
+@media only screen and (max-device-width: $max-tablet-width) {
+  #chart {
+    width: 100%;
+    margin: 60px auto;
+  }
+}

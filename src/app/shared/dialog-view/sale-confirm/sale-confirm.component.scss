@@ -1,0 +1,81 @@
+@import "src/theme/variables";
+@import "src/theme/exports/pop-table-list-Two";
+@import "src/theme/exports/pop-table-list-Three";
+
+
+.close {
+  position: absolute;
+  right: 0;
+  top: -10px;
+
+  .mat-icon-button {
+    color: #d83333;
+  }
+
+}
+
+
+.dialog-container {
+  position: relative;
+  //overflow-y: scroll;
+  //height: 100%;
+}
+
+.top-header {
+  margin-bottom: 12px;
+
+  .title {
+    display: flex;
+    gap: 5px;
+
+    h2 {
+      font-size: 20px;
+      color: #4f4f4f;
+      font-family: $font-en-primary;
+      font-weight: bolder;
+      margin: 0;
+    }
+
+    mat-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 32px;
+      color: #ff8300;
+    }
+  }
+}
+
+
+.main {
+  .customer-info {
+    font-family: $font-en-primary;
+
+    h5 {
+      font-size: 14px;
+    }
+
+    .line {
+      margin-top: -6px;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 14px;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+.button-area {
+  display: flex;
+  gap: 5px;
+}
+
+
+
+
+

@@ -1,0 +1,158 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/matrimonial/general-info">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">General Info</p>
+          </li>
+
+          <li routerLink="/matrimonial/address">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">Address</p>
+          </li>
+
+          <li routerLink="/matrimonial/educational-qualification">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">Educational Qualification</p>
+          </li>
+
+          <li routerLink="/matrimonial/pledge">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">Pledge</p>
+          </li>
+
+          <li routerLink="/matrimonial/contact">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>Pledge</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-select-box">
+                <p>
+                  <label for="submitBiodataWeb"
+                  >Do your parents know that you are submitting are biodata to the queriescare.com website? <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="submitBiodataWeb"
+                    formControlName="submitBiodataWeb"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of agree" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('submitBiodataWeb').touched &&
+                    dataForm.get('submitBiodataWeb').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="infoTrue"
+                  >By Allah, testify that all the information give is true<span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="infoTrue"
+                    formControlName="infoTrue"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of agree" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('infoTrue').touched &&
+                    dataForm.get('infoTrue').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="agree">If you provide any false information, queriescare.com will not take any responsibility for the conventional law and the hereafter. Do you agree? <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="agree" formControlName="agree">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of agree" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('agree').touched &&
+                    dataForm.get('agree').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit">
+                <span *ngIf="!isLoader">Save & Next</span>
+                <div class="loader" *ngIf="isLoader"></div>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1403 @@
+<router-outlet></router-outlet>
+
+<!--<form-->
+<!--  #formElement="ngForm"-->
+<!--  [formGroup]="dataForm"-->
+<!--  (ngSubmit)="onSubmit()"-->
+<!--  autocomplete="off"-->
+<!--&gt;-->
+<!--  <div class="top-input">-->
+<!--    <div class="title">-->
+<!--      <h2>{{ id ? "Edit" : "Add New" }} Matrimonial</h2>-->
+<!--    </div>-->
+<!--    <div class="action-btn">-->
+<!--      <button mat-stroked-button color="warn" type="button">Discard</button>-->
+
+<!--      <button mat-raised-button color="primary" type="submit">-->
+<!--        {{ id ? "Update" : "Save"-->
+<!--        }}{{-->
+<!--        dataForm.value.status-->
+<!--          ? " (" + (dataForm.value.status | titlecase) + ")"-->
+<!--          : ""-->
+<!--        }}-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  &lt;!&ndash; END Input Form Header &ndash;&gt;-->
+
+<!--  <div class="page-slug">-->
+<!--    <div class="checkbox">-->
+<!--      <mat-checkbox-->
+<!--        [(ngModel)]="autoSlug"-->
+<!--        (change)="autoGenerateSlug()"-->
+<!--        [ngModelOptions]="{ standalone: true }"-->
+<!--        color="primary"-->
+<!--      >Auto Slug-->
+<!--      </mat-checkbox-->
+<!--      >-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="container-fluid">-->
+<!--    <div class="main">-->
+<!--      <mat-card class="content-main content-1">-->
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Matrimonial Post Name</mat-label>-->
+<!--          <input-->
+<!--            formControlName="name"-->
+<!--            matInput-->
+<!--            placeholder="Enter full name english"-->
+<!--            required-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Name Bangla</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="nameBn"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Enter full name bangla"&ndash;&gt;-->
+<!--        &lt;!&ndash;            required&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Name Italy</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="nameIt"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Enter full name italy"&ndash;&gt;-->
+<!--        &lt;!&ndash;            required&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Slug</mat-label>-->
+<!--          <input formControlName="slug" matInput required autoSlug/>-->
+<!--          <mat-error>This field is required.</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--&lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-label>Bio Data Type</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input&ndash;&gt;-->
+<!--&lt;!&ndash;            formControlName="bioDataType"&ndash;&gt;-->
+<!--&lt;!&ndash;            matInput&ndash;&gt;-->
+<!--&lt;!&ndash;            placeholder="Enter Bio Data Type(Male or Female)"&ndash;&gt;-->
+<!--&lt;!&ndash;          />&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+
+
+<!--        <div class="form-input">-->
+<!--          <mat-form-field appearance="outline" class="w-100">-->
+<!--            <mat-label>Biodata Type</mat-label>-->
+<!--            <mat-select formControlName="bioDataType">-->
+<!--              <mat-option value="Male Biodata">Male's Biodata</mat-option>-->
+<!--              <mat-option value="Female Biodata">Female's Biodata</mat-option>-->
+<!--            </mat-select>-->
+<!--            <mat-error>This field is required.</mat-error>-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Occupation</mat-label>-->
+<!--          <input-->
+<!--            formControlName="occupation"-->
+<!--            matInput-->
+<!--            placeholder="Enter Occupation"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--&lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-label>Marital Status</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input&ndash;&gt;-->
+<!--&lt;!&ndash;            formControlName="maritalStatus"&ndash;&gt;-->
+<!--&lt;!&ndash;            matInput&ndash;&gt;-->
+<!--&lt;!&ndash;            placeholder="Enter Marital Status"&ndash;&gt;-->
+<!--&lt;!&ndash;          />&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+
+<!--        <div class="form-input">-->
+<!--          <mat-form-field appearance="outline" class="field w-100">-->
+<!--            <mat-label>Marital Status</mat-label>-->
+<!--            <mat-select formControlName="maritalStatus">-->
+<!--              <mat-option value="Never Married">Never Married</mat-option>-->
+<!--              <mat-option value="Married">Married</mat-option>-->
+<!--              <mat-option value="Divorced">Divorced</mat-option>-->
+<!--              <mat-option value="Widow">Widow</mat-option>-->
+<!--              <mat-option value="Widower">Widower</mat-option>-->
+<!--            </mat-select>-->
+<!--            <mat-error>This field is required.</mat-error>-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Description Of Profession</mat-label>-->
+<!--          <input-->
+<!--            formControlName="descriptionOfProfession"-->
+<!--            matInput-->
+<!--            placeholder="Enter presentAddress"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!-- <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Complexion</mat-label>-->
+<!--          <input-->
+<!--            formControlName="complexion"-->
+<!--            matInput-->
+<!--            placeholder="Enter complexion"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!-- <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Nationality</mat-label>-->
+<!--          <input-->
+<!--            formControlName="nationality"-->
+<!--            matInput-->
+<!--            placeholder="Enter nationality"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Monthly Income</mat-label>-->
+<!--          <input-->
+<!--            formControlName="monthlyIncome"-->
+<!--            matInput-->
+<!--            placeholder="Enter Monthly Income"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Height</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="height"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter height"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Weight</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="weight"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter weight"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Blood Group</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="bloodGroup"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter Blood Group"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Permanent Address</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="permanentAddress"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter Permanent Address"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Present Address</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="presentAddress"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter Present Address"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Where Did You Grow Up</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="whereDidYouGrowUp"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter Where Did You Grow Up"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+<!--                <mat-form-field appearance="outline" class="w-100">-->
+<!--                  <mat-label>Your Education Method</mat-label>-->
+<!--                  <input-->
+<!--                    formControlName="yourEducationMethod"-->
+<!--                    matInput-->
+<!--                    placeholder="Enter Your Education Method"-->
+<!--                  />-->
+<!--                  <mat-error>This field is required</mat-error>-->
+<!--                </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Passing Year</mat-label>-->
+<!--          <input-->
+<!--            formControlName="passingYear"-->
+<!--            matInput-->
+<!--            placeholder="Enter Passing Year"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Group</mat-label>-->
+<!--          <input-->
+<!--            formControlName="group"-->
+<!--            matInput-->
+<!--            placeholder="Enter group"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Result</mat-label>-->
+<!--          <input-->
+<!--            formControlName="result"-->
+<!--            matInput-->
+<!--            placeholder="Enter result"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Passing Year HSC</mat-label>-->
+<!--          <input-->
+<!--            formControlName="passingYearHSC"-->
+<!--            matInput-->
+<!--            placeholder="Enter Passing Year HSC"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Group HSC</mat-label>-->
+<!--          <input-->
+<!--            formControlName="groupHSC"-->
+<!--            matInput-->
+<!--            placeholder="Enter group HSC"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Result  HSC</mat-label>-->
+<!--          <input-->
+<!--            formControlName="resultHSC"-->
+<!--            matInput-->
+<!--            placeholder="Enter result HSC"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Passing Year BSc</mat-label>-->
+<!--          <input-->
+<!--            formControlName="passingYearBSc"-->
+<!--            matInput-->
+<!--            placeholder="Enter Passing Year BSc"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Graduation Study Subject</mat-label>-->
+<!--          <input-->
+<!--            formControlName="graduationStudySubject"-->
+<!--            matInput-->
+<!--            placeholder="Enter Graduation Study Subject"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Name Of Educational Institutions</mat-label>-->
+<!--          <input-->
+<!--            formControlName="nameOfEducationalInstitutions"-->
+<!--            matInput-->
+<!--            placeholder="Enter Name Of Educational Institutions"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Passing Year Post</mat-label>-->
+<!--          <input-->
+<!--            formControlName="passingYearPost"-->
+<!--            matInput-->
+<!--            placeholder="Enter Passing Year Post"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Graduation Study Subject Post</mat-label>-->
+<!--          <input-->
+<!--            formControlName="graduationStudySubjectPost"-->
+<!--            matInput-->
+<!--            placeholder="Graduation Study Subject Post"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Name Of Educational Institutions Post</mat-label>-->
+<!--          <input-->
+<!--            formControlName="nameOfEducationalInstitutionsPost"-->
+<!--            matInput-->
+<!--            placeholder="Name Of Educational Institutions Post"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Is Your Father Alive</mat-label>-->
+<!--          <input-->
+<!--            formControlName="isYourFatherAlive"-->
+<!--            matInput-->
+<!--            placeholder="Enter presentAddress"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Description Of Father's Profession</mat-label>-->
+<!--          <input-->
+<!--            formControlName="descriptionOfFathersProfession"-->
+<!--            matInput-->
+<!--            placeholder="Enter Description Of Father's Profession"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Is Your Mother Alive </mat-label>-->
+<!--          <input-->
+<!--            formControlName="isYourMotherAlive"-->
+<!--            matInput-->
+<!--            placeholder="Enter Is Your Mother Alive"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Description Of Mother's Profession </mat-label>-->
+<!--          <input-->
+<!--            formControlName="descriptionOfMothersProfession"-->
+<!--            matInput-->
+<!--            placeholder="Enter Description Of Mother's Profession"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>How Many Brothers Do You Have</mat-label>-->
+<!--          <input-->
+<!--            formControlName="howManyBrothersDoYouHave"-->
+<!--            matInput-->
+<!--            placeholder="Enter How Many Brothers Do You Have"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Brothers Information</mat-label>-->
+<!--          <input-->
+<!--            formControlName="brothersInformation"-->
+<!--            matInput-->
+<!--            placeholder="Enter Brothers Information"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>How Many Sisters Do You Have</mat-label>-->
+<!--          <input-->
+<!--            formControlName="howManySistersDoYouHave"-->
+<!--            matInput-->
+<!--            placeholder="Enter How Many Sisters Do You Have"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Sisters Information</mat-label>-->
+<!--          <input-->
+<!--            formControlName="sistersInformation"-->
+<!--            matInput-->
+<!--            placeholder="Enter Sisters Information"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Professions Of Uncles</mat-label>-->
+<!--          <input-->
+<!--            formControlName="professionsOfUncles"-->
+<!--            matInput-->
+<!--            placeholder="Enter Professions Of Uncles"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Family Financial Status</mat-label>-->
+<!--          <input-->
+<!--            formControlName="familyFinancialStatus"-->
+<!--            matInput-->
+<!--            placeholder="Enter Family Financial Status"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Description Of Financial Condition</mat-label>-->
+<!--          <input-->
+<!--            formControlName="descriptionOfFinancialCondition"-->
+<!--            matInput-->
+<!--            placeholder="Enter Description Of Financial Condition"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>How Is Your Familys Religious Condition</mat-label>-->
+<!--          <input-->
+<!--            formControlName="howIsYourFamilysReligiousCondition"-->
+<!--            matInput-->
+<!--            placeholder="Enter How Is Your Familys Religious Condition"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>What Kind Of Clothes Do You Usually Wear Outside The House</mat-label>-->
+<!--          <input-->
+<!--            formControlName="whatKindOfClothesDoYouUsuallyWearOutsideTheHouse"-->
+<!--            matInput-->
+<!--            placeholder="Enter What Kind Of Clothes Do You Usually Wear Outside The House"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Have Beard According To Sunnah Since When?</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouHaveBeardAccordingToSunnahSinceWhen"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Have Beard According To Sunnah Since When"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Wear Clothes Above The Ankles</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouWearClothesAboveTheAnkles"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Wear Clothes Above The Ankles"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Pray Five Times A Day Since When</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouPrayFiveTimesADaySinceWhen"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Pray Five Times A Day Since When"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Comply With Mahram Non Mahram</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouComplyWithMahramNonMahram"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Comply With Mahram Non Mahram"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Are You Able To Recite The Quran Correctly</mat-label>-->
+<!--          <input-->
+<!--            formControlName="areYouAbleToReciteTheQuranCorrectly"-->
+<!--            matInput-->
+<!--            placeholder="Enter Are You Able To Recite The Quran Correctly"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Which Fiqh Do You Follow</mat-label>-->
+<!--          <input-->
+<!--            formControlName="whichFiqhDoYouFollow"-->
+<!--            matInput-->
+<!--            placeholder="Enter Which Fiqh Do You Follow"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Watch Or Listen To Dramas Movies Serials Songs</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouWatchOrListenToDramasMoviesSerialsSongs"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Watch Or Listen To Dramas Movies Serials Songs"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Do You Have Any Mental Or Physical Diseases</mat-label>-->
+<!--          <input-->
+<!--            formControlName="doYouHaveAnyMentalOrPhysicalDiseases"-->
+<!--            matInput-->
+<!--            placeholder="Enter Do You Have Any Mental Or Physical Diseases"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Are You Involved In Any Special Work Of Deen</mat-label>-->
+<!--          <input-->
+<!--            formControlName="areYouInvolvedInAnySpecialWorkOfDeen"-->
+<!--            matInput-->
+<!--            placeholder="Enter Are You Involved In Any Special Work Of Deen"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>What Are Your Ideas Or Beliefs About The Shrine Mazar</mat-label>-->
+<!--          <input-->
+<!--            formControlName="whatAreYourIdeasOrBeliefsAboutTheShrineMazar"-->
+<!--            matInput-->
+<!--            placeholder="Enter What Are Your Ideas Or Beliefs About The Shrine Mazar"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Write The Names Of At Listen Islamic Books You Have Read</mat-label>-->
+<!--          <input-->
+<!--            formControlName="writeTheNamesOfAtLeast3IslamicBooksYouHaveRead"-->
+<!--            matInput-->
+<!--            placeholder="Enter Write The Names Of At Listen Islamic Books You Have Read"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Write The Names Of At Least3 Islamic Scholars Of Your Choice</mat-label>-->
+<!--          <input-->
+<!--            formControlName="writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice"-->
+<!--            matInput-->
+<!--            placeholder="Enter Write The Names Of At Least3 Islamic Scholars Of Your Choice"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Write About Your Hobbies Likes And Dislikes Tastes Dreams And So On</mat-label>-->
+<!--          <input-->
+<!--            formControlName="writeAboutYourHobbiesLikesAndDislikesTastesDreamsAndSoOn"-->
+<!--            matInput-->
+<!--            placeholder="Enter presentAddress"-->
+<!--          />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Job Vacancy</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="vacancy"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Enter Job Vacancy"&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Educational Requirements</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="educational"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Enter Educational Requirements"&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Experience Requirements</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="experience"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Enter Experience Requirements (1y - 10y)"&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Salary per month</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="salary"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            placeholder="Tk (1000-5000)"&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--      </mat-card>-->
+<!--      &lt;!&ndash; END CONTENT PART 1 &ndash;&gt;-->
+
+<!--      <mat-card class="content-main content-2">-->
+<!--        <div class="title">-->
+<!--          <h4>Media</h4>-->
+<!--        </div>-->
+
+<!--        <div class="content-main content-2">-->
+<!--          <div-->
+<!--            class="image-container"-->
+<!--            [ngClass]="{ 'border-dashed': !chooseImage.length }"-->
+<!--          >-->
+<!--            <div class="picker" *ngIf="!chooseImage.length">-->
+<!--              <div class="action">-->
+<!--                <div class="icon">-->
+<!--                  <span class="material-icons">cloud_upload</span>-->
+<!--                </div>-->
+<!--                <button-->
+<!--                  type="button"-->
+<!--                  mat-stroked-button-->
+<!--                  color="accent"-->
+<!--                  (click)="openGalleryDialog()"-->
+<!--                >-->
+<!--                  Pick Images-->
+<!--                </button>-->
+<!--                <p>Maximum 10 Image you can upload</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; END Picker Area &ndash;&gt;-->
+
+<!--            <div-->
+<!--              *ngIf="chooseImage && chooseImage.length"-->
+<!--              class="img-preview-container"-->
+<!--              cdkDropList-->
+<!--              cdkDropListOrientation="horizontal"-->
+<!--              (cdkDropListDropped)="drop($event)"-->
+<!--            >-->
+<!--              <div class="preview" *ngFor="let data of chooseImage" cdkDrag>-->
+<!--                <img [src]="data" [alt]="data"/>-->
+<!--                <div class="overlay-ac">-->
+<!--                  <button-->
+<!--                    type="button"-->
+<!--                    mat-icon-button-->
+<!--                    color="warn"-->
+<!--                    (click)="removeSelectImage(data)"-->
+<!--                  >-->
+<!--                    <mat-icon>delete</mat-icon>-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="add-more" *ngIf="chooseImage.length < 10">-->
+<!--                <div class="icon">-->
+<!--                  <span class="material-icons">cloud_upload</span>-->
+<!--                </div>-->
+<!--                <button-->
+<!--                  type="button"-->
+<!--                  mat-stroked-button-->
+<!--                  color="accent"-->
+<!--                  (click)="openGalleryDialog()"-->
+<!--                >-->
+<!--                  Pick Images-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </mat-card>-->
+<!--&lt;!&ndash;       END CONTENT PART 2 &ndash;&gt;-->
+
+<!--      &lt;!&ndash;      <mat-card class="content-main content-3">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="title">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <h4>Pricing</h4>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-label>Unit Name English</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;          <input formControlName="unit" matInput placeholder="Ex. 1kg" />&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-label>Unit Name Bangla</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;          <input formControlName="unitBn" matInput placeholder="Ex. 1kg" />&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-label>Unit Name Italy</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;          <input formControlName="unitIt" matInput placeholder="Ex. 1kg" />&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <div class="input-area" fxLayout="row wrap">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Cost Price</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="costPrice"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter cost price"&ndash;&gt;-->
+<!--      &lt;!&ndash;              type="number"&ndash;&gt;-->
+<!--      &lt;!&ndash;              pattern="^\d+(\.\d{1,2})?$"&ndash;&gt;-->
+<!--      &lt;!&ndash;              digitOnly&ndash;&gt;-->
+<!--      &lt;!&ndash;              [decimal]="true"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Sale Price</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="salePrice"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter sale price"&ndash;&gt;-->
+<!--      &lt;!&ndash;              type="number"&ndash;&gt;-->
+<!--      &lt;!&ndash;              pattern="^\d+(\.\d{1,2})?$"&ndash;&gt;-->
+<!--      &lt;!&ndash;              digitOnly&ndash;&gt;-->
+<!--      &lt;!&ndash;              [decimal]="true"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-label>EMI Price</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <input formControlName="emiAmount" matInput placeholder="Enter EMI price" type="number"&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;                   pattern="^\d+(\.\d{1,2})?$" digitOnly [decimal]="true"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </mat-card>&ndash;&gt;-->
+<!--      &lt;!&ndash;      &lt;!&ndash; END CONTENT PART 3 &ndash;&gt;&ndash;&gt;-->
+
+<!--      &lt;!&ndash;      <mat-card class="content-main content-4">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="title">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <h4>Others</h4>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <div class="input-area" fxLayout="row wrap">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>SKU</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="sku"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter full name"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-label>EMI Month</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-select formControlName="emiMonth" multiple>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;              <mat-option *ngFor="let data of emiMonths" [value]="data.value">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;                {{ data.viewValue }}&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;              </mat-option>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            </mat-select>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-error>This field is required.</mat-error>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          &lt;!&ndash;          <mat-form-field *ngIf="getEmiInput(3) && getEmiInput(3) === 3   " appearance="outline" class="w-100">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-label>EMI Month 3 Month Price</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <input formControlName="threeMonth" matInput placeholder="EMI Month Three Month Price"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          &lt;!&ndash;          <mat-form-field *ngIf="getEmiInput(6) && getEmiInput(6) === 6   " appearance="outline" class="w-100">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-label>EMI Month 6 Month Price</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <input formControlName="sixMonth" matInput placeholder="EMI Month Six Month Price"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          &lt;!&ndash;          <mat-form-field *ngIf="getEmiInput(12) && getEmiInput(12) === 12   " appearance="outline" class="w-100">&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-label>EMI Month 12 Month Price</mat-label>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <input formControlName="twelveMonth" matInput placeholder="EMI Month Twelve Month Price"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;          &lt;!&ndash;          </mat-form-field>&ndash;&gt;&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Discount Type</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-select formControlName="discountType">&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-option> none</mat-option>&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-option&ndash;&gt;-->
+<!--      &lt;!&ndash;                *ngFor="let data of discountTypes"&ndash;&gt;-->
+<!--      &lt;!&ndash;                [value]="data.value"&ndash;&gt;-->
+<!--      &lt;!&ndash;              >&ndash;&gt;-->
+<!--      &lt;!&ndash;                {{ data.viewValue }}&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-option>&ndash;&gt;-->
+<!--      &lt;!&ndash;            </mat-select>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required.</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Discount Amount</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="discountAmount"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter discount amount"&ndash;&gt;-->
+<!--      &lt;!&ndash;              type="number"&ndash;&gt;-->
+<!--      &lt;!&ndash;              pattern="^\d+(\.\d{1,2})?$"&ndash;&gt;-->
+<!--      &lt;!&ndash;              digitOnly&ndash;&gt;-->
+<!--      &lt;!&ndash;              [decimal]="true"&ndash;&gt;-->
+<!--      &lt;!&ndash;              [required]="dataForm.value['discountType']"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Cart Limit Quantity</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="cartLimit"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter cart limit quantity"&ndash;&gt;-->
+<!--      &lt;!&ndash;              type="number"&ndash;&gt;-->
+<!--      &lt;!&ndash;              digitOnly&ndash;&gt;-->
+<!--      &lt;!&ndash;              [decimal]="true"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field&ndash;&gt;-->
+<!--      &lt;!&ndash;            *ngIf="dataForm.value['trackQuantity']"&ndash;&gt;-->
+<!--      &lt;!&ndash;            appearance="outline"&ndash;&gt;-->
+<!--      &lt;!&ndash;            class="w-100 px-1"&ndash;&gt;-->
+<!--      &lt;!&ndash;          >&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Quantity</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input&ndash;&gt;-->
+<!--      &lt;!&ndash;              formControlName="quantity"&ndash;&gt;-->
+<!--      &lt;!&ndash;              matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;              placeholder="Enter quantity"&ndash;&gt;-->
+<!--      &lt;!&ndash;              digitOnly&ndash;&gt;-->
+<!--      &lt;!&ndash;              [allowNegatives]="true"&ndash;&gt;-->
+<!--      &lt;!&ndash;            />&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <div class="check-option">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-checkbox formControlName="trackQuantity"&ndash;&gt;-->
+<!--      &lt;!&ndash;            >Track quantity&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-checkbox>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </mat-card>&ndash;&gt;-->
+<!--      &lt;!&ndash;      &lt;!&ndash; END CONTENT PART 4 &ndash;&gt;&ndash;&gt;-->
+
+<!--      <mat-card class="content-main content-1">-->
+<!--        <div class="">-->
+<!--          <h4>Description</h4>-->
+
+<!--          <quill-editor-->
+<!--            #editor-->
+<!--            [modules]="modules"-->
+<!--            [sanitize]="true"-->
+<!--            classes="additional"-->
+<!--            formControlName="description"-->
+<!--          ></quill-editor>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;      <div class="">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <h4>Description Bangla</h4>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <quill-editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          #editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          [modules]="modules"&ndash;&gt;-->
+<!--        &lt;!&ndash;          [sanitize]="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;          classes="additional"&ndash;&gt;-->
+<!--        &lt;!&ndash;          formControlName="descriptionBn"&ndash;&gt;-->
+<!--        &lt;!&ndash;        ></quill-editor>&ndash;&gt;-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;      <div class="">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <h4>Description Italy</h4>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <quill-editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          #editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          [modules]="modules"&ndash;&gt;-->
+<!--        &lt;!&ndash;          [sanitize]="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;          classes="additional"&ndash;&gt;-->
+<!--        &lt;!&ndash;          formControlName="descriptionIt"&ndash;&gt;-->
+<!--        &lt;!&ndash;        ></quill-editor>&ndash;&gt;-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;      <div class="description-div">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <h4>Short Description English</h4>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <quill-editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          #editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          [modules]="modules"&ndash;&gt;-->
+<!--        &lt;!&ndash;          [sanitize]="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;          classes="additional"&ndash;&gt;-->
+<!--        &lt;!&ndash;          formControlName="shortDescription"&ndash;&gt;-->
+<!--        &lt;!&ndash;        ></quill-editor>&ndash;&gt;-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;      <div class="description-div">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <h4>Short Description Bangla</h4>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <quill-editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          #editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          [modules]="modules"&ndash;&gt;-->
+<!--        &lt;!&ndash;          [sanitize]="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;          classes="additional"&ndash;&gt;-->
+<!--        &lt;!&ndash;          formControlName="shortDescriptionBn"&ndash;&gt;-->
+<!--        &lt;!&ndash;        ></quill-editor>&ndash;&gt;-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;      <div class="description-div">&ndash;&gt;-->
+<!--        &lt;!&ndash;        <h4>Short Description Italy</h4>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <quill-editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          #editor&ndash;&gt;-->
+<!--        &lt;!&ndash;          [modules]="modules"&ndash;&gt;-->
+<!--        &lt;!&ndash;          [sanitize]="true"&ndash;&gt;-->
+<!--        &lt;!&ndash;          classes="additional"&ndash;&gt;-->
+<!--        &lt;!&ndash;          formControlName="shortDescriptionIt"&ndash;&gt;-->
+<!--        &lt;!&ndash;        ></quill-editor>&ndash;&gt;-->
+<!--        &lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--      </mat-card>-->
+
+<!--      &lt;!&ndash;      <mat-card class="specifications">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="form-array-container">&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-label>Feature Title</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <input formControlName="featureTitle" type="text" matInput [placeholder]="'Enter Feature Title'"/>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <div formArrayName="features" class="form-array-input">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <div class="single-field" *ngFor="&ndash;&gt;-->
+<!--      &lt;!&ndash;                let data of featuresDataArray?.controls;&ndash;&gt;-->
+<!--      &lt;!&ndash;                let i = index&ndash;&gt;-->
+<!--      &lt;!&ndash;              " [formGroupName]="i">&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-label>Name</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;                <input formControlName="name" type="text" matInput [placeholder]="'Enter Name'"/>&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;              <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-label>Value</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;                &lt;!&ndash;                <input formControlName="value" type="text" matInput [placeholder]="'Enter Value'"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;                <textarea formControlName="value" matInput placeholder="Enter value"&ndash;&gt;-->
+<!--      &lt;!&ndash;                          [rows]="1"></textarea>&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;              <button class="btn-form-field-remove" type="button" mat-mini-fab color="warn"&ndash;&gt;-->
+<!--      &lt;!&ndash;                      (click)="removeFeaturesFormArrayField('features', i)">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-icon>delete</mat-icon>&ndash;&gt;-->
+<!--      &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <div class="add-form-array-action">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <button type="button" mat-raised-button color="primary" (click)="onAddNewFeatures()">&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-icon>add</mat-icon>&ndash;&gt;-->
+<!--      &lt;!&ndash;              Create New Features&ndash;&gt;-->
+<!--      &lt;!&ndash;            </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        &lt;!&ndash; END FEATURES FORM ARRAY &ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;      </mat-card>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;      <mat-card class="specifications">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="form-array-container">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <div formArrayName="specifications" class="form-array-input">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <div&ndash;&gt;-->
+<!--      &lt;!&ndash;              class="single-field"&ndash;&gt;-->
+<!--      &lt;!&ndash;              *ngFor="&ndash;&gt;-->
+<!--      &lt;!&ndash;                let data of specificationDataArray?.controls;&ndash;&gt;-->
+<!--      &lt;!&ndash;                let i = index&ndash;&gt;-->
+<!--      &lt;!&ndash;              "&ndash;&gt;-->
+<!--      &lt;!&ndash;              [formGroupName]="i"&ndash;&gt;-->
+<!--      &lt;!&ndash;            >&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-label>Name</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;                <input&ndash;&gt;-->
+<!--      &lt;!&ndash;                  formControlName="name"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  type="text"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;                  [placeholder]="'Enter Name'"&ndash;&gt;-->
+<!--      &lt;!&ndash;                />&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;              <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-label>Value</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;                &lt;!&ndash;                <input formControlName="value" type="text" matInput [placeholder]="'Enter Value'"/>&ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;                <textarea&ndash;&gt;-->
+<!--      &lt;!&ndash;                  formControlName="value"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;                  placeholder="Enter value"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  [rows]="1"&ndash;&gt;-->
+<!--      &lt;!&ndash;                ></textarea>&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;              <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-label>Type</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;                <input&ndash;&gt;-->
+<!--      &lt;!&ndash;                  formControlName="type"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  type="text"&ndash;&gt;-->
+<!--      &lt;!&ndash;                  matInput&ndash;&gt;-->
+<!--      &lt;!&ndash;                  [placeholder]="'Enter Value'"&ndash;&gt;-->
+<!--      &lt;!&ndash;                />&ndash;&gt;-->
+<!--      &lt;!&ndash;              </mat-form-field>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;              <button&ndash;&gt;-->
+<!--      &lt;!&ndash;                class="btn-form-field-remove"&ndash;&gt;-->
+<!--      &lt;!&ndash;                type="button"&ndash;&gt;-->
+<!--      &lt;!&ndash;                mat-mini-fab&ndash;&gt;-->
+<!--      &lt;!&ndash;                color="warn"&ndash;&gt;-->
+<!--      &lt;!&ndash;                (click)="removeFormArrayField('specifications', i)"&ndash;&gt;-->
+<!--      &lt;!&ndash;              >&ndash;&gt;-->
+<!--      &lt;!&ndash;                <mat-icon>delete</mat-icon>&ndash;&gt;-->
+<!--      &lt;!&ndash;              </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;          <div class="add-form-array-action">&ndash;&gt;-->
+<!--      &lt;!&ndash;            <button&ndash;&gt;-->
+<!--      &lt;!&ndash;              type="button"&ndash;&gt;-->
+<!--      &lt;!&ndash;              mat-raised-button&ndash;&gt;-->
+<!--      &lt;!&ndash;              color="primary"&ndash;&gt;-->
+<!--      &lt;!&ndash;              (click)="onAddNewSpecifications()"&ndash;&gt;-->
+<!--      &lt;!&ndash;            >&ndash;&gt;-->
+<!--      &lt;!&ndash;              <mat-icon>add</mat-icon>&ndash;&gt;-->
+<!--      &lt;!&ndash;              Create New Specification&ndash;&gt;-->
+<!--      &lt;!&ndash;            </button>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        &lt;!&ndash; END VARIATIONS FORM ARRAY &ndash;&gt;&ndash;&gt;-->
+<!--      &lt;!&ndash;      </mat-card>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      <mat-card class="content-main content-5">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="title">&ndash;&gt;-->
+<!--&lt;!&ndash;          <h4>SEO</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="input-area" fxLayout="row wrap">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-label>Title</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input&ndash;&gt;-->
+<!--&lt;!&ndash;              formControlName="seoTitle"&ndash;&gt;-->
+<!--&lt;!&ndash;              matInput&ndash;&gt;-->
+<!--&lt;!&ndash;              placeholder="Enter seo title"&ndash;&gt;-->
+<!--&lt;!&ndash;            />&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <mat-form-field appearance="outline" class="w-100 px-1">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-label>Keywords</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input&ndash;&gt;-->
+<!--&lt;!&ndash;              formControlName="seoKeywords"&ndash;&gt;-->
+<!--&lt;!&ndash;              matInput&ndash;&gt;-->
+<!--&lt;!&ndash;              placeholder="Enter seo keywords with comma"&ndash;&gt;-->
+<!--&lt;!&ndash;            />&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-error>This field is required</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-label>Description</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <textarea&ndash;&gt;-->
+<!--&lt;!&ndash;              formControlName="seoDescription"&ndash;&gt;-->
+<!--&lt;!&ndash;              matInput&ndash;&gt;-->
+<!--&lt;!&ndash;              placeholder="Enter seo description"&ndash;&gt;-->
+<!--&lt;!&ndash;              [rows]="6"&ndash;&gt;-->
+<!--&lt;!&ndash;            ></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </mat-card>&ndash;&gt;-->
+<!--      &lt;!&ndash; END CONTENT PART 3 &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; END! MAIN AREA &ndash;&gt;-->
+
+<!--    <div class="sidebar">-->
+<!--      <mat-card class="content-sidebar content-sidebar-0">-->
+<!--        <div class="title">-->
+<!--          <h4>Status</h4>-->
+<!--        </div>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Select Status</mat-label>-->
+<!--          <mat-select formControlName="status" required>-->
+<!--            <mat-option *ngFor="let data of productStatus" [value]="data.value">-->
+<!--              {{ data.viewValue }}-->
+<!--            </mat-option>-->
+<!--          </mat-select>-->
+<!--          <mat-error>This field is required.</mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </mat-card>-->
+<!--      &lt;!&ndash; END CONTENT SIDEBAR 2 &ndash;&gt;-->
+
+<!--      <mat-card class="content-sidebar content-sidebar-1">-->
+<!--        <div class="title">-->
+<!--          <h4>Catalog</h4>-->
+<!--        </div>-->
+
+<!--        <app-category-select-->
+<!--          [controlName]="categoryCtrl"-->
+<!--          [required]="true"-->
+<!--          [postType]="postType"-->
+<!--          placeholder="Category"-->
+<!--          [data]="product ? product.category : null"-->
+<!--          (onSelect)="onCategorySelect($event)"-->
+<!--        >-->
+<!--        </app-category-select>-->
+
+<!--        <app-sub-category-select-->
+<!--          [controlName]="subCategoryCtrl"-->
+<!--          [required]="false"-->
+<!--          [postType]="postType"-->
+<!--          placeholder="Sub Category"-->
+<!--          [data]="product ? product.subCategory : null"-->
+<!--          (onSelect)="onSubCategorySelect($event)"-->
+<!--          [categoryId]="-->
+<!--            selectedCategory?._id-->
+<!--          "-->
+<!--        >-->
+<!--        </app-sub-category-select>-->
+
+<!--        &lt;!&ndash;        <app-child-category-select&ndash;&gt;-->
+<!--        &lt;!&ndash;        [controlName]="childCategoryCtrl"&ndash;&gt;-->
+<!--        &lt;!&ndash;        [required]="false"&ndash;&gt;-->
+<!--        &lt;!&ndash;        placeholder="Child Category"&ndash;&gt;-->
+<!--        &lt;!&ndash;        [data]="product ? product.childCategory : null"&ndash;&gt;-->
+<!--        &lt;!&ndash;        [subCategoryId]="selectedSubCategory?._id&ndash;&gt;-->
+<!--        &lt;!&ndash;        "&ndash;&gt;-->
+<!--        &lt;!&ndash;      >&ndash;&gt;-->
+<!--        &lt;!&ndash;      </app-child-category-select>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <app-brand-select&ndash;&gt;-->
+<!--&lt;!&ndash;          [controlName]="brandCtrl"&ndash;&gt;-->
+<!--&lt;!&ndash;          [required]="false"&ndash;&gt;-->
+<!--&lt;!&ndash;          placeholder="Company Name"&ndash;&gt;-->
+<!--&lt;!&ndash;          [data]="product ? product.brand : null"&ndash;&gt;-->
+<!--&lt;!&ndash;        >&ndash;&gt;-->
+<!--&lt;!&ndash;        </app-brand-select>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Select job Type</mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-select formControlName="jobType" multiple>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <mat-option *ngFor="let data of jobTypes" [value]="data.name">&ndash;&gt;-->
+<!--        &lt;!&ndash;              {{ data.name }}&ndash;&gt;-->
+<!--        &lt;!&ndash;            </mat-option>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </mat-select>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-error>This field is required.</mat-error>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-label>Production Date </mat-label>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <input&ndash;&gt;-->
+<!--        &lt;!&ndash;            formControlName="productionDate"&ndash;&gt;-->
+<!--        &lt;!&ndash;            matInput&ndash;&gt;-->
+<!--        &lt;!&ndash;            [matDatepicker]="picker"&ndash;&gt;-->
+<!--        &lt;!&ndash;          />&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-datepicker-toggle&ndash;&gt;-->
+<!--        &lt;!&ndash;            matIconSuffix&ndash;&gt;-->
+<!--        &lt;!&ndash;            [for]="picker"&ndash;&gt;-->
+<!--        &lt;!&ndash;          ></mat-datepicker-toggle>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-datepicker #picker></mat-datepicker>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+
+<!--        <mat-form-field appearance="outline" class="w-100">-->
+<!--          <mat-label>Birth Day</mat-label>-->
+<!--          <input-->
+<!--            formControlName="birthDay"-->
+<!--            matInput-->
+<!--            [matDatepicker]="picker1"-->
+<!--          />-->
+<!--          <mat-datepicker-toggle-->
+<!--            matIconSuffix-->
+<!--            [for]="picker1"-->
+<!--          ></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker1></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--      </mat-card>-->
+<!--      &lt;!&ndash; END CONTENT SIDEBAR 1 &ndash;&gt;-->
+
+<!--      &lt;!&ndash;      <mat-card class="content-sidebar content-sidebar-2">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="title">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <h4>Tag</h4>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-label>Select Tags</mat-label>&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-select formControlName="tags" multiple>&ndash;&gt;-->
+<!--      &lt;!&ndash;            <mat-option *ngFor="let data of tags" [value]="data._id">&ndash;&gt;-->
+<!--      &lt;!&ndash;              {{ data.name }}&ndash;&gt;-->
+<!--      &lt;!&ndash;            </mat-option>&ndash;&gt;-->
+<!--      &lt;!&ndash;          </mat-select>&ndash;&gt;-->
+<!--      &lt;!&ndash;          <mat-error>This field is required.</mat-error>&ndash;&gt;-->
+<!--      &lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </mat-card>&ndash;&gt;-->
+
+<!--      &lt;!&ndash;      getAllAreas&ndash;&gt;-->
+<!--&lt;!&ndash;      <mat-card class="content-sidebar content-sidebar-2">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="title">&ndash;&gt;-->
+<!--&lt;!&ndash;          <h4>Area</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <mat-form-field appearance="outline" class="w-100">&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-label>Select Areas</mat-label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-select formControlName="area" multiple>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-option *ngFor="let data of area" [value]="data._id">&ndash;&gt;-->
+<!--&lt;!&ndash;              {{ data.name }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;          </mat-select>&ndash;&gt;-->
+<!--&lt;!&ndash;          <mat-error>This field is required.</mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;        </mat-form-field>&ndash;&gt;-->
+<!--&lt;!&ndash;      </mat-card>&ndash;&gt;-->
+<!--      &lt;!&ndash; END CONTENT SIDEBAR 2 &ndash;&gt;-->
+
+<!--      &lt;!&ndash; <mat-card class="content-sidebar content-sidebar-2">-->
+<!--        <div class="title">-->
+<!--          <h4>Video Url</h4>-->
+<!--        </div>-->
+
+<!--        <mat-form-field appearance="outline" class="w-100 px-1">-->
+<!--          <mat-label>YouTube Video Url</mat-label>-->
+<!--          <input formControlName="videoUrl" matInput placeholder="Enter video url" />-->
+<!--          <mat-error>This field is required</mat-error>-->
+<!--        </mat-form-field>-->
+<!--      </mat-card> &ndash;&gt;-->
+<!--      &lt;!&ndash; END CONTENT SIDEBAR 2 &ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash; END! SIDE AREA &ndash;&gt;-->
+<!--  </div>-->
+<!--</form>-->
+
+<!--&lt;!&ndash; LOADING TEMPLATE &ndash;&gt;-->
+<!--<ngx-spinner-->
+<!--  bdColor="rgba(0, 0, 0, 0.5)"-->
+<!--  size="medium"-->
+<!--  color="#fff"-->
+<!--  type="ball-atom"-->
+<!--  [fullScreen]="true"-->
+<!--&gt;-->
+<!--  <p style="color: white">Loading...</p>-->
+<!--</ngx-spinner>-->

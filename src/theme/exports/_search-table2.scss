@@ -1,0 +1,36 @@
+@import "src/theme/variables";
+
+.table-search{
+  display: block;
+  max-width: 400px;
+  min-width: 250px;
+  width: 100%;
+  position: relative;
+}
+.table-search input{
+  display: block;
+  width: 100%;
+  background-color: #eff3fb;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid #eff3fb;
+  color: #9ea2b7;
+  font-family: $font-en-primary;
+  font-weight: 500;
+  font-size: 16px;
+  outline: none;
+}
+.table-search button{
+  background-color: #d3dff8;
+  color: #6672fb;
+  padding: 9px 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 17px;
+  position: absolute;
+  top: 0;
+  outline: none;
+  border: 1px solid transparent;
+  right: 0;
+}

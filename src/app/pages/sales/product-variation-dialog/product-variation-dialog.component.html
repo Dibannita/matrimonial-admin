@@ -1,0 +1,38 @@
+<div class="view">
+  <div class="data-info">
+    <h2>{{data?.name}}</h2>
+    <p>Price: {{data?.salePrice}}</p>
+    {{variationCombination | json }}
+  </div> <!-- END! Product Info -->
+
+  <div class="variant-options" *ngIf="data?.hasVariations">
+    <div class="column" *ngFor="let data of data.variations; let i = index">
+      <div class="title">
+        <h3>{{data.name}}</h3>
+      </div>
+      <div class="options">
+        <button mat-raised-button *ngFor="let v of data.values; let j = index"
+          [class.active-btn]="v === variationCombination[data.name]" (click)="onSelectVariation(data, v)">
+          {{v}}
+        </button>
+      </div>
+    </div>
+  </div> <!-- END! Variation Options -->
+
+  <div class="select-variation-info" *ngIf="selectVariationOption">
+    <p>Price: {{selectVariationOption?.price}}</p>
+    <p>Quantity: {{selectVariationOption?.quantity}}</p>
+    <p>Variations: {{selectVariationOption?.variations | variationNormalize}}</p>
+  </div> <!-- END! Select Variation Info -->
+
+  <div class="action">
+    <button mat-raised-button [color]="'warn'" (click)="onCancelDialog()">
+      Cancel
+    </button>
+    <button mat-raised-button [color]="'primary'" (click)="onConfirmDialog()">
+      Confirm
+    </button>
+  </div>
+
+
+</div>

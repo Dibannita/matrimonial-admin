@@ -1,0 +1,13 @@
+.donut-grid{
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  .item{
+    height: auto;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+

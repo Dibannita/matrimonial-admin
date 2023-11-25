@@ -1,0 +1,33 @@
+<div class="dialog-container">
+
+  <div class="confirm-dialog-area">
+    <div class="info">
+      <h1>{{data?.title}}</h1>
+      <p>{{data?.message}}</p>
+    </div>
+
+    <div class="check-option" *ngIf="showCheck">
+      <mat-checkbox [(ngModel)]="isChecked">{{checkMessage}}</mat-checkbox>
+    </div>
+
+    <div class="actions-around">
+      <button
+        (click)="onDismiss()"
+        class="btn-round"
+        mat-raised-button
+        color="warn"
+        type="button">
+        Cancel
+      </button>
+
+      <button
+        (click)="onConfirm()"
+        class="btn-round"
+        mat-raised-button
+        color="primary"
+        type="button">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,236 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/matrimonial/general-info">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">General Info</p>
+          </li>
+
+          <li routerLink="/matrimonial/address">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">Address</p>
+          </li>
+
+          <li routerLink="/matrimonial/educational-qualification">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">Educational Qualification</p>
+          </li>
+
+          <li routerLink="/matrimonial/pledge">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">Pledge</p>
+          </li>
+
+          <li routerLink="/matrimonial/contact">
+            <div class="circle-top">
+              <div class="circle-top-child active">5</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>Contact</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+
+          <div class="page-slug">
+            <div class="checkbox">
+              <mat-checkbox
+                [(ngModel)]="autoSlug"
+                (change)="autoGenerateSlug()"
+                [ngModelOptions]="{ standalone: true }"
+                color="primary"
+              >Auto Slug</mat-checkbox
+              >
+            </div>
+          </div>
+          <div class="main-form-area">
+            <div class="form-one-grid">
+
+              <div class="input-box">
+                <p>
+                  <label for="Bride_name">
+                    Bride`s name
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Bride_name"
+                    formControlName="name"
+                    placeholder="Full Name"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('name').touched &&
+                    dataForm.get('name').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="slug">Slug</label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="slug"
+                    placeholder="Slug"
+                    formControlName="slug"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                dataForm.get('name').touched &&
+                dataForm.get('name').invalid
+              "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+
+
+              <div class="input-box">
+                <p>
+                  <label for="mobile">
+                    Guardian`s mobile number
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="mobile"
+                    placeholder="01700-000000"
+                    formControlName="guardianNumber"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('guardianNumber').touched &&
+                    dataForm.get('guardianNumber').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+                <p class="extra-text">
+                  This Number Will be given if anyone to contact your guardian.
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="relationshipGuardian">
+                    Relationship with Guardian
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="relationshipGuardian"
+                    placeholder="Relationship With Guardian"
+                    formControlName="relationshipGuardian"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('relationshipGuardian').touched &&
+                    dataForm.get('relationshipGuardian').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="receiveBiodata">
+                    E-mail to receive biodata
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="receiveBiodata"
+                    placeholder="test@gmail.com"
+                    formControlName="receiveBiodata"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('receiveBiodata').touched &&
+                    dataForm.get('receiveBiodata').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit">
+                <span *ngIf="!isLoading">Submit</span>
+                <div class="loader" *ngIf="isLoading"></div>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

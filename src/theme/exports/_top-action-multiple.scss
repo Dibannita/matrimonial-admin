@@ -1,0 +1,46 @@
+@import "src/theme/variables";
+
+.action-multiple {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap:wrap;
+  }
+
+  .active-group {
+    button {
+      color: #FFFFFF;
+      background: $color-accent;
+    }
+  }
+
+}
+.sort a{
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 650px) {
+  .action-multiple {
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    .sort {
+      margin-top: 5px;
+    }
+    .filter{
+      justify-content: center;
+    }
+  }
+
+}

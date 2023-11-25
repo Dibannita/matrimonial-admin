@@ -1,0 +1,63 @@
+<div class="top-input-header">
+  <div class="title">
+    <h2>{{id ? 'Edit' : 'Add New'}} Zone</h2>
+  </div>
+</div> <!-- END Input Form Header -->
+
+
+<form #formElement="ngForm" [formGroup]="dataForm" (ngSubmit)="onSubmit()" fxLayout="row wrap" fxLayoutAlign="center">
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="50" fxFlex.xs="100">
+    <mat-label>Select Division</mat-label>
+    <mat-select formControlName="division" required (selectionChange)="onDivisionSelect($event)">
+      <mat-option *ngFor="let data of divisions" [value]="data._id">
+        {{data.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="50" fxFlex.xs="100">
+    <mat-label>Select Area</mat-label>
+    <mat-select formControlName="area" required>
+      <mat-option *ngFor="let data of areas" [value]="data._id">
+        {{data.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="100" >
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput placeholder="Enter name" required>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100 px-1" fxFlex="50" fxFlex.xs="100">
+    <mat-label>Priority</mat-label>
+    <input formControlName="priority" matInput placeholder="Enter priority" digitOnly>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100" fxFlex="50" fxFlex.xs="100">
+    <mat-label>Select Status</mat-label>
+    <mat-select formControlName="status" required>
+      <mat-option *ngFor="let data of productStatus" [value]="data.value">
+        {{data.viewValue}}
+      </mat-option>
+    </mat-select>
+    <mat-error>This field is required.</mat-error>
+  </mat-form-field>
+
+
+
+  <button mat-raised-button color="primary" type="submit">
+    {{id ? 'Update Zone' : 'Add Zone'}}
+  </button>
+
+</form>
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.5)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

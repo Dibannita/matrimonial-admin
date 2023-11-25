@@ -1,0 +1,27 @@
+/**
+FORM ARRAY
+ */
+
+.form-array-container {
+  width: 100%;
+}
+
+.add-form-array-action {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.form-array-input {
+  width: 100%;
+
+  .single-field {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}

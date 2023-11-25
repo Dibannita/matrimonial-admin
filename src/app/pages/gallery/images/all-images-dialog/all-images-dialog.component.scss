@@ -1,0 +1,32 @@
+@import "src/theme/exports/table-scroll";
+@import "src/theme/exports/search-table";
+@import "src/theme/exports/top-data-header";
+@import "../all-images/all-images.component";
+
+
+::ng-deep .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: initial;
+}
+
+.close {
+  position: absolute;
+  top: 102px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  text-align: center;
+
+  button {
+    background: #ffc9c9;
+  }
+}
+
+.on-done {
+  text-align: center;
+}

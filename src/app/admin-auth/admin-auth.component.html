@@ -1,0 +1,61 @@
+<div class="container-login">
+
+
+  <div class="header">
+    <div class="brand">
+      <img src="/assets/images/png/bf.png" alt="">
+    </div>
+  </div> <!-- END OF HEADER -->
+
+
+  <div class="content">
+    <div class="left">
+      <div class="img-placeholder">
+        <img src="/assets/images/png/bf.png" alt="">
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="card">
+        <div class="top-tittle">
+          <h1>Admin Login</h1>
+          <p>Enter your details bellow to continue</p>
+        </div>
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <mat-form-field class="mat-data-input-field" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input type="text" formControlName="username" matInput placeholder="Enter your username...">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="mat-data-input-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" type="password" matInput placeholder="Enter your password...">
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+
+          <div class="submit-area">
+            <div class="forget-pass-link">
+              <a routerLink="/reset-password">Forget Password?</a>
+            </div>
+            <button class="btn-login" mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Copyright &copy; {{env.name}}. {{year}}. All Rights Reserved.</p>
+  </div>
+
+</div>
+
+
+<!-- TEMPLATE NGX SPINNER-->
+<ngx-spinner bdColor = "rgba(0,0,0,0.3)" size = "medium" color = "#fff" type = "ball-scale-pulse" [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>

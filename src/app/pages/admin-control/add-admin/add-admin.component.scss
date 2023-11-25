@@ -1,0 +1,37 @@
+@import "src/theme/exports/top-input-header";
+@import "/src/theme/exports/_add-from.scss";
+
+.div-one {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .div-one {
+    display: grid;
+    grid-template-columns: 1fr;
+    // gap:15px;
+  }
+
+  
+}
+
+form {
+  width: 95%;
+  max-width: 850px;
+  margin: 16px auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    padding: 4px 24px;
+    // border-radius: 25px;
+  }
+}
+
+

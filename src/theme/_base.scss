@@ -1,0 +1,239 @@
+@import './variables';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  font-family: $font-en-primary;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.container {
+  display: block;
+  max-width: 1200px;
+  width:100%;
+  margin: auto;
+}
+@media(max-width:1230px){
+  .container{
+    max-width: 970px;
+  }
+}
+
+
+@media(max-width:1000px){
+  .container{
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    max-width: 550px;
+    // width: 95%;
+    padding: 0px 15px;
+    box-sizing: border-box;
+  }
+}
+
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+
+/* =Global notification
+----------------------------------------------------------------------------- */
+snack-bar-container {
+  &.success-new {
+    background: rgb(20, 190, 51);
+    background: linear-gradient(90deg, rgba(20, 190, 51, 1) 0%, rgba(26, 182, 8, 1) 100%);
+    color: #fff;
+  }
+}
+
+snack-bar-container {
+  &.warn {
+    background: rgb(235, 140, 57);
+    background: linear-gradient(90deg, rgba(235, 140, 57, 1) 0%, rgba(214, 118, 28, 1) 100%);
+    color: #FFFFFF;
+  }
+}
+
+snack-bar-container {
+  &.wrong {
+    background: rgb(235, 57, 57);
+    background: linear-gradient(90deg, rgba(235, 57, 57, 1) 0%, rgba(214, 49, 28, 1) 100%);
+    color: #fff;
+  }
+}
+
+
+/* =NGX PAGINATION
+----------------------------------------------------------------------------- */
+.pagination-container {
+  //box-sizing: border-box;
+  //border: 1px solid #eaeaea;
+  //margin: 5px 10px;
+  //padding: 10px;
+}
+
+.data-pagination {
+  width: 100%;
+  text-align: center;
+
+}
+
+.data-pagination .ngx-pagination {
+  font-family: $font-en-primary;
+  margin-bottom: 0;
+}
+
+.data-pagination .ngx-pagination li a {
+  font-family: $font-en-primary;
+  border-radius: 22px;
+  padding: 6px 14px;
+}
+
+.data-pagination .ngx-pagination .current {
+  background: $color-primary;
+  border-radius: 22px;
+  padding: 6px 14px;
+
+}
+
+.table-total-calculation{
+  width: 90%;
+  max-width: 600px;
+  margin: 24px auto 0 auto;
+  padding: 12px 8px;
+  background-color: green;
+  border-radius: 8px;
+  p{
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 0;
+    color: #FFFFFF;
+  }
+}
+
+.table-total-calculation2-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.table-total-calculation2{
+
+  width: 90%;
+  max-width: 600px;
+  margin: 24px auto 0 auto;
+  padding: 20px 8px;
+  background-color: rgb(29, 148, 29);
+  border-radius: 8px;
+  p{
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 0;
+    color: #FFFFFF;
+  }
+}
+
+
+/* =COMMON ESSENTIAL
+----------------------------------------------------------------------------- */
+
+.admin-data-sec {
+  min-height: calc(100vh - 85px);
+}
+
+.dropdown-active {
+  background: #C1E0FF !important;
+
+  &:hover {
+    background-color: #C1E0FF !important;
+  }
+}
+
+/* =HIDE NUMBER ARROW
+----------------------------------------------------------------------------- */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+/* =MATERIAL FORM INOUT FIELD HEIGHT ADJUST
+----------------------------------------------------------------------------- */
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix {
+  padding: 0.7em 0;
+}
+
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper {
+  top: -1.1em;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}
+
+/* =UTILS
+----------------------------------------------------------------------------- */
+.no-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #dfdfdf;
+  margin: 16px 0;
+}
+

@@ -1,0 +1,62 @@
+@import "/src/theme/exports/add-from";
+
+.custom-dropzone {
+  height: 95px !important;
+}
+
+.dropZone {
+  margin: 0 auto !important;
+}
+
+.card {
+  margin-top: 19px !important;
+  margin-bottom: 63px !important;
+}
+
+.btn {
+  margin-top: 0px !important;
+}
+
+.div-one {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.from-section {
+
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.page-title {
+  max-width: 800px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+
+  h4, h6 {
+    text-align: center;
+  }
+}
+
+.grid-customer {
+  display: grid;
+  grid-template-columns: 24% 74%;
+  justify-content: space-between;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .grid-customer {
+    grid-template-columns: 1fr;
+  }
+
+  .div-one {
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 12px;
+    width: 100%;
+  }
+}

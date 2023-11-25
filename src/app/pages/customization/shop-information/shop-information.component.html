@@ -1,0 +1,194 @@
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1>Shop Additional Info</h1>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
+        fxLayout="column"
+        fxLayoutAlign="space-around center">
+
+    <div class="form-img-avatar" (click)="openGalleryDialog()">
+      <img [src]="pickedImage" alt="">
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Website Name</mat-label>
+      <input formControlName="siteName" matInput placeholder="Enter web site name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description</mat-label>
+      <input formControlName="shortDescription" matInput placeholder="Enter Short Description">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description Bangla</mat-label>
+      <input formControlName="shortDescriptionBn" matInput placeholder="Enter Short Description Bangla">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description Italian</mat-label>
+      <input formControlName="shortDescriptionIt" matInput placeholder="Enter Short Description Italian">
+    </mat-form-field>
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('addresses')">
+          <mat-icon>add</mat-icon>
+          Add New Address
+        </button>
+
+      </div>
+      <div formArrayName="addresses" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of addressesDataArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Address {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter Address ' + i + 1">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('addresses', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END ADDRESS FORM ARRAY -->
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('emails')">
+          <mat-icon>add</mat-icon>
+          Add New Email
+        </button>
+
+      </div>
+      <div formArrayName="emails" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of emailsDataArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Email {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter email ' + i + 1" type="email">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('emails', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END EMAILS FORM ARRAY -->
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('phones')">
+          <mat-icon>add</mat-icon>
+          Add New Phone No
+        </button>
+
+      </div>
+      <div formArrayName="phones" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of phonesDataArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Phone No {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter phone no ' + i + 1" type="tel">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('phones', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END PHONES FORM ARRAY -->
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('downloadUrls')">
+          <mat-icon>add</mat-icon>
+          Add New Download Url
+        </button>
+
+      </div>
+      <div formArrayName="downloadUrls" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of downloadsUrlsArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select Download Url {{i + 1}}</mat-label>
+            <mat-select formControlName="type" required>
+              <mat-option *ngFor="let m of downloadTypes" [value]="m.value">
+                {{m.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error>This field is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Download Url {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter download url  ' + i + 1" type="tel">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('downloadUrls', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END DOWNLOAD URLS FORM ARRAY -->
+
+    <div class="form-array-container">
+      <div class="add-form-array-action">
+        <button type="button" mat-raised-button color="primary" (click)="onAddNewShopObject('socialLinks')">
+          <mat-icon>add</mat-icon>
+          Add New Social Link
+        </button>
+
+      </div>
+      <div formArrayName="socialLinks" class="form-array-input">
+        <div class="single-field"
+             *ngFor="let data of socialLinksArray?.controls; let i = index"
+             [formGroupName]="i">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select Social Network {{i + 1}}</mat-label>
+            <mat-select formControlName="type" required>
+              <mat-option *ngFor="let m of socialTypes" [value]="m.value">
+                {{m.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error>This field is required.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Type Social Link {{i + 1}}</mat-label>
+            <input formControlName="value" matInput [placeholder]="'Enter social link  ' + i + 1" type="tel">
+          </mat-form-field>
+          <button type="button" mat-mini-fab color="warn" (click)="removeFormArrayField('socialLinks', i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div> <!-- END DOWNLOAD URLS FORM ARRAY -->
+
+
+    <button class="submit-btn" mat-raised-button color="accent" type="submit">
+      <mat-icon>done</mat-icon>
+      Save Data
+    </button>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<!-- <ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>
+ -->
+
+
