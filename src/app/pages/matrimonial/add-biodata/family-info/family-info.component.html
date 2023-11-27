@@ -1,0 +1,256 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>পারিবারিক তথ্য</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-box">
+                <p>
+                  <label for="descriptionOfFathersProfession">
+                    বাবার পেশা
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="descriptionOfFathersProfession"
+                    formControlName="descriptionOfFathersProfession"
+                    placeholder="বাবার পেশা লিখুন"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('descriptionOfFathersProfession').touched &&
+                    dataForm.get('descriptionOfFathersProfession').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="descriptionOfMothersProfession">
+                    মায়ের পেশা
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="descriptionOfMothersProfession"
+                    placeholder="মায়ের পেশা লিখুন"
+                    formControlName="descriptionOfMothersProfession"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('descriptionOfMothersProfession').touched &&
+                    dataForm.get('descriptionOfMothersProfession').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="howManyBrothersDoYouHave">
+                    ভাই-বোনের সংখ্যা
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="howManyBrothersDoYouHave"
+                    placeholder="ভাই-বোনের সংখ্যা লিখুন"
+                    formControlName="howManyBrothersDoYouHave"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('howManyBrothersDoYouHave').touched &&
+                    dataForm.get('howManyBrothersDoYouHave').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="descriptionOfFinancialCondition">
+                    অর্থনৈতিক অবস্থা
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="descriptionOfFinancialCondition"
+                    cols="30"
+                    rows="5"
+                    placeholder="অর্থনৈতিক অবস্থা লিখুন"
+                    formControlName="descriptionOfFinancialCondition"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="howIsYourFamilysReligiousCondition">
+                    পারিবারিক দ্বীনী পরিবেশ কেমন
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="howIsYourFamilysReligiousCondition"
+                    cols="30"
+                    rows="5"
+                    placeholder="পারিবারিক দ্বীনী পরিবেশ কেমন"
+                    formControlName="howIsYourFamilysReligiousCondition"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice">
+                    প্রিয় কয়েকজন আলেম যাদের বক্তব্য শোনা হয়
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice"
+                    placeholder="প্রিয় কয়েকজন আলেম যাদের বক্তব্য শোনা হয় লিখুন"
+                    formControlName="writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice').touched &&
+                    dataForm.get('writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

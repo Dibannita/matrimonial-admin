@@ -1,0 +1,258 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>বিয়ে সম্পর্কিত</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-box-textarea">
+                <p>
+                  <label for="sarSami">
+                    স্বামী/স্ত্রী নির্বাচনে পাত্রের/পাত্রীর কোন কোন বিষয়গুলো ছাড় দিতে পারবেন?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="sarSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="sarSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="sarNoSami">
+                    পাত্রের/পাত্রীর কোন কোন  বিষয়গুলো ছাড় দিতে পারবেন না ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="sarNoSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="sarNoSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="chakriSami">
+                    চাকরী করতে চান? চাইলে কেন / না চাইলে কেন ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="chakriSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="chakriSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="porasonaSami">
+                    বিয়ের পর পড়াশোনা করতে চান? চাইলে কেন /না চাইলে কেন ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="porasonaSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="porasonaSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="montobboSami">
+                    (পর্দা নিশ্চিত হলে ) জয়েন ফ্যামিলিতে থাকার ব্যাপারে মন্তব্য ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="montobboSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="montobboSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-box-textarea">
+                <p>
+                  <label for="sontanSami">
+                    ভবিষ্যত সন্তানের ব্যাপারে আপনার স্বপ্ন কী ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="sontanSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="sontanSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-box-textarea">
+                <p>
+                  <label for="obhibabokSami">
+                    বাসায় অভিভাবক বিয়েতে রাজি আছেন? না একা একা সিদ্ধান্ত নিয়েছেন ?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="obhibabokSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="obhibabokSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="pottshaSami">
+                    পাত্রের/পাত্রীর পেশা ও উপার্জন এর ব্যাপারে প্রত্যাশা?
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="pottshaSami"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="pottshaSami"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- END! input-box -->
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,247 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>ঠিকানা</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-box">
+                <p>
+                  <label for="Permanent_Address">
+                    স্থায়ী ঠিকানা
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Permanent_Address"
+                    placeholder="ঠিকানা"
+                    formControlName="permanentAddress"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('permanentAddress').touched &&
+                    dataForm.get('permanentAddress').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+                <div class="input-doc input-doc-second">
+                  <input
+                    type="text"
+                    id="please-enter"
+                    formControlName="permanentAddressArea"
+                    placeholder="আপনার এলাকার নাম লিখুন"
+                  />
+                </div>
+
+                <p class="extra-text">
+                  বাড়ির নম্বর না দিয়ে গ্রাম বা এলাকার নাম লিখুন। উদাহরণ- মিরপুর ১০, বাগমারা।
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-checkbox">
+                <p>
+                  <label for="Permanent_Address">
+                    বর্তমান ঠিকানা
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="in-check">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    (click)="onPermanentAddressCheck()"
+                  />
+
+                  <label for="remember" (click)="onPermanentAddressCheck()"
+                  >স্থায়ী ও বর্তমান ঠিকানা একই </label
+                  >
+                </div>
+
+                <div *ngIf="permanentAddressCheck" class="show-input">
+                  <!--                  <div class="input-custom-select-box">-->
+                  <!--                    <select id="Biodata" formControlName="permanentAddressSame">-->
+                  <!--                      <option selected value="" hidden>-->
+                  <!--                        Select your location...-->
+                  <!--                      </option>-->
+                  <!--                      <option value="1">Category 1</option>-->
+                  <!--                      <option value="2">Category 2</option>-->
+                  <!--                      <option value="3">Category 3</option>-->
+                  <!--                      <option value="4">Category 4</option>-->
+                  <!--                    </select>-->
+                  <!--                  </div>-->
+
+
+                  <div class="input-doc">
+                    <input
+                      type="text"
+                      id="Present_Address"
+                      placeholder="ঠিকানা"
+                      formControlName="presentAddress"
+                    />
+                  </div>
+
+                  <p
+                    class="required"
+                    *ngIf="
+                    dataForm.get('presentAddress').touched &&
+                    dataForm.get('presentAddress').invalid
+                  "
+                  >
+                    <i>This felid is required</i>
+                  </p>
+
+
+                  <div class="input-doc input-doc-second">
+                    <input
+                      type="text"
+                      id="Peresent_Address"
+                      placeholder="ঠিকানা"
+                      formControlName="presentAddressArea"
+                    />
+                  </div>
+                  <p
+                    class="required"
+                    *ngIf="
+                      dataForm.get('presentAddressArea').touched &&
+                      dataForm.get('presentAddressArea').invalid
+                    "
+                  >
+                    <i>This felid is required</i>
+                  </p>
+                </div>
+
+                <p class="extra-text">
+                  বাড়ির নম্বর না দিয়ে গ্রাম বা এলাকার নাম লিখুন। উদাহরণ- মিরপুর ১০, বাগমারা।
+                </p>
+              </div>
+              <!-- END! input-checkbox -->
+
+              <div class="input-box">
+                <p>
+                  <label for="growUp">
+                    আপনি কোথায় বড় হয়েছেন?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="growUp"
+                    placeholder=""
+                    formControlName="whereDidYouGrowUp"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('whereDidYouGrowUp').touched &&
+                    dataForm.get('whereDidYouGrowUp').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+            </div>
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

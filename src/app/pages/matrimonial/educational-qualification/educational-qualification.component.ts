@@ -2,8 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Select} from "../../../interfaces/core/select";
-import {EDUCATIONMETHOD, GROUP, HEIGHT_EDUCATION, ISLAMIC_TITLE, RESULT} from "../../../core/utils/app-data";
 import {StorageService} from '../../../services/core/storage.service';
+import {
+  GROUP,
+  HEIGHT_EDUCATION,
+  HEIGHT_EDUCATION1, ISLAMIC_TITLE,
+  LOW_EDUCATION1,
+  Madrasha_EDUCATION1, RESULT
+} from "../../../core/utils/app-data";
 
 
 @Component({
@@ -13,12 +19,16 @@ import {StorageService} from '../../../services/core/storage.service';
 })
 export class EducationalQualificationComponent implements OnInit {
 
-  educationMethod: Select[] = EDUCATIONMETHOD;
+  underSscEducation: Select[] = LOW_EDUCATION1;
+  educationMethod: any[] = HEIGHT_EDUCATION1;
   heightEducation: Select[] = HEIGHT_EDUCATION;
+  madrashaEducation: Select[] = Madrasha_EDUCATION1;
+  heightEducationData: any[] = [];
   groupData: Select[] = GROUP;
   resultData: Select[] = RESULT;
   islamicTitles: Select[] = ISLAMIC_TITLE;
-
+  selectedType: string;
+  selectedEducationType: string;
   dataForm!: FormGroup;
   isLoader: boolean = false;
 
@@ -42,16 +52,53 @@ export class EducationalQualificationComponent implements OnInit {
 
   initialForm() {
     this.dataForm = this.fb.group({
-      yourEducationMethod: ['', Validators.required],
-      highestEducation: ['', Validators.required],
-      sscPassingYear: [null, Validators.required],
-      sscGroup: ['', Validators.required],
-      sscResult: ['', Validators.required],
-      diplomaSubject: [null, Validators.required],
-      diplomaInstitution: [null, Validators.required],
-      diplomaPassingYear: [null, Validators.required],
+      yourEducationMethod: [null],
+      highestEducation: [null],
+      sscPassingYear: [null],
+      sscGroup: [null],
+      sscResult: [null],
+      diplomaSubject: [null],
+      diplomaInstitution: [null],
+      diplomaPassingYear: [null],
       otherEducationalQualifications: [null],
       islamicEducationalTitles: [null],
+      underSSC: [null],
+      konYearDiploma: [null],
+      hscPassingYear: [null],
+      hscResult: [null],
+      hscGroup: [null],
+      snakottoBisoi: [null],
+      snakonttoPassingYear: [null],
+      snatokPassingYear: [null],
+      snatokInstitute: [null],
+      snatokBisoi: [null],
+      doctoretPassingYear: [null],
+      doctoretInstitute: [null],
+      doctoretBisoi: [null],
+      ebadahoEducation: [null],
+      ebadahoFolafol: [null],
+      ebadahoPassingYear: [null],
+      taksuPassingYear: [null],
+      taksuEducation: [null],
+      taksuFolafol: [null],
+      taksuInstitution: [null],
+      takmilPassingYear: [null],
+      takmilFolafol: [null],
+      takmilEducation: [null],
+      fojilotPassingYear: [null],
+      fojilotFolafol: [null],
+      fojilotEducation: [null],
+      saniPassingYear: [null],
+      saniFolafol: [null],
+      saniEducation: [null],
+      muftiPassingYear: [null],
+      muftiFolafol: [null],
+      muftiEducation: [null],
+      passingYearHSC: [null],
+      groupHSC: [null],
+      resultHSC: [null],
+      snakottoBosor: [null],
+      snakottoInstiute: [null],
     });
   }
 
@@ -70,6 +117,28 @@ export class EducationalQualificationComponent implements OnInit {
       this.dataForm.markAllAsTouched();
     }
   }
+
+
+  educationMethodData(event: any) {
+    this.selectedType = event.target.value;
+    this.heightEducationData = this.educationMethod.filter(item =>
+      item.name === this.selectedType,
+    );
+  }
+
+
+  heightEducationValue(event: any) {
+    this.selectedEducationType = event.target.value;
+
+    if(this.selectedEducationType !== 'এস.এস.সি এর নিচে'){
+
+    }
+
+    if(this.selectedEducationType !== 'এস.এস.সি এর নিচে'){
+    }
+
+  }
+
 
   // For form back button
   onGoBack() {

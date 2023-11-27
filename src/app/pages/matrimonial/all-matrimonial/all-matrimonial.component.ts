@@ -22,11 +22,13 @@ import {FilterData} from "../../../interfaces/gallery/filter-data";
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import * as XLSX from "xlsx";
 import {ConfirmDialogComponent} from "../../../shared/components/ui/confirm-dialog/confirm-dialog.component";
+import {MatSlideToggleChange} from "@angular/material/slide-toggle";
 
 @Component({
   selector: 'app-all-matrimonial',
   templateUrl: './all-matrimonial.component.html',
-  styleUrls: ['./all-matrimonial.component.scss']
+  styleUrls: ['./all-matrimonial.component.scss'],
+
 })
 export class AllMatrimonialComponent implements OnInit {
   // Admin Base Data
@@ -37,6 +39,7 @@ export class AllMatrimonialComponent implements OnInit {
   // Store Data
   toggleMenu: boolean = false;
   products: Product[] = [];
+  product: Product;
   holdPrevData: Product[] = [];
   categories: Category[] = [];
   brands: Brand[] = [];
@@ -57,7 +60,7 @@ export class AllMatrimonialComponent implements OnInit {
   activeFilter2: number = null;
   activeFilter3: number = null;
   activeSort: number;
-  number = [{ num: '10' }, { num: '25' }, { num: '50' }, { num: '100' }];
+  number = [{num: '10'}, {num: '25'}, {num: '50'}, {num: '100'}];
 
   // Selected Data
   selectedIds: string[] = [];
@@ -174,7 +177,7 @@ export class AllMatrimonialComponent implements OnInit {
             pagination: pagination,
             filter: this.filter,
             select: mSelect,
-            sort: { createdAt: -1 },
+            sort: {createdAt: -1},
           };
 
           return this.productService.getAllProducts(
@@ -189,7 +192,7 @@ export class AllMatrimonialComponent implements OnInit {
           this.products = this.searchProduct;
           this.totalProducts = res.count;
           this.currentPage = 1;
-          this.router.navigate([], { queryParams: { page: this.currentPage } });
+          this.router.navigate([], {queryParams: {page: this.currentPage}});
         },
         error: (error) => {
           console.log(error);
@@ -231,6 +234,60 @@ export class AllMatrimonialComponent implements OnInit {
     this.toggleMenu = !this.toggleMenu;
   }
 
+
+  /**
+   * ON STATUS CHANGE
+   */
+
+  getStatus(data: any) {
+    if (data.status === 'publish') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  onToggleChange(event: MatSlideToggleChange, data: any) {
+    this.product =data;
+    if (event.checked === true) {
+      const mData = {
+        status: "publish"
+      }
+      this.updateProductById(mData);
+
+    } else {
+      const mData = {
+        status: "draft"
+      }
+
+      this.updateProductById(mData);
+    }
+  }
+
+
+  private updateProductById(data: any) {
+    this.subDataFour = this.productService
+      .updateProductById(this.product._id, data)
+      .subscribe({
+        next: res => {
+
+          if (res.success) {
+            this.uiService.success(res.message);
+            this.getAllProduct()
+            // Remove Old Image from Backend
+
+          } else {
+            this.uiService.warn(res.message);
+          }
+        },
+        error: error => {
+
+          console.log(error);
+        }
+      });
+
+  }
+
   /**
    * HTTP REQ HANDLE
    * getAllProduct()
@@ -245,7 +302,7 @@ export class AllMatrimonialComponent implements OnInit {
       name: 1,
       images: 1,
       createdAt: 1,
-      jobType:1,
+      jobType: 1,
       publisher: 1,
       area: 1,
       author: 1,
@@ -268,10 +325,10 @@ export class AllMatrimonialComponent implements OnInit {
     };
 
     const filter: FilterData = {
-      filter: {...this.filter,...{postType: this.postType}} ,
+      filter: {...this.filter, ...{postType: this.postType}},
       pagination: null,
       select: mSelect,
-      sort: { createdAt: -1 },
+      sort: {createdAt: -1},
     };
 
     this.subDataOne = this.productService
@@ -303,7 +360,7 @@ export class AllMatrimonialComponent implements OnInit {
       filter: this.filter,
       pagination: null,
       select: mSelect,
-      sort: { createdAt: -1 },
+      sort: {createdAt: -1},
     };
 
     this.subDataOne = this.publisherService
@@ -335,10 +392,10 @@ export class AllMatrimonialComponent implements OnInit {
     };
 
     const filter: FilterData = {
-      filter: {...this.filter,...{postType: "matrimonial"}} ,
+      filter: {...this.filter, ...{postType: "matrimonial"}},
       pagination: null,
       select: mSelect,
-      sort: { createdAt: -1 },
+      sort: {createdAt: -1},
     };
 
     this.subDataOne = this.categoryService
@@ -375,7 +432,7 @@ export class AllMatrimonialComponent implements OnInit {
             this.uiService.success(res.message);
             // fetch Data
             if (this.currentPage > 1) {
-              this.router.navigate([], { queryParams: { page: 1 } });
+              this.router.navigate([], {queryParams: {page: 1}});
             } else {
               this.getAllProduct();
             }
@@ -391,7 +448,6 @@ export class AllMatrimonialComponent implements OnInit {
   }
 
 
-
   /**
    * FILTER DATA & Sorting
    * filterData()
@@ -403,12 +459,12 @@ export class AllMatrimonialComponent implements OnInit {
   filterData(value: any, index: number, type: string) {
     switch (type) {
       case 'product': {
-        this.filter = { ...this.filter, ...{ 'product._id': value } };
+        this.filter = {...this.filter, ...{'product._id': value}};
         this.activeFilter2 = index;
         break;
       }
       case 'publishers': {
-        this.filter = { ...this.filter, ...{ publishers: value } };
+        this.filter = {...this.filter, ...{publishers: value}};
         this.activeFilter3 = index;
         break;
       }
@@ -418,7 +474,7 @@ export class AllMatrimonialComponent implements OnInit {
     }
     // Re fetch Data
     if (this.currentPage > 1) {
-      this.router.navigate([], { queryParams: { page: 1 } });
+      this.router.navigate([], {queryParams: {page: 1}});
     } else {
       this.getAllProduct();
     }
@@ -433,12 +489,12 @@ export class AllMatrimonialComponent implements OnInit {
         this.dataFormDateRange.value.end
       );
 
-      const qData = { dateString: { $gte: startDate, $lte: endDate } };
-      this.filter = { ...this.filter, ...qData };
+      const qData = {dateString: {$gte: startDate, $lte: endDate}};
+      this.filter = {...this.filter, ...qData};
       // const index = this.filter.findIndex(x => x.hasOwnProperty('createdAt'));
 
       if (this.currentPage > 1) {
-        this.router.navigate([], { queryParams: { page: 1 } });
+        this.router.navigate([], {queryParams: {page: 1}});
       } else {
         this.getAllProduct();
       }
@@ -452,7 +508,7 @@ export class AllMatrimonialComponent implements OnInit {
   }
 
   public onPageChanged(event: any) {
-    this.router.navigate([], { queryParams: { page: event } });
+    this.router.navigate([], {queryParams: {page: event}});
   }
 
   /**
@@ -611,7 +667,6 @@ export class AllMatrimonialComponent implements OnInit {
   }
 
 
-
   private updateMultipleProductById(data: any) {
     this.spinner.show();
     this.subDataThree = this.productService.updateMultipleProductById(this.selectedIds, data)
@@ -630,7 +685,6 @@ export class AllMatrimonialComponent implements OnInit {
       });
 
   }
-
 
 
   private cloneSingleProduct(id: string) {
@@ -660,12 +714,12 @@ export class AllMatrimonialComponent implements OnInit {
     this.activeFilter1 = null;
     this.activeFilter2 = null;
     this.activeFilter3 = null;
-    this.sortQuery = { createdAt: -1 };
+    this.sortQuery = {createdAt: -1};
     this.filter = null;
     this.dataFormDateRange.reset();
     // Re fetch Data
     if (this.currentPage > 1) {
-      this.router.navigate([], { queryParams: { page: 1 } });
+      this.router.navigate([], {queryParams: {page: 1}});
     } else {
       this.getAllProduct();
     }

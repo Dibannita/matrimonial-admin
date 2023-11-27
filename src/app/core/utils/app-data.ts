@@ -194,26 +194,35 @@ export const PAGE_TYPES: Select[] = [
 
 
 
+
 export const MARITALSTATUS: Select[] = [
   {
-    value: 'Never Married',
-    viewValue: 'Never Married'
+    value: 'অবিবাহিত',
+    // viewValue: 'Never Married',
+    viewValue: 'অবিবাহিত',
   },
   {
-    value: 'Married',
-    viewValue: 'Married'
+    value: 'বিবাহিত',
+    // viewValue: 'Married',
+    viewValue: 'বিবাহিত'
   },
   {
-    value: 'Divorced',
-    viewValue: 'Divorced'
+    value: 'তালাক-প্রাপ্ত',
+    // value: 'Divorced',
+    // viewValue: 'Divorced',
+    viewValue: 'তালাক-প্রাপ্ত'
   },
   {
-    value: 'Widow',
-    viewValue: 'Widow'
+    value: 'বিধবা',
+    // value: 'Widow',
+    // viewValue: 'Widow',
+    viewValue: 'বিধবা',
   },
   {
-    value: 'Widower',
-    viewValue: 'Widower'
+    value: 'বিধবার',
+    // value: 'Widower',
+    // viewValue: 'Widower',
+    viewValue: 'বিধবার',
   }
 ]
 
@@ -230,186 +239,262 @@ export const AGREE: Select[] = [
 ]
 
 
+
 export const HEIGHT: Select[] = [
   {
-    value: 'Less than 4 feet',
-    viewValue: 'Less than 4 feet'
+    value: '৪ ফুটের কম',
+    // value: 'Less than 4 feet',
+    // viewValue: 'Less than 4 feet',
+    viewValue: '৪ ফুটের কম',
   },
   {
-    value: '4`',
-    viewValue: '4`'
+    // value: '4`',
+    value: '৪`',
+    // viewValue: '4`',
+    viewValue: '৪`',
   },
   {
-    value: '4`1`',
-    viewValue: '4`1`'
+    value: '৪`১``',
+    // value: '4`1`',
+    // viewValue: '4`1`',
+    viewValue: '৪`১``',
   },
   {
-    value: '4`2`',
-    viewValue: '4`2`'
+    value: '৪`২``',
+    // value: '4`2`',
+    // viewValue: '4`2`',
+    viewValue: '৪`২``',
   },
   {
-    value: '4`3`',
-    viewValue: '4`3`'
+    value: '৪`৩``',
+    // value: '4`3`',
+    // viewValue: '4`3`',
+    viewValue: '৪`৩``',
   },
   {
     value: '4`4`',
-    viewValue: '4`4`'
+    // viewValue: '4`4`',
+    viewValue: '৪`৪``',
   },
   {
-    value: '4`5`',
-    viewValue: '4`5`'
+    value: '৪`৫``',
+    // value: '4`5`',
+    // viewValue: '4`5`',
+    viewValue: '৪`৫``',
   },
   {
-    value: '4`6`',
-    viewValue: '4`6`'
+    value: '৪`৬``',
+    // value: '4`6`',
+    // viewValue: '4`6`',
+    viewValue: '৪`৬``',
   },
   {
-    value: '4`7`',
-    viewValue: '4`7`'
+    // value: '4`7`',
+    value: '৪`৭``',
+    // viewValue: '4`7`',
+    viewValue: '৪`৭``',
   },
   {
-    value: '4`8`',
-    viewValue: '4`8`'
+    value: '৪`৮``',
+    // value: '4`8`',
+    // viewValue: '4`8`',
+    viewValue: '৪`৮``',
   },
   {
-    value: '4`9`',
-    viewValue: '4`9`'
+    value: '৪`৯``',
+    // value: '4`9`',
+    // viewValue: '4`9`',
+    viewValue: '৪`৯``',
   },
   {
-    value: '4`10`',
-    viewValue: '4`10`'
+    value: '৪`১০``',
+    // value: '4`10`',
+    // viewValue: '4`10`',
+    viewValue: '৪`১০``',
   },
   {
-    value: '4`11`',
-    viewValue: '4`11`'
+    value: '৪`১১``',
+    // value: '4`11`',
+    // viewValue: '4`11`',
+    viewValue: '৪`১১``',
   },
   {
-    value: '5`',
-    viewValue: '5`'
+    value: '৫`',
+    // value: '5`',
+    // viewValue: '5`',
+    viewValue: '৫`',
   },
   {
-    value: '5`1`',
-    viewValue: '5`1`'
+    value: '৫`১``',
+    // value: '5`1`',
+    // viewValue: '5`1`',
+    viewValue: '৫`১``',
   },
   {
-    value: '5`2`',
-    viewValue: '5`2`'
+    value: '৫`২``',
+    // value: '5`2`',
+    // viewValue: '5`2`'
+    viewValue: '৫`২``',
   },
   {
-    value: '5`3`',
-    viewValue: '5`3`'
+    value: '৫`৩``',
+    // value: '5`3`',
+    // viewValue: '5`3`'
+    viewValue: '৫`৩``',
   },
   {
-    value: '5`4`',
-    viewValue: '5`4`'
+    value: '৫`৪``',
+    // value: '5`4`',
+    // viewValue: '5`4`'
+    viewValue: '৫`৪``',
   },
   {
-    value: '5`5`',
-    viewValue: '5`5`'
+    value: '৫`৫``',
+    // value: '5`5`',
+    // viewValue: '5`5`'
+    viewValue: '৫`৫``',
   },
   {
-    value: '5`6`',
-    viewValue: '5`6`'
+    value: '৫`৬``',
+    // value: '5`6`',
+    // viewValue: '5`6`'
+    viewValue: '৫`৬``',
   },
   {
-    value: '5`7`',
-    viewValue: '5`7`',
+    value: '৫`৭``',
+    // value: '5`7`',
+    // viewValue: '5`7`',
+    viewValue: '৫`৭``',
   },
   {
-    value: '5`8`',
-    viewValue: '5`8`'
+    value: '৫`৮``',
+    // value: '5`8`',
+    // viewValue: '5`8`'
+    viewValue: '৫`৮``',
   },
   {
-    value: '5`9`',
-    viewValue: '5`9`'
+    value: '৫`৯``',
+    // value: '5`9`',
+    // viewValue: '5`9`'
+    viewValue: '৫`৯``',
   },
   {
-    value: '5`10`',
-    viewValue: '5`10`'
+    value: '৫`১০``',
+    // value: '5`10`',
+    // viewValue: '5`10`'
+    viewValue: '৫`১০``',
   },
   {
-    value: '5`11`',
-    viewValue: '5`11`'
+    value: '৫`১১``',
+    // value: '5`11`',
+    // viewValue: '5`11`'
+    viewValue: '৫`১১``',
   },
   {
-    value: '6`',
-    viewValue: '6`'
+    value: '৬`',
+    // value: '6`',
+    // viewValue: '6`'
+    viewValue: '৬`',
   },
   {
-    value: '6`1`',
-    viewValue: '6`1`'
+    value: '৬`১``',
+    // value: '6`1`',
+    // viewValue: '6`1`'
+    viewValue: '৬`১``',
   },
   {
-    value: '6`2`',
-    viewValue: '6`2`'
+    value: '৬`২``',
+    // value: '6`2`',
+    // viewValue: '6`2`'
+    viewValue: '৬`২``',
   },
   {
-    value: '6`3`',
-    viewValue: '6`3`'
+    value: '৬`৩``',
+    // value: '6`3`',
+    // viewValue: '6`3`'
+    viewValue: '৬`৩``',
   },
   {
-    value: '6`4`',
-    viewValue: '6`4`'
+    value: '৬`৪``',
+    // value: '6`4`',
+    // viewValue: '6`4`'
+    viewValue: '৬`৪``',
   },
   {
-    value: '6`5`',
-    viewValue: '6`5`'
+    value: '৬`৫``',
+    // value: '6`5`',
+    // viewValue: '6`5`'
+    viewValue: '৬`৫``',
   },
   {
-    value: '6`6`',
-    viewValue: '6`6`'
+    value: '৬`৬``',
+    // viewValue: '6`6`'
+    viewValue: '৬`৬``',
   },
   {
-    value: '6`7`',
-    viewValue: '6`7`'
+    value: '৬`৭``',
+    // viewValue: '6`7`'
+    viewValue: '৬`৭``',
   },
   {
-    value: '6`8`',
-    viewValue: '6`8`'
+    value: '৬`৮``',
+    // viewValue: '6`8`'
+    viewValue: '৬`৮``',
   },
   {
-    value: '6`9`',
-    viewValue: '6`9`'
+    value: '৬`৯``',
+    // viewValue: '6`9`'
+    viewValue: '৬`৯``',
   },
   {
-    value: '6`10`',
-    viewValue: '6`10`'
+    value: '৬`১০``',
+    // viewValue: '6`10`'
+    viewValue: '৬`১০``',
   },
   {
-    value: '6`11`',
-    viewValue: '6`11`'
+    value: '৬`১১``',
+    // viewValue: '6`11`'
+    viewValue: '৬`১১``',
   },
   {
-    value: '7`',
-    viewValue: '7`'
+    value: '৭`',
+    // viewValue: '7`'
+    viewValue: '৭`',
   },
   {
-    value: 'More than 7 feet',
-    viewValue: 'More than 7 feet'
+    value: '৭ ফুটের বেশি',
+    // viewValue: 'More than 7 feet',
+    viewValue: '৭ ফুটের বেশি',
   },
 ]
 
 
+
 export const COMPLEXION: Select[] = [
   {
-    value: 'Black',
-    viewValue: 'Black'
+    value: 'কালো',
+    // viewValue: 'Black',
+    viewValue: 'কালো',
   },
   {
-    value: 'Brown',
-    viewValue: 'Brown'
+    value: 'শ্যামলা',
+    // viewValue: 'Brown',
+    viewValue: 'শ্যামলা',
   },
   {
-    value: 'Light Brown',
-    viewValue: 'Light Brown'
+    value: 'উজ্জ্বল শ্যামলা',
+    // viewValue: 'Light Brown',
+    viewValue: 'উজ্জ্বল শ্যামলা',
   },
   {
-    value: 'Fair',
-    viewValue: 'Fair'
+    value: 'ফর্সা',
+    // viewValue: 'Fair',
+    viewValue: 'ফর্সা',
   },
   {
-    value: 'Very Fair',
-    viewValue: 'Very Fair'
+    value: 'উজ্জ্বল ফর্সা',
+    // viewValue: 'Very Fair',
+    viewValue: 'উজ্জ্বল ফর্সা',
   }
 ]
 
@@ -447,9 +532,194 @@ export const BLOODGROUP: Select[] = [
     viewValue: 'O-'
   },
   {
-    value: 'Don`t know',
-    viewValue: 'Don`t know'
+    value: 'আমি জানিনা',
+    // viewValue: 'Don`t know',
+    viewValue: 'আমি জানিনা',
   }
+]
+
+export const LOW_EDUCATION1: any[] = [
+  {
+    value: '১০ম',
+    viewValue: '১০ম'
+  },
+  {
+    value: '৯ম',
+    viewValue: '৯ম'
+  },
+  {
+    value: '৮ম',
+    viewValue: '৮ম'
+  },
+  {
+    value: '৭ম',
+    viewValue: '৭ম'
+  },
+  {
+    value: '৬ষ্ঠ',
+    viewValue: '৬ষ্ঠ'
+  },
+  {
+    value: '৫ম',
+    viewValue: '৫ম'
+  },
+  {
+    value: '৪র্থ',
+    viewValue: '৪র্থ'
+  },
+  {
+    value: '৩য়',
+    viewValue: '৩য়'
+  },
+  {
+    value: '২য়',
+    viewValue: '২য়'
+  },
+  {
+    value: '১ম',
+    viewValue: '১ম'
+  }
+]
+
+export const Madrasha_EDUCATION1: any[] = [
+  {
+    value: 'মুমতাজ',
+    viewValue: 'মুমতাজ'
+  },
+  {
+    value: 'জায়্যিদ জিদ্দান',
+    viewValue: 'জায়্যিদ জিদ্দান'
+  },
+  {
+    value: 'জায়্যিদ',
+    viewValue: 'জায়্যিদ'
+  },
+  {
+    value: 'মাকবুল',
+    viewValue: 'মাকবুল'
+  }
+]
+
+
+export const HEIGHT_EDUCATION1: any[] = [
+  {
+    id: 1,
+    name: "জেনারেল",
+    heightEducation: [
+      {
+        id: "1",
+        name: "এস.এস.সি এর নিচে",
+      },
+      {
+        id: "2",
+        name: "এস.এস.সি",
+      },
+      {
+        id: "3",
+        name: "এইস.এস.সি",
+      },
+      {
+        id: "4",
+        name: "ডিপ্লোমা চলমান",
+      },
+      {
+        id: "5",
+        name: "ডিপ্লোমা",
+      },
+      {
+        id: "6",
+        name: "স্নাতক চলমান",
+      },
+      {
+        id: "7",
+        name: "স্নাতক",
+      },
+      {
+        id: "8",
+        name: "স্নাতকোত্তর",
+      },
+      {
+        id: "9",
+        name: "ডক্টরেট",
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "কওমি",
+    heightEducation: [
+      {
+        id: "1",
+        name: "প্রাথমিক দ্বীনি শিক্ষা",
+      },
+      {
+        id: "2",
+        name: "ইবতিদাইয়াহ",
+      },
+      {
+        id: "3",
+        name: "মুতাওয়াসসিতাহ",
+      },
+      {
+        id: "4",
+        name: "সানাবিয়া উলইয়া",
+      },
+      {
+        id: "5",
+        name: "ফজিলত",
+      },
+      {
+        id: "6",
+        name: "তাকমীল",
+      },
+      {
+        id: "7",
+        name: "তাখাসসুস",
+      },
+    ]
+  },
+  {
+    id: 3,
+    name: "আলিয়া",
+    heightEducation: [
+      {
+        id: "1",
+        name: "এস.এস.সি এর নিচে",
+      },
+      {
+        id: "2",
+        name: "এস.এস.সি",
+      },
+      {
+        id: "3",
+        name: "এইস.এস.সি",
+      },
+      {
+        id: "4",
+        name: "ডিপ্লোমা চলমান",
+      },
+      {
+        id: "5",
+        name: "ডিপ্লোমা",
+      },
+      {
+        id: "6",
+        name: "স্নাতক চলমান",
+      },
+      {
+        id: "7",
+        name: "স্নাতক",
+      },
+      {
+        id: "8",
+        name: "স্নাতকোত্তর",
+      },
+      {
+        id: "9",
+        name: "ডক্টরেট",
+      }
+    ]
+  },
 ]
 
 
@@ -490,6 +760,7 @@ export const GROUP: Select[] = [
 ]
 
 
+
 export const RESULT: Select[] = [
   {
     value: 'A+',
@@ -524,8 +795,10 @@ export const ALIVE: Select[] = [
 ];
 
 export const BIODATA_TYPE: Select[] = [
-  {value: 'Males Biodata', viewValue: 'Males Biodata'},
-  {value: 'Females Biodata', viewValue: 'Females Biodata'},
+  // {value: 'Males Biodata', viewValue: 'Males Biodata'},
+  {value: 'পাত্রের বায়োডাটা', viewValue: 'পাত্রের বায়োডাটা'},
+  // {value: 'Females Biodata', viewValue: 'Females Biodata'},
+  {value: 'পাত্রীর বায়োডাটা', viewValue: 'পাত্রীর বায়োডাটা'},
 ];
 
 

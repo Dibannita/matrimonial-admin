@@ -1,0 +1,446 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>প্রত্যাশিত জীবনসঙ্গী</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+
+              <div class="input-select-box">
+                <p>
+                  <label for="partnerMaritalStatus">
+                    বৈবাহিক অবস্থা<span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="partnerMaritalStatus" formControlName="partnerMaritalStatus">
+                    <!--                    <option selected hidden value="">Select...</option>-->
+                    <option selected hidden value="">বাছাই করুন...</option>
+                    <option *ngFor="let item of maritalStatus" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerMaritalStatus').touched &&
+                    dataForm.get('partnerMaritalStatus').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="howManyBrides">-->
+              <!--                    কততম পাত্রী-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="howManyBrides"-->
+              <!--                    placeholder="২য়/৩য়.."-->
+              <!--                    formControlName="howManyBrides"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('partnerAge').touched &&-->
+              <!--                    dataForm.get('partnerAge').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+
+              <!--              </div>-->
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="specificReasonsDivorce">-->
+              <!--                    তালাক প্রাপ্ত হওয়ার সুনির্দিষ্ট কারণ-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="specificReasonsDivorce"-->
+              <!--                    placeholder="বিবাহবিচ্ছেদের সুনির্দিষ্ট কারণ সম্পর্কে বলুন"-->
+              <!--                    formControlName="specificReasonsDivorce"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('partnerAge').touched &&-->
+              <!--                    dataForm.get('partnerAge').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+
+              <!--              </div>-->
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="howManyGrooms">-->
+              <!--                    কততম পাত্র-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="howManyGrooms"-->
+              <!--                    placeholder="২য়/৩য়.."-->
+              <!--                    formControlName="howManyGrooms"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('partnerAge').touched &&-->
+              <!--                    dataForm.get('partnerAge').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+
+              <!--              </div>-->
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerAge">
+                    বয়স
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerAge"
+                    placeholder="বয়স"
+                    formControlName="partnerAge"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerAge').touched &&
+                    dataForm.get('partnerAge').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="partnerHeight">উচ্চতা<span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="partnerHeight" formControlName="partnerHeight">
+                    <!--                    <option selected hidden value="">Select...</option>-->
+                    <option selected hidden value="">বাছাই করুন...</option>
+                    <option *ngFor="let item of height" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerHeight').touched &&
+                    dataForm.get('partnerHeight').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="partnerComplexion">গায়ের রঙ<span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="partnerComplexion" formControlName="partnerComplexion">
+                    <!--                    <option selected hidden value="">Select...</option>-->
+                    <option selected hidden value="">বাছাই করুন...</option>
+                    <option *ngFor="let item of complexion" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerComplexion').touched &&
+                    dataForm.get('partnerComplexion').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerOccupation">পেশা<span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerOccupation"
+                    placeholder="পেশা"
+                    formControlName="partnerOccupation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerOccupation').touched &&
+                    dataForm.get('partnerOccupation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerMajhab">মাযহাব/মানহায:<span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerMajhab"
+                    placeholder="মাযহাব/মানহায"
+                    formControlName="partnerMajhab"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerMajhab').touched &&
+                    dataForm.get('partnerMajhab').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerArea">ঠিকানা:<span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerArea"
+                    placeholder="এলাকা"
+                    formControlName="partnerArea"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerArea').touched &&
+                    dataForm.get('partnerArea').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerFinancial">অর্থনৈতিক অবস্থা:<span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerFinancial"
+                    placeholder="অর্থনৈতিক অবস্থা"
+                    formControlName="partnerFinancial"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerFinancial').touched &&
+                    dataForm.get('partnerFinancial').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerDin">দীনদারিত্ব <span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerDin"
+                    placeholder="দীনদারিত্ব"
+                    formControlName="partnerDin"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerDin').touched &&
+                    dataForm.get('partnerDin').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="partnerGun">বিশেষ গুন্/বৈশিষ্ট <span>*</span></label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="partnerGun"
+                    placeholder="বিশেষ গুন্/বৈশিষ্ট"
+                    formControlName="partnerGun"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('partnerGun').touched &&
+                    dataForm.get('partnerGun').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+            </div>
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

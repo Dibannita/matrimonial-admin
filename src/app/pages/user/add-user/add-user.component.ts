@@ -104,15 +104,17 @@ export class AddUserComponent implements OnInit {
 
   private initDataForm() {
     this.dataForm = this.fb.group({
-      name: [null, Validators.required],
+      name: [null],
       username: [null, Validators.required],
       address: [null],
       hasAccess: [null],
       gender: [null],
       password: [null],
-      email: new FormControl('', [Validators.email]),
+      email: new FormControl(null, [Validators.email]),
       phoneNo: [null, Validators.required],
       profileImg: [null],
+      transactionId: [null],
+      amount: [null],
     });
   }
 

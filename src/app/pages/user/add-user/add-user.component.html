@@ -21,7 +21,7 @@
         <div class="from">
           <mat-label>Name</mat-label>
           <mat-form-field appearance="outline">
-            <input formControlName="name" matInput required placeholder="Enter name"/>
+            <input formControlName="name" matInput placeholder="Enter name"/>
             <mat-error>This field is required.</mat-error>
           </mat-form-field>
         </div>
@@ -54,6 +54,24 @@
         </div>
       </div>
 
+      <div class="div-one">
+        <div class="from">
+          <mat-label>Transaction Id</mat-label>
+          <mat-form-field appearance="outline">
+            <input formControlName="transactionId" matInput type="text" placeholder="Enter Transaction Id"/>
+            <mat-error>This field is required.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="from">
+          <mat-label>Amount</mat-label>
+          <mat-form-field appearance="outline">
+            <input formControlName="amount" matInput required digitOnly type="text" placeholder="Enter amount"/>
+            <mat-error>This field is required.</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
 
       <div class="div-one">
         <div class="from">
@@ -73,7 +91,7 @@
         <div class="from">
           <mat-label>Gender</mat-label>
           <mat-form-field appearance="outline">
-            <mat-select formControlName="gender" required>
+            <mat-select formControlName="gender">
 
               <mat-option *ngFor="let gender of genders" [value]="gender.value">
                 {{gender.viewValue}}
@@ -102,7 +120,7 @@
       <button mat-raised-button type="submit" class="btn-submit">
         {{ id ? "Update" : "Submit" }}
       </button>
-      <button type="button" [routerLink]="['../']" mat-raised-button class="btn-submit color">
+      <button type="button" [routerLink]="['/user/user-list']" mat-raised-button class="btn-submit color">
         Cancel
       </button>
     </div>

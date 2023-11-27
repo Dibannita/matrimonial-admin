@@ -1,0 +1,53 @@
+<div class="header">
+  <h2>Contact Request LIst</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Requested By'}}</th>
+      <th scope="col">{{'Phone No'}}</th>
+      <th scope="col">{{'Requested For'}}</th>
+
+      <th scope="col">{{'Gender'}}</th>
+      <th scope="col">{{'Guardian Number'}}</th>
+      <th scope="col">{{'Guardian Email'}}</th>
+      <th scope="col">{{'Status'}}</th>
+      <th scope="col">{{'Requested Date'}}</th>
+
+
+      <th scope="col">{{'Action'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of allContactRequests; let i = index">
+      <td [attr.data-label]="'Requested By'">{{data.user?.name}}</td>
+      <td [attr.data-label]="'Phone No'">{{data.user?.phoneNo}}</td>
+      <td [attr.data-label]="'Requested For'">{{data.product?.name}}</td>
+      <td [attr.data-label]="'Gender'">{{data.product?.bioDataType}}</td>
+      <td [attr.data-label]="'Guardian Number'">{{data.product?.guardianNumber}}</td>
+      <td [attr.data-label]="'Guardian Email'">{{data.product?.receiveBiodata}}</td>
+
+
+      <td [attr.data-label]="'Status'">{{ data.status ? 'Approved' : 'Not Approved' }}</td>
+      <td [attr.data-label]="'Requested Date'">{{data.requestDate | date}}</td>
+
+      <!--      <td [attr.data-label]="'createdAt'">{{data.createdAt | date}}</td>-->
+      <!--      <td [attr.data-label]="'Attributes'">{{data.attributes}}</td>-->
+      <td [attr.data-label]="'Actions'">
+        <button style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button style="margin-right: 5px;" [routerLink]="['reply-contact-request', data._id]" mat-mini-fab>
+          <mat-icon>reply</mat-icon>
+        </button>
+        <!--        <button mat-mini-fab color="primary" (click)="openComponentDialog(data.product)">-->
+        <!--          <mat-icon>visibility</mat-icon>-->
+        <!--        </button>-->
+      </td>
+    </tr><!-- End Table Body -->
+  </table>
+</div>
