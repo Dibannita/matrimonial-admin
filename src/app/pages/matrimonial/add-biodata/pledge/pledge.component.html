@@ -1,0 +1,372 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>ব্যক্তিগত তথ্য</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-select-box">
+                <p>
+                  <label for="song"
+                  >গান শোনা ও টিভি দেখার অভ্যাস আছে ? <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="song"
+                    formControlName="song"
+                  >
+                    <option selected hidden value="">বাছাই করুন...</option>
+                    <option *ngFor="let item of agree" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('song').touched &&
+                    dataForm.get('song').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="facebook">
+                    ফেসবুকে ইউটিউবে স্ক্রল করতে যেয়ে আশা ছোটখাটো মুভি গান নাটক ভিডিও ক্লিপ চলে এলে দেখা হয় বা এড়িয়ে যাওয়া হয়?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="facebook"
+                    placeholder=""
+                    formControlName="facebook"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('facebook').touched &&
+                    dataForm.get('facebook').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="salat">
+                    অসুস্থতা জনিত বা শরিয়া সম্মত ওজর ব্যতীত প্রতিমাসে কয় ওয়াক্ত সালাত কাজা হয় এবং প্রতিদিন কয় ওয়াক্ত সালাত জামাতে আদায় হয় ?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="salat"
+                    placeholder=""
+                    formControlName="salat"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('salat').touched &&
+                    dataForm.get('salat').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+
+
+              <div class="input-box">
+                <p>
+                  <label for="physicalDiseases">
+                    জানা মতে মানসিক/ শারীরিক কোন অসুস্থতা আছে?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="physicalDiseases"
+                    placeholder=""
+                    formControlName="physicalDiseases"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('physicalDiseases').touched &&
+                    dataForm.get('physicalDiseases').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="pordha">-->
+              <!--                    পদদ া বিরত কী বুরেন?-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="pordha"-->
+              <!--                    placeholder=""-->
+              <!--                    formControlName="pordha"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('pordha').touched &&-->
+              <!--                    dataForm.get('pordha').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+
+              <!--              </div>-->
+              <!-- END! input-box -->
+
+              <div class="input-box">
+                <p>
+                  <label for="readQuranSuddho">
+                    শুদ্ধভাবে কোরআন তেলওয়াত করতে পারেন ? অথবা তিলাওয়াতের  অবস্থা কী ?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="readQuranSuddho"
+                    placeholder=""
+                    formControlName="readQuranSuddho"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('readQuranSuddho').touched &&
+                    dataForm.get('readQuranSuddho').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="readQuranDaily">
+                    নিয়মিত কোরআন তেলাওয়াত করা হয় কিনা?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="readQuranDaily"
+                    placeholder=""
+                    formControlName="readQuranDaily"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('readQuranDaily').touched &&
+                    dataForm.get('readQuranDaily').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box">
+                <p>
+                  <label for="gunaho">
+                    গোপন গুনাহের ব্যাপারে আল্লাহকে ভয় করেন?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="gunaho"
+                    placeholder=""
+                    formControlName="gunaho"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('gunaho').touched &&
+                    dataForm.get('gunaho').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+
+              </div>
+              <!-- END! input-box -->
+
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="motamot">-->
+              <!--                    কক্ষফনমননজম এর বযাপারর আপনার মতামত কী?-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="motamot"-->
+              <!--                    placeholder=""-->
+              <!--                    formControlName="motamot"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('motamot').touched &&-->
+              <!--                    dataForm.get('motamot').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+
+              <!--              </div>-->
+              <!-- END! input-box -->
+            </div>
+
+            <!-- END! form-four-grid -->
+
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

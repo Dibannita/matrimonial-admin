@@ -12,7 +12,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #1f74ff;
+  background: #001959;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@
   h1 {
     font-family: $font-en-primary;
     font-weight: 600;
-    color: #1f74ff;
+    color: #001959;
     font-size: 32px;
     padding: 8px 0;
   }
@@ -151,7 +151,7 @@
 
   p {
     font-size: 16px;
-    color: #1f74ff;
+    color: #001959;
     font-family: $font-en-primary;
     font-weight: 400;
   }
@@ -169,7 +169,7 @@
       }
 
       a {
-        color: #1f74ff;
+        color: #001959;
         font-size: 14px;
         text-decoration: none;
 
@@ -182,7 +182,7 @@
 }
 
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
-  background-color: #1f74ff;
+  background-color: #001959;
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1064px){

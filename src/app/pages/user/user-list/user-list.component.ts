@@ -17,6 +17,7 @@ import {Pagination} from '../../../interfaces/core/pagination';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {FileUploadService} from 'src/app/services/gallery/file-upload.service';
 import {AdminService} from '../../../services/admin/admin.service';
+import {UserDataService} from '../../../services/common/user-data.service';
 
 @Component({
   selector: 'app-user-list',
@@ -77,6 +78,7 @@ export class UserListComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private usersService: UsersService,
+    private userDataService: UserDataService,
     private uiService: UiService,
     private router: Router,
     private reloadService: ReloadService,
@@ -91,7 +93,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     // Reload Data
-    this.subReload = this.reloadService.refreshBrand$.subscribe(() => {
+    this.subReload = this.reloadService.refreshData$.subscribe(() => {
       this.getAllUserss();
     });
 
@@ -143,6 +145,9 @@ export class UserListComponent implements OnInit {
             description: 1,
             image: 1,
             profileImg: 1,
+            transactionId: 1,
+            amount: 1,
+            hasAccess: 1,
           };
 
           const filterData: FilterData = {
@@ -225,6 +230,9 @@ export class UserListComponent implements OnInit {
         referId: 1,
         profileImg: 1,
         createdAt: 1,
+        transactionId: 1,
+        amount: 1,
+        hasAccess: 1,
       },
       sort: {createdAt: -1},
     };
@@ -246,6 +254,26 @@ export class UserListComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  private updateMultipleUserById(data: any) {
+    this.spinner.show();
+    // Remove Current Admin Id
+    const mSelectedIds = this.selectedIds.filter(m => m !== this.adminId);
+    this.userDataService.updateMultipleUserById(mSelectedIds, data)
+      .subscribe(res => {
+        this.spinner.hide();
+        if (res.success) {
+          this.selectedIds = [];
+          this.uiService.success(res.message);
+          this.reloadService.needRefreshData$();
+        } else {
+          this.uiService.warn(res.message)
+        }
+      }, error => {
+        this.spinner.hide()
+        console.log(error);
+      });
   }
 
   private deleteMultipleUsersById() {
@@ -271,7 +299,7 @@ export class UserListComponent implements OnInit {
             if (this.currentPage > 1) {
               this.router.navigate([], {queryParams: {page: 1}});
             } else {
-              this.getAllUserss();
+              this.reloadService.needRefreshData$();
             }
           } else {
             this.uiService.warn(res.message);
@@ -340,7 +368,7 @@ export class UserListComponent implements OnInit {
    * COMPONENT DIALOG VIEW
    * openConfirmDialog()
    */
-  public openConfirmDialog(type: string) {
+  public openConfirmDialog(type: string, data?: any) {
     switch (type) {
       case 'delete': {
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -353,6 +381,21 @@ export class UserListComponent implements OnInit {
         dialogRef.afterClosed().subscribe((dialogResult) => {
           if (dialogResult) {
             this.deleteMultipleUsersById();
+          }
+        });
+        break;
+      }
+      case 'edit': {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+          maxWidth: '400px',
+          data: {
+            title: 'Confirm Edit',
+            message: 'Are you sure you want edit this data?'
+          }
+        });
+        dialogRef.afterClosed().subscribe(dialogResult => {
+          if (dialogResult) {
+            this.updateMultipleUserById(data);
           }
         });
         break;

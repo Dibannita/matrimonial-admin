@@ -1,0 +1,1261 @@
+<div class="line-bar">
+  <div class="container">
+    <div class="line-bar-parent">
+      <div class="line-bar-child">
+        <ul>
+          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">1</div>
+            </div>
+            <p class="text">সাধারণ তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/address" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">2</div>
+            </div>
+            <p class="text">ঠিকানা</p>
+          </li>
+
+          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child active">3</div>
+            </div>
+            <p class="text">শিক্ষাগত যোগ্যতা</p>
+          </li>
+
+          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">4</div>
+            </div>
+            <p class="text">পারিবারিক তথ্য</p>
+          </li>
+
+
+          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">5</div>
+            </div>
+            <p class="text">প্রত্যাশিত জীবনসঙ্গী</p>
+          </li>
+
+          <li routerLink="/add-biodata/pledge" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">6</div>
+            </div>
+            <p class="text">ব্যক্তিগত তথ্য</p>
+          </li>
+
+          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">7</div>
+            </div>
+            <p class="text">বিয়ে সম্পর্কিত</p>
+          </li>
+
+          <li routerLink="/add-biodata/contact" [queryParamsHandling]="'merge'">
+            <div class="circle-top">
+              <div class="circle-top-child">8</div>
+            </div>
+            <p class="text">Contact</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END! line-bar -->
+
+<div class="main-bio-data">
+  <div class="container">
+    <div class="main-bio-data-form">
+      <div class="main-bio-data-top">
+        <h1>শিক্ষাগত যোগ্যতা</h1>
+      </div>
+
+      <div class="add-new-product">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
+          <div class="main-form-area">
+            <div class="form-one-grid">
+              <div class="input-select-box">
+                <p>
+                  <label for="Education_Method"
+                  >আপনার শিক্ষার মাধ্যম <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="Education_Method"
+                    formControlName="yourEducationMethod" (change)="educationMethodData($event)"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of educationMethod" [value]="item?.name">{{item?.name}}</option>
+                  </select>
+                </div>
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('yourEducationMethod').touched &&
+                    dataForm.get('yourEducationMethod').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box">
+                <p>
+                  <label for="Highest_educational"
+                  >সর্বোচ্চ শিক্ষাগত যোগ্যতা <span>*</span></label
+                  >
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select
+                    id="Highest_educational"
+                    formControlName="highestEducation"
+                    (change)="heightEducationValue($event)"
+                  >
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of heightEducationData[0]?.heightEducation1" [value]="item?.name">{{item?.name}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('highestEducation').touched &&
+                    dataForm.get('highestEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div *ngIf="selectedEducationType === 'এস.এস.সি এর নিচে' && selectedType === 'জেনারেল'">
+                <div class="input-select-box">
+                  <p>
+                    <label for="Highest_educational"
+                    >আপনি কোন ক্লাস পর্যন্ত পড়াশোনা করেছেন? <span>*</span></label
+                    >
+                  </p>
+
+                  <div class="input-custom-select-box">
+                    <select
+                      id="underSSC"
+                      formControlName="underSSC"
+                    >
+                      <option selected hidden value="">Select...</option>
+                      <option *ngFor="let item of underSscEducation" [value]="item?.value">{{item?.viewValue}}</option>
+                    </select>
+                  </div>
+
+                  <p
+                    class="required"
+                    *ngIf="
+                    dataForm.get('underSSC').touched &&
+                    dataForm.get('underSSC').invalid
+                  "
+                  >
+                    <i>This felid is required</i>
+                  </p>
+                </div>
+              </div>
+
+              <!--              <div *ngIf="selectedEducationType === 'এস.এস.সি'">-->
+              <!--                <div class="input-select-box">-->
+              <!--                  <p>-->
+              <!--                    <label for="Highest_educational"-->
+              <!--                    >আপনি কোন ক্লাস পর্যন্ত পড়াশোনা করেছেন? <span>*</span></label-->
+              <!--                    >-->
+              <!--                  </p>-->
+
+              <!--                  <div class="input-custom-select-box">-->
+              <!--                    <select-->
+              <!--                      id="underSSC"-->
+              <!--                      formControlName="underSSC"-->
+              <!--                    >-->
+              <!--                      <option selected hidden value="">Select...</option>-->
+              <!--                      <option *ngFor="let item of underSscEducation" [value]="item?.value">{{item?.viewValue}}</option>-->
+              <!--                    </select>-->
+              <!--                  </div>-->
+
+              <!--                  <p-->
+              <!--                    class="required"-->
+              <!--                    *ngIf="-->
+              <!--                    dataForm.get('underSSC').touched &&-->
+              <!--                    dataForm.get('underSSC').invalid-->
+              <!--                  "-->
+              <!--                  >-->
+              <!--                    <i>This felid is required</i>-->
+              <!--                  </p>-->
+              <!--                </div>-->
+              <!--              </div>-->
+
+              <div class="input-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="Equivalent_Passing">
+                    এসএসসি/দাখিল/সমমান পাসের বছর
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Equivalent_Passing"
+                    formControlName="sscPassingYear"
+                    placeholder=""
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscPassingYear').touched &&
+                    dataForm.get('sscPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="Group">বিভাগ<span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="Group" formControlName="sscGroup">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of groupData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscGroup').touched &&
+                    dataForm.get('sscGroup').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box" *ngIf=" selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="Result">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="Result" formControlName="sscResult">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of resultData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('sscResult').touched &&
+                    dataForm.get('sscResult').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা'">
+                <p>
+                  <label for="Subject">
+                    আপনার ডিপ্লোমার বিষয় কি?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Subject"
+                    placeholder=""
+                    formControlName="diplomaSubject"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaSubject').touched &&
+                    dataForm.get('diplomaSubject').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="passingYearHSC">
+                    এইস.এস.সি/আলিম/সমমান পাসের বছর
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="passingYearHSC"
+                    formControlName="passingYearHSC"
+                    placeholder=""
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('passingYearHSC').touched &&
+                    dataForm.get('passingYearHSC').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="groupHSC">বিভাগ<span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="groupHSC" formControlName="groupHSC">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of groupData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('groupHSC').touched &&
+                    dataForm.get('groupHSC').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="resultHSC">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="resultHSC" formControlName="resultHSC">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of resultData" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('resultHSC').touched &&
+                    dataForm.get('resultHSC').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+
+              <div class="input-box" *ngIf="  selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা'">
+                <p>
+                  <label for="institution">
+                    শিক্ষা প্রতিষ্ঠানের নাম
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="institution"
+                    placeholder=""
+                    formControlName="diplomaInstitution"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaInstitution').touched &&
+                    dataForm.get('diplomaInstitution').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা'">
+                <p>
+                  <label for="Passing_year">
+                    পাসের বছর
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="Passing_year"
+                    placeholder=""
+                    formControlName="diplomaPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('diplomaPassingYear').touched &&
+                    dataForm.get('diplomaPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা চলমান'">
+                <p>
+                  <label for="konYearDiploma">
+                    এখন কোন বর্ষে পড়ছেন?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="konYearDiploma"
+                    placeholder=""
+                    formControlName="konYearDiploma"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('konYearDiploma').touched &&
+                    dataForm.get('konYearDiploma').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান' || selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="institution">
+                    স্নাতক/ স্নাতক (সম্মান)/ ফাজিল পড়াশোনার বিষয়
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snakottoBisoi"
+                    placeholder=""
+                    formControlName="snakottoBisoi"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snakottoBisoi').touched &&
+                    dataForm.get('snakottoBisoi').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান' || selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="snakottoInstiute">
+                    শিক্ষা প্রতিষ্ঠানের নাম
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snakottoInstiute"
+                    placeholder=""
+                    formControlName="snakottoInstiute"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snakottoInstiute').touched &&
+                    dataForm.get('snakottoInstiute').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান'">
+                <p>
+                  <label for="snakottoBosor">
+                    কোন বর্ষে পড়ছেন?
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snakottoBosor"
+                    placeholder=""
+                    formControlName="snakottoBosor"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snakottoBosor').touched &&
+                    dataForm.get('snakottoBosor').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="snakonttoPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snakonttoPassingYear"
+                    placeholder=""
+                    formControlName="snakonttoPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snakonttoPassingYear').touched &&
+                    dataForm.get('snakonttoPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+
+              <!-- END! input-box -->
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="snatokBisoi">
+                    স্নাতকোত্তর/ কামিল পড়াশোনার বিষয়
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snatokBisoi"
+                    placeholder=""
+                    formControlName="snatokBisoi"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snatokBisoi').touched &&
+                    dataForm.get('snatokBisoi').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="snatokInstitute">
+                    শিক্ষা প্রতিষ্ঠানের নাম
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snatokInstitute"
+                    placeholder=""
+                    formControlName="snatokInstitute"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snatokInstitute').touched &&
+                    dataForm.get('snatokInstitute').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+                <p>
+                  <label for="snatokPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="snatokPassingYear"
+                    placeholder=""
+                    formControlName="snatokPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('snatokPassingYear').touched &&
+                    dataForm.get('snatokPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+                <p>
+                  <label for="ebadahoEducation">
+                    ইবতিদাইয়াহ কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="ebadahoEducation"
+                    placeholder=""
+                    formControlName="ebadahoEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('ebadahoEducation').touched &&
+                    dataForm.get('ebadahoEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+                <p>
+                  <label for="ebadahoFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="ebadahoFolafol" formControlName="ebadahoFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('ebadahoFolafol').touched &&
+                    dataForm.get('ebadahoFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+                <p>
+                  <label for="ebadahoPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="ebadahoPassingYear"
+                    placeholder=""
+                    formControlName="ebadahoPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('ebadahoPassingYear').touched &&
+                    dataForm.get('ebadahoPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+                <p>
+                  <label for="muftiEducation">
+                    মুতাওয়াসসিতাহ কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="muftiEducation"
+                    placeholder=""
+                    formControlName="muftiEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('muftiEducation').touched &&
+                    dataForm.get('muftiEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+                <p>
+                  <label for="ebadahoFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="muftiFolafol" formControlName="muftiFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('muftiFolafol').touched &&
+                    dataForm.get('muftiFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+                <p>
+                  <label for="muftiPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="muftiPassingYear"
+                    placeholder=""
+                    formControlName="muftiPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('muftiPassingYear').touched &&
+                    dataForm.get('muftiPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+                <p>
+                  <label for="muftiEducation">
+                    সানাবিয়া উলইয়া কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="saniEducation"
+                    placeholder=""
+                    formControlName="saniEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('saniEducation').touched &&
+                    dataForm.get('saniEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+                <p>
+                  <label for="saniFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="saniFolafol" formControlName="saniFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('saniFolafol').touched &&
+                    dataForm.get('saniFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+                <p>
+                  <label for="saniPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="saniPassingYear"
+                    placeholder=""
+                    formControlName="saniPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('saniPassingYear').touched &&
+                    dataForm.get('saniPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+                <p>
+                  <label for="fojilotEducation">
+                    ফজিলত কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="fojilotEducation"
+                    placeholder=""
+                    formControlName="fojilotEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('fojilotEducation').touched &&
+                    dataForm.get('fojilotEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+                <p>
+                  <label for="fojilotFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="fojilotFolafol" formControlName="fojilotFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('fojilotFolafol').touched &&
+                    dataForm.get('fojilotFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+                <p>
+                  <label for="fojilotPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="fojilotPassingYear"
+                    placeholder=""
+                    formControlName="fojilotPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('fojilotPassingYear').touched &&
+                    dataForm.get('fojilotPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="takmilEducation">
+                    তাকমীল কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="takmilEducation"
+                    placeholder=""
+                    formControlName="takmilEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('takmilEducation').touched &&
+                    dataForm.get('takmilEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="takmilFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="takmilFolafol" formControlName="takmilFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('takmilFolafol').touched &&
+                    dataForm.get('takmilFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="takmilPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="takmilPassingYear"
+                    placeholder=""
+                    formControlName="takmilPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('takmilPassingYear').touched &&
+                    dataForm.get('takmilPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+
+              <!--              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">-->
+              <!--                <p>-->
+              <!--                  <label for="taksuInstitution">-->
+              <!--                    তাকমীল কোন মাদ্রাসা থেকে পড়েছেন-->
+              <!--                    <span>*</span>-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input-->
+              <!--                    type="text"-->
+              <!--                    id="taksuInstitution"-->
+              <!--                    placeholder=""-->
+              <!--                    formControlName="taksuInstitution"-->
+              <!--                  />-->
+              <!--                </div>-->
+
+              <!--                <p-->
+              <!--                  class="required"-->
+              <!--                  *ngIf="-->
+              <!--                    dataForm.get('taksuInstitution').touched &&-->
+              <!--                    dataForm.get('taksuInstitution').invalid-->
+              <!--                  "-->
+              <!--                >-->
+              <!--                  <i>This felid is required</i>-->
+              <!--                </p>-->
+              <!--              </div>-->
+              <!--              &lt;!&ndash; END! input-box &ndash;&gt;-->
+
+
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="taksuEducation">
+                    তাখাসসুস কোন মাদ্রাসা থেকে পড়েছেন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="taksuEducation"
+                    placeholder=""
+                    formControlName="taksuEducation"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('taksuEducation').touched &&
+                    dataForm.get('taksuEducation').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="taksuFolafol">ফলাফল <span>*</span></label>
+                </p>
+
+                <div class="input-custom-select-box">
+                  <select id="taksuFolafol" formControlName="taksuFolafol">
+                    <option selected hidden value="">Select...</option>
+                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                  </select>
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('taksuFolafol').touched &&
+                    dataForm.get('taksuFolafol').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-select-box -->
+              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+                <p>
+                  <label for="taksuPassingYear">
+                    পাসের সন
+                    <span>*</span>
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <input
+                    type="text"
+                    id="taksuPassingYear"
+                    placeholder=""
+                    formControlName="taksuPassingYear"
+                  />
+                </div>
+
+                <p
+                  class="required"
+                  *ngIf="
+                    dataForm.get('taksuPassingYear').touched &&
+                    dataForm.get('taksuPassingYear').invalid
+                  "
+                >
+                  <i>This felid is required</i>
+                </p>
+              </div>
+              <!-- END! input-box -->
+
+              <div class="input-box-textarea">
+                <p>
+                  <label for="Other_educational">
+                    অন্যান্য শিক্ষাগত যোগ্যতা
+                  </label>
+                </p>
+
+                <div class="input-doc">
+                  <textarea
+                    name=""
+                    id="Other_educational"
+                    cols="30"
+                    rows="5"
+                    placeholder=""
+                    formControlName="otherEducationalQualifications"
+                  ></textarea>
+                </div>
+
+                <!--                <p class="extra-text">-->
+                <!--                  Write the details including the name of the educational-->
+                <!--                  institution, subject, passing year. If there is nothing, leave-->
+                <!--                  it empty.-->
+                <!--                </p>-->
+              </div>
+              <!-- END! input-box -->
+
+              <!--              <div class="input-box">-->
+              <!--                <p>-->
+              <!--                  <label for="Islamic_education">-->
+              <!--                    Islamic educational titles-->
+              <!--                  </label>-->
+              <!--                </p>-->
+
+              <!--                <div class="input-doc">-->
+              <!--                  <input type="text" id="Islamic_education" formControlName="islamicEducationalTitles" />-->
+              <!--                </div>-->
+
+              <!--                <p class="extra-text">-->
+              <!--                  Leave the field blank if you do not have a title. If yes, you-->
+              <!--                  can select one or more.-->
+              <!--                </p>-->
+              <!--              </div>-->
+              <!-- END! input-box -->
+              <!--              <mat-form-field appearance="outline" class="w-100">-->
+              <!--                <mat-label>Select Educational Titles</mat-label>-->
+              <!--                <mat-select formControlName="islamicEducationalTitles" multiple>-->
+              <!--                  <mat-option *ngFor="let item of islamicTitles" [value]="item.value">-->
+              <!--                    {{item.viewValue}}-->
+              <!--                  </mat-option>-->
+              <!--                </mat-select>-->
+              <!--              </mat-form-field>-->
+
+
+              <!-- END! form-four-grid -->
+            </div>
+            <div class="submit-btn">
+              <button class="back-btn" (click)="onGoBack()" type="button">
+                Back
+              </button>
+              <button class="sub-btn" type="submit" [disabled]="isLoader">
+                <div class="loader" *ngIf="isLoader"></div>
+                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+              </button>
+            </div>
+            <!-- END! submit-btn -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

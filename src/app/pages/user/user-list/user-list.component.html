@@ -72,7 +72,29 @@
 
       <div class="right" *ngIf="selectedIds && selectedIds.length">
 
-
+        <button
+          *ngIf="checkEditPermission"
+          mat-stroked-button
+          color="primary"
+          [matMenuTriggerFor]="menu"
+        >
+          Change Status
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            (click)="openConfirmDialog('edit', { hasAccess: true })"
+          >
+            Approve
+          </button>
+          <button
+            mat-menu-item
+            (click)="openConfirmDialog('edit', { hasAccess: false })"
+          >
+            UnApprove
+          </button>
+        </mat-menu>
         <button
           *ngIf="checkDeletePermission"
           mat-stroked-button
@@ -99,7 +121,9 @@
         <th>User Name</th>
         <th>Gmail</th>
         <th>Phone</th>
-        <th>Refer Id</th>
+        <th>transactionId</th>
+        <th>Amount</th>
+        <th>Has Access</th>
         <th>Action</th>
       </tr>
 
@@ -124,7 +148,11 @@
         <td>{{ data.username || "-" | uppercase }}</td>
         <td>{{ data.email || "-" | uppercase }}</td>
         <td>{{ data.phoneNo || "-" }}</td>
-        <td>{{ data.referId || "-" }}</td>
+        <td>{{ data.transactionId || "-" }}</td>
+        <td>{{ data.amount || "-" }}</td>
+        <td [style.color]="data.hasAccess ? 'green' : 'red'" style="font-weight: 700">
+          {{ data.hasAccess ? "Yes" : "No" }}
+        </td>
         <td class="button">
           <button matTooltip="Edit" mat-mini-fab color="accent" [routerLink]="['../edit-user/', data._id]">
             <mat-icon>edit</mat-icon>

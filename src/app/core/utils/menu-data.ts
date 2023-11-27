@@ -180,7 +180,7 @@ export const SUPER_ADMIN_MENU: AdminMenu[] = [
         id: 1,
         name: 'Add Matrimonial',
         hasSubMenu: true,
-        routerLink: 'matrimonial/add-matrimonial',
+        routerLink: '/add-biodata',
         icon: 'arrow_right',
       },
       {
@@ -296,6 +296,22 @@ export const SUPER_ADMIN_MENU: AdminMenu[] = [
     ],
   },
   {
+    id: 77,
+    name: 'Management',
+    hasSubMenu: true,
+    routerLink: null,
+    icon: 'person_3',
+    subMenus: [
+      {
+        id: 1,
+        name: 'All Management',
+        hasSubMenu: true,
+        routerLink: 'management/all-management',
+        icon: 'arrow_right',
+      }
+    ],
+  },
+  {
     id: 8,
     name: 'Admin Control',
     hasSubMenu: true,
@@ -364,6 +380,24 @@ export const SUPER_ADMIN_MENU: AdminMenu[] = [
         name: 'All Review',
         hasSubMenu: true,
         routerLink: 'review',
+        icon: 'arrow_right',
+      }
+
+    ],
+  },
+
+  {
+    id: 111,
+    name: 'Contact Request',
+    hasSubMenu: true,
+    routerLink: null,
+    icon: 'phone_iphone',
+    subMenus: [
+      {
+        id: 1,
+        name: 'All Contact Request',
+        hasSubMenu: true,
+        routerLink: 'contact-request',
         icon: 'arrow_right',
       }
 

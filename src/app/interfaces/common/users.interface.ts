@@ -9,6 +9,9 @@ export interface Users {
   image?: string;
   profileImg?: string;
   phone?: string;
+  transactionId?: string;
+  amount?: number;
+  hasAccess?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   select?: boolean;

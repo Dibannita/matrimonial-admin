@@ -27,6 +27,7 @@ import {AddressComponent} from "./address/address.component";
 import {ContactComponent} from "./contact/contact.component";
 import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {FamilyInfoComponent} from "./family-info/family-info.component";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import {FamilyInfoComponent} from "./family-info/family-info.component";
     CategorySelectModule,
     QuillEditorComponent,
     SubCategorySelectModule,
-    ChildCategorySelectModule
+    ChildCategorySelectModule,
+    MatSlideToggleModule
   ]
 })
 export class MatrimonialModule { }

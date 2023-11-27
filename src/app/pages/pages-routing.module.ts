@@ -54,6 +54,10 @@ const routes: Routes = [
         loadChildren: () => import('./customization/customization.module').then(m => m.CustomizationModule),
       },
       {
+        path: 'management',
+        loadChildren: () => import('./management/management.module').then(m => m.ManagementModule),
+      },
+      {
         path: 'catalog',
         loadChildren: () => import('./catalog/catalog.module').then(m => m.CatalogModule),
       },
@@ -82,6 +86,11 @@ const routes: Routes = [
         path: 'review',
         loadChildren: () => import('./reviews/reviews.module').then(m => m.ReviewsModule),
       },
+
+      {
+        path: 'contact-request',
+        loadChildren: () => import('./contact-request/contact-request.module').then(m => m.ContactRequestModule),
+      },
       {
         path: 'offer',
         loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule),
@@ -105,6 +114,11 @@ const routes: Routes = [
       {
         path: 'seo-page',
         loadChildren: () => import('./seo-page/seo-page.module').then(m => m.SeoPageModule),
+      },
+
+      {
+        path: 'add-biodata',
+        loadChildren: () => import('./matrimonial/add-biodata/add-biodata.module').then(m => m.AddBiodataModule),
       },
     ]
   }
