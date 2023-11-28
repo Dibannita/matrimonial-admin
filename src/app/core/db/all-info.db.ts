@@ -1,33 +1,32 @@
-import {Select} from "../../interfaces/core/select";
+import { Select } from '../../interfaces/core/select';
 
 export const MARITALSTATUS: Select[] = [
-    {
-        value: 'Never Married',
-        // viewValue: 'Never Married',
-        viewValue: 'অবিবাহিত',
-    },
-    {
-      value: 'Married',
-      // viewValue: 'Married',
-      viewValue: 'বিবাহিত'
-    },
-    {
-      value: 'Divorced',
-      // viewValue: 'Divorced',
-      viewValue: 'তালাক-প্রাপ্ত '
-    },
-    {
-      value: 'Widow',
-      // viewValue: 'Widow',
-      viewValue: 'বিধবা',
-    },
-    {
-      value: 'Widower',
-      // viewValue: 'Widower',
-      viewValue: 'বিধবার',
-    }
-]
-
+  {
+    value: 'Never Married',
+    // viewValue: 'Never Married',
+    viewValue: 'অবিবাহিত',
+  },
+  {
+    value: 'Married',
+    // viewValue: 'Married',
+    viewValue: 'বিবাহিত',
+  },
+  {
+    value: 'Divorced',
+    // viewValue: 'Divorced',
+    viewValue: 'তালাক-প্রাপ্ত ',
+  },
+  {
+    value: 'Widow',
+    // viewValue: 'Widow',
+    viewValue: 'বিধবা',
+  },
+  {
+    value: 'Widower',
+    // viewValue: 'Widower',
+    viewValue: 'বিধবার',
+  },
+];
 
 export const AGREE: Select[] = [
   {
@@ -39,9 +38,8 @@ export const AGREE: Select[] = [
     value: 'No',
     // viewValue: 'No',
     viewValue: 'না',
-  }
-]
-
+  },
+];
 
 export const HEIGHT: Select[] = [
   {
@@ -239,8 +237,7 @@ export const HEIGHT: Select[] = [
     // viewValue: 'More than 7 feet',
     viewValue: '৭ ফুটের বেশি',
   },
-]
-
+];
 
 export const COMPLEXION: Select[] = [
   {
@@ -267,52 +264,48 @@ export const COMPLEXION: Select[] = [
     value: 'Very Fair',
     // viewValue: 'Very Fair',
     viewValue: 'উজ্জ্বল ফর্সা',
-  }
-]
-
+  },
+];
 
 export const BLOODGROUP: Select[] = [
   {
     value: 'A+',
-    viewValue: 'A+'
+    viewValue: 'A+',
   },
   {
     value: 'A-',
-    viewValue: 'A-'
+    viewValue: 'A-',
   },
   {
     value: 'B+',
-    viewValue: 'B+'
+    viewValue: 'B+',
   },
   {
     value: 'B-',
-    viewValue: 'B-'
+    viewValue: 'B-',
   },
   {
     value: 'AB+',
-    viewValue: 'AB+'
+    viewValue: 'AB+',
   },
   {
     value: 'AB-',
-    viewValue: 'AB-'
+    viewValue: 'AB-',
   },
   {
     value: 'O+',
-    viewValue: 'O+'
+    viewValue: 'O+',
   },
   {
     value: 'O-',
-    viewValue: 'O-'
+    viewValue: 'O-',
   },
   {
     value: 'আমি জানিনা',
     // viewValue: 'Don`t know',
     viewValue: 'আমি জানিনা',
-  }
-]
-
-
-
+  },
+];
 
 export const EDUCATIONMETHOD: Select[] = [
   {
@@ -320,18 +313,17 @@ export const EDUCATIONMETHOD: Select[] = [
     // viewValue: 'General',
     viewValue: 'জেনারেল',
   },
-  {
-    value: 'কওমি',
-    // viewValue: 'Qawmi',
-    viewValue: 'কওমি',
-  },
+  // {
+  //   value: 'কওমি',
+  //   // viewValue: 'Qawmi',
+  //   viewValue: 'কওমি',
+  // },
   {
     value: 'আলিয়া',
     // viewValue: 'Alia',
     viewValue: 'আলিয়া',
-  }
-]
-
+  },
+];
 
 export const GROUP: Select[] = [
   {
@@ -353,338 +345,326 @@ export const GROUP: Select[] = [
     value: 'কারিগরি',
     // viewValue: 'Vocational',
     viewValue: 'কারিগরি',
-  }
-]
-
+  },
+];
 
 export const RESULT: Select[] = [
   {
     value: 'A+',
-    viewValue: 'A+'
+    viewValue: 'A+',
   },
   {
     value: 'A',
-    viewValue: 'A'
+    viewValue: 'A',
   },
   {
     value: 'A-',
-    viewValue: 'A-'
+    viewValue: 'A-',
   },
   {
     value: 'B',
-    viewValue: 'B'
+    viewValue: 'B',
   },
   {
     value: 'C',
-    viewValue: 'C'
+    viewValue: 'C',
   },
   {
     value: 'D',
-    viewValue: 'D'
-  }
-]
-
+    viewValue: 'D',
+  },
+];
 
 export const ALIVE: Select[] = [
   // {value: 'Yes, alive', viewValue: 'Yes, alive'},
-  {value: 'Yes, alive', viewValue: 'জি, জীবিত'},
+  { value: 'Yes, alive', viewValue: 'জি, জীবিত' },
   // {value: 'Not, alive', viewValue: 'Not, alive'},
-  {value: 'Not, alive', viewValue: 'না, মৃত'},
+  { value: 'Not, alive', viewValue: 'না, মৃত' },
 ];
 
 export const BIODATA_TYPE: Select[] = [
   // {value: 'Males Biodata', viewValue: 'Males Biodata'},
-  {value: 'Males Biodata', viewValue: 'পাত্রের বায়োডাটা'},
+  { value: 'Males Biodata', viewValue: 'পাত্রের বায়োডাটা' },
   // {value: 'Females Biodata', viewValue: 'Females Biodata'},
-  {value: 'Females Biodata', viewValue: 'পাত্রীর বায়োডাটা'},
+  { value: 'Females Biodata', viewValue: 'পাত্রীর বায়োডাটা' },
 ];
-
-
 
 export const SISTERHAVE: Select[] = [
   {
     value: 'No sister',
-    viewValue: 'No sister'
+    viewValue: 'No sister',
   },
   {
     value: '1',
-    viewValue: '1'
+    viewValue: '1',
   },
   {
     value: '2',
-    viewValue: '2'
+    viewValue: '2',
   },
   {
     value: '3',
-    viewValue: '3'
+    viewValue: '3',
   },
   {
     value: '4',
-    viewValue: '4'
+    viewValue: '4',
   },
   {
     value: '5',
-    viewValue: '5'
+    viewValue: '5',
   },
   {
     value: '6',
-    viewValue: '6'
+    viewValue: '6',
   },
   {
     value: '7',
-    viewValue: '7'
+    viewValue: '7',
   },
   {
     value: '8',
-    viewValue: '8'
+    viewValue: '8',
   },
   {
     value: '9',
-    viewValue: '9'
+    viewValue: '9',
   },
   {
     value: '10',
-    viewValue: '10'
-  }
-]
-
-
+    viewValue: '10',
+  },
+];
 
 export const BROTHERHAVE: Select[] = [
   {
     value: 'No brother',
-    viewValue: 'No brother'
+    viewValue: 'No brother',
   },
   {
     value: '1',
-    viewValue: '1'
+    viewValue: '1',
   },
   {
     value: '2',
-    viewValue: '2'
+    viewValue: '2',
   },
   {
     value: '3',
-    viewValue: '3'
+    viewValue: '3',
   },
   {
     value: '4',
-    viewValue: '4'
+    viewValue: '4',
   },
   {
     value: '5',
-    viewValue: '5'
+    viewValue: '5',
   },
   {
     value: '6',
-    viewValue: '6'
+    viewValue: '6',
   },
   {
     value: '7',
-    viewValue: '7'
+    viewValue: '7',
   },
   {
     value: '8',
-    viewValue: '8'
+    viewValue: '8',
   },
   {
     value: '9',
-    viewValue: '9'
+    viewValue: '9',
   },
   {
     value: '10',
-    viewValue: '10'
-  }
-]
+    viewValue: '10',
+  },
+];
 
 export const FINANCIAL_STATUS: Select[] = [
   {
     value: 'Upper class',
-    viewValue: 'Upper class'
+    viewValue: 'Upper class',
   },
   {
     value: 'Upper middle class',
-    viewValue: 'Upper middle class'
+    viewValue: 'Upper middle class',
   },
   {
     value: 'Middle class',
-    viewValue: 'Middle class'
+    viewValue: 'Middle class',
   },
   {
     value: 'Lower middle class',
-    viewValue: 'Lower middle class'
+    viewValue: 'Lower middle class',
   },
   {
     value: 'Lower class',
-    viewValue: 'Lower class'
-  }
-]
-
+    viewValue: 'Lower class',
+  },
+];
 
 export const MAHRAM: Select[] = [
   {
     value: 'Hanafi',
-    viewValue: 'Hanafi'
+    viewValue: 'Hanafi',
   },
   {
     value: 'Malika',
-    viewValue: 'Malika'
+    viewValue: 'Malika',
   },
   {
     value: 'Shafi`i',
-    viewValue: 'Shafi`i'
+    viewValue: 'Shafi`i',
   },
   {
     value: 'Hanbali',
-    viewValue: 'Hanbali'
+    viewValue: 'Hanbali',
   },
   {
     value: 'Ahle Hadis/Salafi',
-    viewValue: 'Ahle Hadis/Salafi'
-  }
-]
-
-
+    viewValue: 'Ahle Hadis/Salafi',
+  },
+];
 
 export const ISLAMIC_TITLE: Select[] = [
   {
     value: 'Hafez',
-    viewValue: 'Hafez'
+    viewValue: 'Hafez',
   },
   {
     value: 'Maolana',
-    viewValue: 'Maolana'
+    viewValue: 'Maolana',
   },
   {
     value: 'Mufti',
-    viewValue: 'Mufti'
+    viewValue: 'Mufti',
   },
   {
     value: 'Musassir',
-    viewValue: 'Musassir'
+    viewValue: 'Musassir',
   },
   {
     value: 'Adib',
-    viewValue: 'Adib'
-  }
-]
-
+    viewValue: 'Adib',
+  },
+];
 
 export const CATEGORY_APPLICABLE: Select[] = [
   {
     value: 'Disabled',
-    viewValue: 'Disabled'
+    viewValue: 'Disabled',
   },
   {
     value: 'Infertile',
-    viewValue: 'Infertile'
+    viewValue: 'Infertile',
   },
   {
     value: 'Converted Muslim',
-    viewValue: 'Converted Muslim'
+    viewValue: 'Converted Muslim',
   },
   {
     value: 'Orphan',
-    viewValue: 'Orphan'
+    viewValue: 'Orphan',
   },
   {
     value: 'Interested in being Masna',
-    viewValue: 'Interested in being Masna'
+    viewValue: 'Interested in being Masna',
   },
   {
     value: 'Tablig',
-    viewValue: 'Tablig'
-  }
-]
-
+    viewValue: 'Tablig',
+  },
+];
 
 export const OCCUPATION: Select[] = [
   {
     value: 'Imam',
-    viewValue: 'Imam'
+    viewValue: 'Imam',
   },
   {
     value: 'Madrasa Teacher',
-    viewValue: 'Madrasa Teacher'
+    viewValue: 'Madrasa Teacher',
   },
   {
     value: 'Teacher',
-    viewValue: 'Teacher'
+    viewValue: 'Teacher',
   },
   {
     value: 'Doctor',
-    viewValue: 'Doctor'
+    viewValue: 'Doctor',
   },
   {
     value: 'Engineer',
-    viewValue: 'Engineer'
+    viewValue: 'Engineer',
   },
   {
     value: 'Businessman',
-    viewValue: 'Businessman'
+    viewValue: 'Businessman',
   },
   {
     value: 'Government Job',
-    viewValue: 'Government Job'
+    viewValue: 'Government Job',
   },
   {
     value: 'Private Job',
-    viewValue: 'Private Job'
+    viewValue: 'Private Job',
   },
   {
     value: 'Freelancer',
-    viewValue: 'Freelancer'
+    viewValue: 'Freelancer',
   },
   {
     value: 'Student',
-    viewValue: 'Student'
+    viewValue: 'Student',
   },
   {
     value: 'Expatriate',
-    viewValue: 'Expatriate'
+    viewValue: 'Expatriate',
   },
   {
     value: 'Others',
-    viewValue: 'Others'
+    viewValue: 'Others',
   },
   {
     value: 'No Profession',
-    viewValue: 'No Profession'
-  }
-]
+    viewValue: 'No Profession',
+  },
+];
 
 export const HEIGHT_EDUCATION: Select[] = [
   {
     value: 'Post Graduate',
-    viewValue: 'Post Graduate'
+    viewValue: 'Post Graduate',
   },
   {
     value: 'Diploma',
-    viewValue: 'Diploma'
+    viewValue: 'Diploma',
   },
   {
     value: 'Graduate',
-    viewValue: 'Graduate'
+    viewValue: 'Graduate',
   },
   {
     value: 'Doctorate',
-    viewValue: 'Doctorate'
+    viewValue: 'Doctorate',
   },
   {
     value: 'SSC',
-    viewValue: 'SSC'
+    viewValue: 'SSC',
   },
   {
     value: 'HSC',
-    viewValue: 'HSC'
+    viewValue: 'HSC',
   },
   {
     value: 'Below SSC',
-    viewValue: 'Below SSC'
+    viewValue: 'Below SSC',
   },
   {
     value: 'Undergraduate',
-    viewValue: 'Below SSC'
-  }
-]
-
+    viewValue: 'Below SSC',
+  },
+];
