@@ -3,7 +3,10 @@
     <div class="line-bar-parent">
       <div class="line-bar-child">
         <ul>
-          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/general-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">1</div>
             </div>
@@ -17,21 +20,30 @@
             <p class="text">ঠিকানা</p>
           </li>
 
-          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/educational-qualification"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">3</div>
             </div>
             <p class="text">শিক্ষাগত যোগ্যতা</p>
           </li>
 
-          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/family-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">4</div>
             </div>
             <p class="text">পারিবারিক তথ্য</p>
           </li>
 
-          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/life-partner"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">5</div>
             </div>
@@ -45,7 +57,10 @@
             <p class="text">ব্যক্তিগত তথ্য</p>
           </li>
 
-          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/marriage-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child">7</div>
             </div>
@@ -76,18 +91,26 @@
         <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
           <div class="main-form-area">
             <div class="form-one-grid">
-
               <div class="input-select-box">
                 <p>
                   <label for="partnerMaritalStatus">
-                    বৈবাহিক অবস্থা<span>*</span></label>
+                    বৈবাহিক অবস্থা<span>*</span></label
+                  >
                 </p>
 
                 <div class="input-custom-select-box">
-                  <select id="partnerMaritalStatus" formControlName="partnerMaritalStatus">
+                  <select
+                    id="partnerMaritalStatus"
+                    formControlName="partnerMaritalStatus"
+                  >
                     <!--                    <option selected hidden value="">Select...</option>-->
                     <option selected hidden value="">বাছাই করুন...</option>
-                    <option *ngFor="let item of maritalStatus" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of maritalStatus"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -213,7 +236,6 @@
                 >
                   <i>This felid is required</i>
                 </p>
-
               </div>
               <!-- END! input-box -->
 
@@ -226,7 +248,9 @@
                   <select id="partnerHeight" formControlName="partnerHeight">
                     <!--                    <option selected hidden value="">Select...</option>-->
                     <option selected hidden value="">বাছাই করুন...</option>
-                    <option *ngFor="let item of height" [value]="item.value">{{item.viewValue}}</option>
+                    <option *ngFor="let item of height" [value]="item.value">
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -248,10 +272,18 @@
                 </p>
 
                 <div class="input-custom-select-box">
-                  <select id="partnerComplexion" formControlName="partnerComplexion">
+                  <select
+                    id="partnerComplexion"
+                    formControlName="partnerComplexion"
+                  >
                     <!--                    <option selected hidden value="">Select...</option>-->
                     <option selected hidden value="">বাছাই করুন...</option>
-                    <option *ngFor="let item of complexion" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of complexion"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -293,7 +325,7 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="partnerMajhab">মাযহাব/মানহায:<span>*</span></label>
                 </p>
@@ -316,9 +348,8 @@
                 >
                   <i>This felid is required</i>
                 </p>
-              </div>
+              </div> -->
               <!-- END! input-box -->
-
 
               <div class="input-box">
                 <p>
@@ -348,7 +379,9 @@
 
               <div class="input-box">
                 <p>
-                  <label for="partnerFinancial">অর্থনৈতিক অবস্থা:<span>*</span></label>
+                  <label for="partnerFinancial"
+                    >অর্থনৈতিক অবস্থা:<span>*</span></label
+                  >
                 </p>
 
                 <div class="input-doc">
@@ -372,8 +405,7 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="partnerDin">দীনদারিত্ব <span>*</span></label>
                 </p>
@@ -396,12 +428,14 @@
                 >
                   <i>This felid is required</i>
                 </p>
-              </div>
+              </div> -->
               <!-- END! input-box -->
 
               <div class="input-box">
                 <p>
-                  <label for="partnerGun">বিশেষ গুন্/বৈশিষ্ট <span>*</span></label>
+                  <label for="partnerGun"
+                    >বিশেষ গুন্/বৈশিষ্ট <span>*</span></label
+                  >
                 </p>
 
                 <div class="input-doc">
@@ -424,7 +458,6 @@
                 </p>
               </div>
               <!-- END! input-box -->
-
             </div>
             <!-- END! form-four-grid -->
 
@@ -434,7 +467,9 @@
               </button>
               <button class="sub-btn" type="submit" [disabled]="isLoader">
                 <div class="loader" *ngIf="isLoader"></div>
-                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+                <span *ngIf="!isLoader"
+                  >{{ id ? "Update" : "Save" }} & Next</span
+                >
               </button>
             </div>
             <!-- END! submit-btn -->

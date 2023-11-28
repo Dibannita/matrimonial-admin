@@ -3,7 +3,10 @@
     <div class="line-bar-parent">
       <div class="line-bar-child">
         <ul>
-          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/general-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">1</div>
             </div>
@@ -17,22 +20,30 @@
             <p class="text">ঠিকানা</p>
           </li>
 
-          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/educational-qualification"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">3</div>
             </div>
             <p class="text">শিক্ষাগত যোগ্যতা</p>
           </li>
 
-          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/family-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">4</div>
             </div>
             <p class="text">পারিবারিক তথ্য</p>
           </li>
 
-
-          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/life-partner"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">5</div>
             </div>
@@ -46,7 +57,10 @@
             <p class="text">ব্যক্তিগত তথ্য</p>
           </li>
 
-          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/marriage-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child">7</div>
             </div>
@@ -80,24 +94,22 @@
               <div class="input-select-box">
                 <p>
                   <label for="song"
-                  >গান শোনা ও টিভি দেখার অভ্যাস আছে ? <span>*</span></label
+                    >গান শোনা ও টিভি দেখার অভ্যাস আছে ? <span>*</span></label
                   >
                 </p>
 
                 <div class="input-custom-select-box">
-                  <select
-                    id="song"
-                    formControlName="song"
-                  >
+                  <select id="song" formControlName="song">
                     <option selected hidden value="">বাছাই করুন...</option>
-                    <option *ngFor="let item of agree" [value]="item.value">{{item.viewValue}}</option>
+                    <option *ngFor="let item of agree" [value]="item.value">
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
                 <p
                   class="required"
                   *ngIf="
-                    dataForm.get('song').touched &&
-                    dataForm.get('song').invalid
+                    dataForm.get('song').touched && dataForm.get('song').invalid
                   "
                 >
                   <i>This felid is required</i>
@@ -108,7 +120,8 @@
               <div class="input-box">
                 <p>
                   <label for="facebook">
-                    ফেসবুকে ইউটিউবে স্ক্রল করতে যেয়ে আশা ছোটখাটো মুভি গান নাটক ভিডিও ক্লিপ চলে এলে দেখা হয় বা এড়িয়ে যাওয়া হয়?
+                    ফেসবুকে ইউটিউবে স্ক্রল করতে যেয়ে আশা ছোটখাটো মুভি গান নাটক
+                    ভিডিও ক্লিপ চলে এলে দেখা হয় বা এড়িয়ে যাওয়া হয়?
                     <span>*</span>
                   </label>
                 </p>
@@ -131,12 +144,10 @@
                 >
                   <i>This felid is required</i>
                 </p>
-
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="salat">
                     অসুস্থতা জনিত বা শরিয়া সম্মত ওজর ব্যতীত প্রতিমাসে কয় ওয়াক্ত সালাত কাজা হয় এবং প্রতিদিন কয় ওয়াক্ত সালাত জামাতে আদায় হয় ?
@@ -163,10 +174,8 @@
                   <i>This felid is required</i>
                 </p>
 
-              </div>
+              </div> -->
               <!-- END! input-box -->
-
-
 
               <div class="input-box">
                 <p>
@@ -194,10 +203,8 @@
                 >
                   <i>This felid is required</i>
                 </p>
-
               </div>
               <!-- END! input-box -->
-
 
               <!--              <div class="input-box">-->
               <!--                <p>-->
@@ -229,7 +236,7 @@
               <!--              </div>-->
               <!-- END! input-box -->
 
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="readQuranSuddho">
                     শুদ্ধভাবে কোরআন তেলওয়াত করতে পারেন ? অথবা তিলাওয়াতের  অবস্থা কী ?
@@ -256,11 +263,10 @@
                   <i>This felid is required</i>
                 </p>
 
-              </div>
+              </div> -->
               <!-- END! input-box -->
 
-
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="readQuranDaily">
                     নিয়মিত কোরআন তেলাওয়াত করা হয় কিনা?
@@ -287,11 +293,10 @@
                   <i>This felid is required</i>
                 </p>
 
-              </div>
+              </div> -->
               <!-- END! input-box -->
 
-
-              <div class="input-box">
+              <!-- <div class="input-box">
                 <p>
                   <label for="gunaho">
                     গোপন গুনাহের ব্যাপারে আল্লাহকে ভয় করেন?
@@ -318,7 +323,7 @@
                   <i>This felid is required</i>
                 </p>
 
-              </div>
+              </div> -->
               <!-- END! input-box -->
 
               <!--              <div class="input-box">-->
@@ -360,7 +365,9 @@
               </button>
               <button class="sub-btn" type="submit" [disabled]="isLoader">
                 <div class="loader" *ngIf="isLoader"></div>
-                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+                <span *ngIf="!isLoader"
+                  >{{ id ? "Update" : "Save" }} & Next</span
+                >
               </button>
             </div>
             <!-- END! submit-btn -->

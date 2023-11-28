@@ -7,12 +7,11 @@ export const environment = {
   name: 'queriescare',
   domain: 'queriescare.com',
 
+  // apiBaseLink: 'https://api.queriescare.com',
+  // ftpBaseLink: 'https://api.queriescare.com',
 
-  apiBaseLink: 'https://api.queriescare.com',
-  ftpBaseLink: 'https://api.queriescare.com',
-
-  // apiBaseLink: 'http://localhost:4006',
-  // ftpBaseLink: 'http://localhost:4006',
+  apiBaseLink: 'http://localhost:3000',
+  ftpBaseLink: 'http://localhost:3000',
 
   // apiBaseLink: 'http://192.168.0.160:4001',
   // ftpBaseLink: 'http://192.168.0.160:4001',
@@ -27,7 +26,7 @@ export const environment = {
   adminTokenSecret: 'SOFT_ADMIN_1995_&&_SOJOL_dEv',
   userTokenSecret: 'SOFT_ADMIN_1996_&&_SOBUR_dEv',
   apiTokenSecret: 'SOFT_API_1998_&&_SAZIB_dEv',
-  VERSION: 1
+  VERSION: 1,
 };
 
 /*

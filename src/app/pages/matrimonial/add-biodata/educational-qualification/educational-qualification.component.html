@@ -3,7 +3,10 @@
     <div class="line-bar-parent">
       <div class="line-bar-child">
         <ul>
-          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/general-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">1</div>
             </div>
@@ -17,22 +20,30 @@
             <p class="text">ঠিকানা</p>
           </li>
 
-          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/educational-qualification"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">3</div>
             </div>
             <p class="text">শিক্ষাগত যোগ্যতা</p>
           </li>
 
-          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/family-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child">4</div>
             </div>
             <p class="text">পারিবারিক তথ্য</p>
           </li>
 
-
-          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/life-partner"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child">5</div>
             </div>
@@ -46,7 +57,10 @@
             <p class="text">ব্যক্তিগত তথ্য</p>
           </li>
 
-          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/marriage-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child">7</div>
             </div>
@@ -80,17 +94,23 @@
               <div class="input-select-box">
                 <p>
                   <label for="Education_Method"
-                  >আপনার শিক্ষার মাধ্যম <span>*</span></label
+                    >আপনার শিক্ষার মাধ্যম <span>*</span></label
                   >
                 </p>
 
                 <div class="input-custom-select-box">
                   <select
                     id="Education_Method"
-                    formControlName="yourEducationMethod" (change)="educationMethodData($event)"
+                    formControlName="yourEducationMethod"
+                    (change)="educationMethodData($event)"
                   >
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of educationMethod" [value]="item?.name">{{item?.name}}</option>
+                    <option
+                      *ngFor="let item of educationMethod"
+                      [value]="item?.name"
+                    >
+                      {{ item?.name }}
+                    </option>
                   </select>
                 </div>
                 <p
@@ -108,7 +128,7 @@
               <div class="input-select-box">
                 <p>
                   <label for="Highest_educational"
-                  >সর্বোচ্চ শিক্ষাগত যোগ্যতা <span>*</span></label
+                    >সর্বোচ্চ শিক্ষাগত যোগ্যতা <span>*</span></label
                   >
                 </p>
 
@@ -119,7 +139,16 @@
                     (change)="heightEducationValue($event)"
                   >
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of heightEducationData[0]?.heightEducation1" [value]="item?.name">{{item?.name}}</option>
+                    <option
+                      শিক্ষাগত
+                      যোগ্যতা
+                      *ngFor="
+                        let item of heightEducationData[0]?.heightEducation
+                      "
+                      [value]="item?.name"
+                    >
+                      {{ item?.name }}
+                    </option>
                   </select>
                 </div>
 
@@ -134,30 +163,38 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div *ngIf="selectedEducationType === 'এস.এস.সি এর নিচে' && selectedType === 'জেনারেল'">
+              <div
+                *ngIf="
+                  selectedEducationType === 'এস.এস.সি এর নিচে' &&
+                  selectedType === 'জেনারেল'
+                "
+              >
                 <div class="input-select-box">
                   <p>
                     <label for="Highest_educational"
-                    >আপনি কোন ক্লাস পর্যন্ত পড়াশোনা করেছেন? <span>*</span></label
+                      >আপনি কোন ক্লাস পর্যন্ত পড়াশোনা করেছেন?
+                      <span>*</span></label
                     >
                   </p>
 
                   <div class="input-custom-select-box">
-                    <select
-                      id="underSSC"
-                      formControlName="underSSC"
-                    >
+                    <select id="underSSC" formControlName="underSSC">
                       <option selected hidden value="">Select...</option>
-                      <option *ngFor="let item of underSscEducation" [value]="item?.value">{{item?.viewValue}}</option>
+                      <option
+                        *ngFor="let item of underSscEducation"
+                        [value]="item?.value"
+                      >
+                        {{ item?.viewValue }}
+                      </option>
                     </select>
                   </div>
 
                   <p
                     class="required"
                     *ngIf="
-                    dataForm.get('underSSC').touched &&
-                    dataForm.get('underSSC').invalid
-                  "
+                      dataForm.get('underSSC').touched &&
+                      dataForm.get('underSSC').invalid
+                    "
                   >
                     <i>This felid is required</i>
                   </p>
@@ -194,7 +231,19 @@
               <!--                </div>-->
               <!--              </div>-->
 
-              <div class="input-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'এস.এস.সি' ||
+                  selectedEducationType === 'ডিপ্লোমা চলমান' ||
+                  selectedEducationType === 'ডিপ্লোমা' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="Equivalent_Passing">
                     এসএসসি/দাখিল/সমমান পাসের বছর
@@ -223,7 +272,19 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'এস.এস.সি' ||
+                  selectedEducationType === 'ডিপ্লোমা চলমান' ||
+                  selectedEducationType === 'ডিপ্লোমা' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="Group">বিভাগ<span>*</span></label>
                 </p>
@@ -231,7 +292,9 @@
                 <div class="input-custom-select-box">
                   <select id="Group" formControlName="sscGroup">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of groupData" [value]="item.value">{{item.viewValue}}</option>
+                    <option *ngFor="let item of groupData" [value]="item.value">
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -247,7 +310,19 @@
               </div>
               <!-- END! input-select-box -->
 
-              <div class="input-select-box" *ngIf=" selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'এস.এস.সি' || selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা' ||  selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'এস.এস.সি' ||
+                  selectedEducationType === 'ডিপ্লোমা চলমান' ||
+                  selectedEducationType === 'ডিপ্লোমা' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="Result">ফলাফল <span>*</span></label>
                 </p>
@@ -255,7 +330,12 @@
                 <div class="input-custom-select-box">
                   <select id="Result" formControlName="sscResult">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of resultData" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of resultData"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -271,7 +351,13 @@
               </div>
               <!-- END! input-select-box -->
 
-              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'ডিপ্লোমা চলমান' ||
+                  selectedEducationType === 'ডিপ্লোমা'
+                "
+              >
                 <p>
                   <label for="Subject">
                     আপনার ডিপ্লোমার বিষয় কি?
@@ -300,8 +386,16 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="passingYearHSC">
                     এইস.এস.সি/আলিম/সমমান পাসের বছর
@@ -330,7 +424,16 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="groupHSC">বিভাগ<span>*</span></label>
                 </p>
@@ -338,7 +441,9 @@
                 <div class="input-custom-select-box">
                   <select id="groupHSC" formControlName="groupHSC">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of groupData" [value]="item.value">{{item.viewValue}}</option>
+                    <option *ngFor="let item of groupData" [value]="item.value">
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -354,7 +459,16 @@
               </div>
               <!-- END! input-select-box -->
 
-              <div class="input-select-box" *ngIf="selectedEducationType === 'এইস.এস.সি' || selectedEducationType === 'স্নাতক চলমান' ||  selectedEducationType === 'স্নাতক' ||  selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedEducationType === 'এইস.এস.সি' ||
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="resultHSC">ফলাফল <span>*</span></label>
                 </p>
@@ -362,7 +476,12 @@
                 <div class="input-custom-select-box">
                   <select id="resultHSC" formControlName="resultHSC">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of resultData" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of resultData"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -378,7 +497,13 @@
               </div>
               <!-- END! input-select-box -->
 
-              <div class="input-box" *ngIf="  selectedEducationType === 'ডিপ্লোমা চলমান' ||  selectedEducationType === 'ডিপ্লোমা'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'ডিপ্লোমা চলমান' ||
+                  selectedEducationType === 'ডিপ্লোমা'
+                "
+              >
                 <p>
                   <label for="institution">
                     শিক্ষা প্রতিষ্ঠানের নাম
@@ -407,7 +532,10 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা'">
+              <div
+                class="input-box"
+                *ngIf="selectedEducationType === 'ডিপ্লোমা'"
+              >
                 <p>
                   <label for="Passing_year">
                     পাসের বছর
@@ -436,7 +564,10 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-box" *ngIf=" selectedEducationType === 'ডিপ্লোমা চলমান'">
+              <div
+                class="input-box"
+                *ngIf="selectedEducationType === 'ডিপ্লোমা চলমান'"
+              >
                 <p>
                   <label for="konYearDiploma">
                     এখন কোন বর্ষে পড়ছেন?
@@ -465,8 +596,15 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান' || selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="institution">
                     স্নাতক/ স্নাতক (সম্মান)/ ফাজিল পড়াশোনার বিষয়
@@ -494,7 +632,15 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান' || selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতক চলমান' ||
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="snakottoInstiute">
                     শিক্ষা প্রতিষ্ঠানের নাম
@@ -523,7 +669,10 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক চলমান'">
+              <div
+                class="input-box"
+                *ngIf="selectedEducationType === 'স্নাতক চলমান'"
+              >
                 <p>
                   <label for="snakottoBosor">
                     কোন বর্ষে পড়ছেন?
@@ -552,8 +701,14 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতক' || selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতক' ||
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="snakonttoPassingYear">
                     পাসের সন
@@ -582,7 +737,13 @@
               </div>
 
               <!-- END! input-box -->
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="snatokBisoi">
                     স্নাতকোত্তর/ কামিল পড়াশোনার বিষয়
@@ -610,7 +771,13 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="snatokInstitute">
                     শিক্ষা প্রতিষ্ঠানের নাম
@@ -639,7 +806,13 @@
               </div>
               <!-- END! input-box -->
 
-              <div class="input-box" *ngIf=" selectedEducationType === 'স্নাতকোত্তর' || selectedEducationType === 'ডক্টরেট'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedEducationType === 'স্নাতকোত্তর' ||
+                  selectedEducationType === 'ডক্টরেট'
+                "
+              >
                 <p>
                   <label for="snatokPassingYear">
                     পাসের সন
@@ -668,8 +841,13 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'ইবতিদাইয়াহ'
+                "
+              >
                 <p>
                   <label for="ebadahoEducation">
                     ইবতিদাইয়াহ কোন মাদ্রাসা থেকে পড়েছেন
@@ -697,7 +875,13 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'ইবতিদাইয়াহ'
+                "
+              >
                 <p>
                   <label for="ebadahoFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -705,7 +889,12 @@
                 <div class="input-custom-select-box">
                   <select id="ebadahoFolafol" formControlName="ebadahoFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -720,7 +909,13 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ইবতিদাইয়াহ'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'ইবতিদাইয়াহ'
+                "
+              >
                 <p>
                   <label for="ebadahoPassingYear">
                     পাসের সন
@@ -749,10 +944,13 @@
               </div>
               <!-- END! input-box -->
 
-
-
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'মুতাওয়াসসিতাহ'
+                "
+              >
                 <p>
                   <label for="muftiEducation">
                     মুতাওয়াসসিতাহ কোন মাদ্রাসা থেকে পড়েছেন
@@ -780,7 +978,13 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'মুতাওয়াসসিতাহ'
+                "
+              >
                 <p>
                   <label for="ebadahoFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -788,7 +992,12 @@
                 <div class="input-custom-select-box">
                   <select id="muftiFolafol" formControlName="muftiFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -803,7 +1012,13 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'মুতাওয়াসসিতাহ'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'মুতাওয়াসসিতাহ'
+                "
+              >
                 <p>
                   <label for="muftiPassingYear">
                     পাসের সন
@@ -832,9 +1047,13 @@
               </div>
               <!-- END! input-box -->
 
-
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'সানাবিয়া উলইয়া'
+                "
+              >
                 <p>
                   <label for="muftiEducation">
                     সানাবিয়া উলইয়া কোন মাদ্রাসা থেকে পড়েছেন
@@ -862,7 +1081,13 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'সানাবিয়া উলইয়া'
+                "
+              >
                 <p>
                   <label for="saniFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -870,7 +1095,12 @@
                 <div class="input-custom-select-box">
                   <select id="saniFolafol" formControlName="saniFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -885,7 +1115,13 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'সানাবিয়া উলইয়া'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'সানাবিয়া উলইয়া'
+                "
+              >
                 <p>
                   <label for="saniPassingYear">
                     পাসের সন
@@ -914,8 +1150,12 @@
               </div>
               <!-- END! input-box -->
 
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'
+                "
+              >
                 <p>
                   <label for="fojilotEducation">
                     ফজিলত কোন মাদ্রাসা থেকে পড়েছেন
@@ -943,7 +1183,12 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'
+                "
+              >
                 <p>
                   <label for="fojilotFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -951,7 +1196,12 @@
                 <div class="input-custom-select-box">
                   <select id="fojilotFolafol" formControlName="fojilotFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -966,7 +1216,12 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' && selectedEducationType === 'ফজিলত'
+                "
+              >
                 <p>
                   <label for="fojilotPassingYear">
                     পাসের সন
@@ -995,9 +1250,14 @@
               </div>
               <!-- END! input-box -->
 
-
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-box"
+                *ngIf="
+                  (selectedType === 'কওমি' &&
+                    selectedEducationType === 'তাকমীল') ||
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="takmilEducation">
                     তাকমীল কোন মাদ্রাসা থেকে পড়েছেন
@@ -1025,7 +1285,14 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  (selectedType === 'কওমি' &&
+                    selectedEducationType === 'তাকমীল') ||
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="takmilFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -1033,7 +1300,12 @@
                 <div class="input-custom-select-box">
                   <select id="takmilFolafol" formControlName="takmilFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -1048,7 +1320,14 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাকমীল' || selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-box"
+                *ngIf="
+                  (selectedType === 'কওমি' &&
+                    selectedEducationType === 'তাকমীল') ||
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="takmilPassingYear">
                     পাসের সন
@@ -1076,7 +1355,6 @@
                 </p>
               </div>
               <!-- END! input-box -->
-
 
               <!--              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">-->
               <!--                <p>-->
@@ -1107,8 +1385,13 @@
               <!--              </div>-->
               <!--              &lt;!&ndash; END! input-box &ndash;&gt;-->
 
-
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="taksuEducation">
                     তাখাসসুস কোন মাদ্রাসা থেকে পড়েছেন
@@ -1136,7 +1419,13 @@
                 </p>
               </div>
               <!-- END! input-box -->
-              <div class="input-select-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-select-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="taksuFolafol">ফলাফল <span>*</span></label>
                 </p>
@@ -1144,7 +1433,12 @@
                 <div class="input-custom-select-box">
                   <select id="taksuFolafol" formControlName="taksuFolafol">
                     <option selected hidden value="">Select...</option>
-                    <option *ngFor="let item of madrashaEducation" [value]="item.value">{{item.viewValue}}</option>
+                    <option
+                      *ngFor="let item of madrashaEducation"
+                      [value]="item.value"
+                    >
+                      {{ item.viewValue }}
+                    </option>
                   </select>
                 </div>
 
@@ -1159,7 +1453,13 @@
                 </p>
               </div>
               <!-- END! input-select-box -->
-              <div class="input-box" *ngIf="selectedType === 'কওমি' && selectedEducationType === 'তাখাসসুস'">
+              <div
+                class="input-box"
+                *ngIf="
+                  selectedType === 'কওমি' &&
+                  selectedEducationType === 'তাখাসসুস'
+                "
+              >
                 <p>
                   <label for="taksuPassingYear">
                     পাসের সন
@@ -1240,7 +1540,6 @@
               <!--                </mat-select>-->
               <!--              </mat-form-field>-->
 
-
               <!-- END! form-four-grid -->
             </div>
             <div class="submit-btn">
@@ -1249,7 +1548,9 @@
               </button>
               <button class="sub-btn" type="submit" [disabled]="isLoader">
                 <div class="loader" *ngIf="isLoader"></div>
-                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+                <span *ngIf="!isLoader"
+                  >{{ id ? "Update" : "Save" }} & Next</span
+                >
               </button>
             </div>
             <!-- END! submit-btn -->
