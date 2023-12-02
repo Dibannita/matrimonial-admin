@@ -1,7 +1,11 @@
 <div class="header-area">
   <div class="header-main">
     <div class="logo" routerLink="/">
-      <img src="/assets/images/logo/logo-fff.png" style="width: 50px" alt="SoftLab" />
+      <img
+        src="/assets/images/logo/logo-fff.png"
+        style="width: 50px"
+        alt="SoftLab"
+      />
     </div>
     <div class="menu-bar">
       <span (click)="sideNavToggle()" class="material-icons">menu</span>
@@ -10,15 +14,21 @@
 </div>
 
 <div class="dashboard-page-render">
-  <div class="page-render-area-main" [ngClass]="{ 'p-100px': sideNav == false }">
+  <div
+    class="page-render-area-main"
+    [ngClass]="{ 'p-100px': sideNav == false }"
+  >
     <!---side-nav-->
-    <div class="side-nav" [ngClass]="{ 'w-100px side-nav-active': sideNav == false }">
+    <div
+      class="side-nav"
+      [ngClass]="{ 'w-100px side-nav-active': sideNav == false }"
+    >
       <div class="side-nav-main" [ngClass]="{ scroll: sideNav == true }">
         <!---sidenav-top-->
         <div class="side-nav-top" [class]="sideNav ? '' : 'al-center'">
-          <div class="logo" [class]="sideNav ? 's' : 'logo-hide'">
+          <!-- <div class="logo" [class]="sideNav ? 's' : 'logo-hide'">
             <img src="/assets/images/logo/logo-fff.png" alt="SoftLab" />
-          </div>
+          </div> -->
           <div class="menu-bar">
             <span (click)="sideNavToggle()" class="material-icons">menu</span>
           </div>
@@ -28,50 +38,88 @@
           <ul>
             <li *ngFor="let menu of allMenus">
               <ng-container *ngIf="!menu.hasSubMenu">
-                <div class="menu-item" #dashboard style="margin-left: 0" (click)="subMenuToggle(menu.id)"
-                     routerLinkActive="link-active">
-                  <a [routerLink]="menu.routerLink" (click)="windowWidth < 1200 ? sideNavToggle() : ''"
-                     class="no-select">
-                    <span class="material-icons icon">{{menu.icon}}</span>
-                    <span [class]="sideNav ? 'menu-show' : 'menu-hide'">{{menu.name}}</span>
+                <div
+                  class="menu-item"
+                  #dashboard
+                  style="margin-left: 0"
+                  (click)="subMenuToggle(menu.id)"
+                  routerLinkActive="link-active"
+                >
+                  <a
+                    [routerLink]="menu.routerLink"
+                    (click)="windowWidth < 1200 ? sideNavToggle() : ''"
+                    class="no-select"
+                  >
+                    <span class="material-icons icon">{{ menu.icon }}</span>
+                    <span [class]="sideNav ? 'menu-show' : 'menu-hide'">{{
+                      menu.name
+                    }}</span>
                   </a>
                 </div>
               </ng-container>
 
               <ng-container *ngIf="menu.hasSubMenu">
-                <div class="menu-item" (click)="subMenuToggle(menu.id)" [class]="subId == menu.id ? 'link-active' : ''">
+                <div
+                  class="menu-item"
+                  (click)="subMenuToggle(menu.id)"
+                  [class]="subId == menu.id ? 'link-active' : ''"
+                >
                   <a class="no-select">
-                    <span class="material-icons">{{menu.icon}}</span>
-                    <span [class]="sideNav ? 'menu-show' : 'menu-hide isParentMenu'">{{menu.name}}</span>
+                    <span class="material-icons">{{ menu.icon }}</span>
+                    <span
+                      [class]="sideNav ? 'menu-show' : 'menu-hide isParentMenu'"
+                      >{{ menu.name }}</span
+                    >
                   </a>
-                  <span *ngIf="
-                    (windowWidth > 1200 && sideNav == true) ||
-                    (windowWidth < 1200 && sideNav == false)">
-                    <i [class]="subId == menu.id ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
+                  <span
+                    *ngIf="
+                      (windowWidth > 1200 && sideNav == true) ||
+                      (windowWidth < 1200 && sideNav == false)
+                    "
+                  >
+                    <i
+                      [class]="
+                        subId == menu.id ? 'fa fa-angle-up' : 'fa fa-angle-down'
+                      "
+                    ></i>
                   </span>
                 </div>
-                <div class="sub-menu" [class]="
-                  (windowWidth >= 1200 &&
-                    ((subId == menu.id && sideNav == true) || sideRes == true)) ||
-                  (windowWidth < 1200 && subId == menu.id && sideNav == false) ? 'show-sub' : 'hide-sub'">
+                <div
+                  class="sub-menu"
+                  [class]="
+                    (windowWidth >= 1200 &&
+                      ((subId == menu.id && sideNav == true) ||
+                        sideRes == true)) ||
+                    (windowWidth < 1200 && subId == menu.id && sideNav == false)
+                      ? 'show-sub'
+                      : 'hide-sub'
+                  "
+                >
                   <ul>
-                    <li class="hover-title no-select"><a>{{menu.name}}</a></li>
-                    <li routerLinkActive="sub-link-active" [routerLink]="subMenu.routerLink"
-                        *ngFor="let subMenu of menu.subMenus">
-                      <a class="no-select" (click)="windowWidth < 1200 ? sideNavToggle() : ''"><span
-                        class="material-symbols-outlined">
-                          {{subMenu.icon}} </span>{{subMenu.name}}</a>
+                    <li class="hover-title no-select">
+                      <a>{{ menu.name }}</a>
+                    </li>
+                    <li
+                      routerLinkActive="sub-link-active"
+                      [routerLink]="subMenu.routerLink"
+                      *ngFor="let subMenu of menu.subMenus"
+                    >
+                      <a
+                        class="no-select"
+                        (click)="windowWidth < 1200 ? sideNavToggle() : ''"
+                        ><span class="material-symbols-outlined">
+                          {{ subMenu.icon }} </span
+                        >{{ subMenu.name }}</a
+                      >
                     </li>
                   </ul>
                 </div>
               </ng-container>
             </li>
 
-
-
             <!-- Support menu start here  -->
 
-            <li *ngIf="USER_ROLE === 'super_admin'">
+            <!-- <li *ngIf="USER_ROLE === 'super_admin'">
               <div class="menu-item" (click)="subMenuToggle(24)" [class]="subId == 24 ? 'link-active' : ''">
                 <a href="https://softlabit.com/" target="_blank" class="no-select">
                   <span class="material-icons">info</span>
@@ -79,14 +127,16 @@
                   </span>
                 </a>
               </div>
-            </li>
+            </li> -->
 
             <!-- logout section start  -->
             <li>
               <div class="menu-item" style="margin-left: 0px">
                 <a (click)="onLogout()" class="no-select">
                   <span class="material-icons icon">logout</span>
-                  <span [class]="sideNav ? 'menu-show' : 'menu-hide'">Logout</span>
+                  <span [class]="sideNav ? 'menu-show' : 'menu-hide'"
+                    >Logout</span
+                  >
                 </a>
               </div>
             </li>
