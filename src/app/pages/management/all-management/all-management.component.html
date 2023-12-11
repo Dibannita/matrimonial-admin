@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <section class="admin-data-sec">
   <div class="top-data-header">
     <div class="title">
@@ -23,17 +17,15 @@
     </form>
 
     <div class="action">
-
-
       <div class="sort">
-        <button
+        <!-- <button
           mat-raised-button
           color="primary"
           [matMenuTriggerFor]="menuSort"
         >
           Sort By
           <mat-icon>arrow_drop_down</mat-icon>
-        </button>
+        </button> -->
         <mat-menu #menuSort="matMenu">
           <button
             mat-menu-item
@@ -77,8 +69,6 @@
       </div>
 
       <div class="right" *ngIf="selectedIds && selectedIds.length">
-
-
         <button
           *ngIf="checkDeletePermission"
           mat-stroked-button
@@ -101,46 +91,54 @@
           ></mat-checkbox>
         </th>
         <th>Images</th>
-<!--        <th>Mobile Image</th>-->
+        <!--        <th>Mobile Image</th>-->
         <th>Management Name</th>
         <th>Management Type</th>
-<!--        <th> Url</th>-->
+        <!--        <th> Url</th>-->
 
         <th>Action</th>
       </tr>
 
-      <tr *ngFor="
-              let data of managements
-                | paginate
-                  : {
-                      itemsPerPage: ManagementsPerPage,
-                      currentPage: currentPage,
-                      totalItems: totalManagements
-                    };
-              let i = index
-            " class="table-hover">
+      <tr
+        *ngFor="
+          let data of managements
+            | paginate
+              : {
+                  itemsPerPage: ManagementsPerPage,
+                  currentPage: currentPage,
+                  totalItems: totalManagements
+                };
+          let i = index
+        "
+        class="table-hover"
+      >
         <td class="t-checkbox">
-          <mat-checkbox class="t-mat-checkbox" [(ngModel)]="data.select"
-                        (ngModelChange)="onCheckChange($event, i, data._id)"></mat-checkbox>
+          <mat-checkbox
+            class="t-mat-checkbox"
+            [(ngModel)]="data.select"
+            (ngModelChange)="onCheckChange($event, i, data._id)"
+          ></mat-checkbox>
         </td>
 
         <td class="product-img">
-          <img checkImageDefault [src]="data?.image" alt=""/>
+          <img checkImageDefault [src]="data?.image" alt="" />
         </td>
-<!--        <td class="product-img">-->
-<!--          <img checkImageDefault [src]="data?.mobileImage" alt=""/>-->
-<!--        </td>-->
+        <!--        <td class="product-img">-->
+        <!--          <img checkImageDefault [src]="data?.mobileImage" alt=""/>-->
+        <!--        </td>-->
 
-        <td>{{ data.name || "-"  }}</td>
-        <td>{{ data.managementType || "-"  }}</td>
-<!--        <td>{{ data.url || "-"  }}</td>-->
+        <td>{{ data.name || "-" }}</td>
+        <td>{{ data.managementType || "-" }}</td>
+        <!--        <td>{{ data.url || "-"  }}</td>-->
 
         <td class="button">
-          <button mat-mini-fab color="accent" [routerLink]="['../edit-management/', data._id]">
+          <button
+            mat-mini-fab
+            color="accent"
+            [routerLink]="['../edit-management/', data._id]"
+          >
             <mat-icon>edit</mat-icon>
           </button>
-
-
         </td>
       </tr>
     </table>
@@ -156,20 +154,15 @@
     </pagination-controls>
   </div>
   <!-- END PAGINATION -->
-
 </section>
 
 <!-- TEMPLATE NGX SPINNER-->
-<ngx-spinner bdColor = "rgba(0,0,0,0.3)" size = "medium" color = "#fff" type = "ball-scale-pulse" [fullScreen] = "true">
-  <p style="color: white" > Loading... </p>
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.3)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-pulse"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
 </ngx-spinner>
-
-
-
-
-
-
-
-
-
-
