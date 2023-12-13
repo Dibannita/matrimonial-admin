@@ -1,7 +1,7 @@
-<!-- <div class="section1" *ngIf="USER_ROLE === 'super_admin'">
-  <div class="section1-main"> -->
-<!---card-->
-<!-- <div
+<div class="section1" *ngIf="USER_ROLE === 'super_admin'">
+  <div class="section1-main">
+    <!---card-->
+    <!-- <div
       class="card"
       routerLink="sales/sales-list"
       [routerLink]="['../sales/sales-list']"
@@ -36,8 +36,8 @@
         </div>
       </div>
     </div> -->
-<!---card-->
-<!-- <div class="card" [routerLink]="['../sales/sales-list']">
+    <!---card-->
+    <!-- <div class="card" [routerLink]="['../sales/sales-list']">
       <div class="card-top">
         <div class="card-top-left">
           <h3>Pending Orders</h3>
@@ -66,8 +66,8 @@
         </div>
       </div>
     </div> -->
-<!---card-->
-<!-- <div class="card">
+    <!---card-->
+    <!-- <div class="card">
       <div class="card-top">
         <div class="card-top-left">
           <h3>Today Orders</h3>
@@ -88,21 +88,21 @@
             }}
           </h3>
         </div> -->
-<!-- <div class="card-activity">
+    <!-- <div class="card-activity">
           <h5 matTooltip="Work direction done percentage today">
             <mat-icon>show_chart</mat-icon> -->
-<!--            {{0}}%-->
-<!-- </h5>
+    <!--            {{0}}%-->
+    <!-- </h5>
         </div>
       </div>
     </div> -->
-<!-- </div> -->
-<!-- <div class="section2-main"> -->
-<!---card-->
-<!-- <div class="card" [routerLink]="['../expense/expense-list']">
+    <!-- </div> -->
+    <!-- <div class="section2-main"> -->
+    <!---card-->
+    <div class="card" [routerLink]="['../expense/expense-list']">
       <div class="card-top" style="background-color: rgb(47 94 179)">
         <div class="card-top-left">
-          <h3>Total Products</h3>
+          <h3>Total Matrimonial list</h3>
         </div>
         <div class="card-top-right">
           <div class="card-icon">
@@ -114,8 +114,8 @@
         <div class="card-number" matTooltip="Total Products">
           <h3 style="color: rgb(47 94 179)">
             {{
-              saleDashboard?.totalProducts
-                ? (saleDashboard?.totalProducts | number : "" : "bn")
+              postCount?.matrimonial
+                ? (postCount?.matrimonial | number : "" : "bn")
                 : 0
             }}
           </h3>
@@ -123,13 +123,12 @@
         <div class="card-activity">
           <h5 matTooltip="Today Expense">
             <mat-icon style="color: rgb(47 94 179)">show_chart</mat-icon>
-
           </h5>
         </div>
       </div>
-    </div> -->
-<!---card-->
-<!-- <div class="card">
+    </div>
+    <!---card-->
+    <!-- <div class="card">
       <div class="card-top" style="background-color: green">
         <div class="card-top-left">
           <h3>Monthly Delivered Orders</h3>
@@ -158,9 +157,11 @@
         </div>
       </div>
     </div> -->
-<!-- </div>
+    <!-- </div>
 </div> -->
-<!-- 
+    <!-- 
 <div class="donut">
   <app-donut></app-donut>
 </div> -->
+  </div>
+</div>
