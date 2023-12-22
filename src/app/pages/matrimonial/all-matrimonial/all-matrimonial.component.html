@@ -27,6 +27,53 @@
         Add Matrimonial
       </button>
     </div>
+    <div class="date-filter" (click)="endChangeRegDateRange($event)">
+      <mat-form-field
+        class="mat-date-input-field"
+        appearance="outline"
+        (click)="picker.open()"
+      >
+        <mat-label>FilterData Date Range</mat-label>
+        <mat-date-range-input
+          [formGroup]="dataFormDateRange"
+          [rangePicker]="picker"
+          [max]="today"
+        >
+          <input
+            matStartDate
+            formControlName="start"
+            placeholder="Start date"
+            readonly
+          />
+          <input
+            matEndDate
+            formControlName="end"
+            placeholder="End date"
+            readonly
+            (dateChange)="endChangeRegDateRange($event)"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error
+          *ngIf="
+            dataFormDateRange.controls.start.hasError('matStartDateInvalid')
+          "
+          >Invalid start date
+        </mat-error>
+        <mat-error
+          *ngIf="dataFormDateRange.controls.end.hasError('matEndDateInvalid')"
+          >Invalid end date</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="sort">
+      <button mat-raised-button color="accent" (click)="exportToAllExcel()">
+        Export as Excel
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </div>
   </div>
   <!-- END TOP DATA HEADER -->
 
@@ -101,6 +148,7 @@
 
         <th>Status</th>
         <th>Approved</th>
+        <th>Date</th>
         <th>Actions</th>
       </tr>
       <tr
@@ -139,6 +187,7 @@
             (change)="onToggleChange($event, data)"
           ></mat-slide-toggle>
         </td>
+        <td>{{ data?.createdAt }}</td>
         <td class="td-action">
           <button
             [disabled]="data._id === adminId || !checkEditPermission"

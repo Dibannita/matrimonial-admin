@@ -2,6 +2,14 @@ import { AdminMenu } from '../../interfaces/core/admin-menu.interface';
 
 export const SUPER_ADMIN_MENU: AdminMenu[] = [
   {
+    id: 0,
+    name: 'Dashboard',
+    hasSubMenu: false,
+    routerLink: 'dashboard',
+    icon: 'space_dashboard',
+    subMenus: [],
+  },
+  {
     id: 3336,
     name: 'Matrimonial',
     hasSubMenu: true,
