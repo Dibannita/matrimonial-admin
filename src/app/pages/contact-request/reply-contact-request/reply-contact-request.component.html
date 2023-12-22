@@ -1,41 +1,57 @@
 <div style="position: relative">
-  <mat-spinner *ngIf="isLoading"
-               style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto"
+  <mat-spinner
+    *ngIf="isLoading"
+    style="
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    "
   ></mat-spinner>
 
   <div class="header-dialog">
     <h1 mat-dialog-title>Reply Contact Request</h1>
   </div>
 
-  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()"
-        #templateForm="ngForm"
-        fxLayout="column" fxLayoutAlign="space-around center">
-
+  <form
+    [formGroup]="dataForm"
+    (ngSubmit)="onSubmit()"
+    #templateForm="ngForm"
+    fxLayout="column"
+    fxLayoutAlign="space-around center"
+  >
     <mat-form-field appearance="outline">
       <mat-label>Select Status</mat-label>
       <mat-select formControlName="status" required>
-        <mat-option *ngFor="let data of contactRequestStatus" [value]="data.value">
-          {{  data.viewValue }}
+        <mat-option
+          *ngFor="let data of contactRequestStatus"
+          [value]="data.value"
+        >
+          {{ data.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Administrative Name</mat-label>
-      <input formControlName="guardianName" matInput placeholder="Guardian Name">
+      <input
+        formControlName="guardianName"
+        matInput
+        placeholder="Guardian Name"
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Administrative Phone</mat-label>
-      <input formControlName="guardianPhoneNo" matInput placeholder="Guardian Phone">
+      <mat-label>Administrative Email</mat-label>
+      <input
+        formControlName="guardianPhoneNo"
+        matInput
+        placeholder="Guardian Phone"
+      />
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
 </div>
-
-
-
-
-
-
