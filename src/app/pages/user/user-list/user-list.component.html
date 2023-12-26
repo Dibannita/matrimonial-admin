@@ -116,6 +116,8 @@
         <th>Image</th>
         <th>Name</th>
         <th>User Name</th>
+        <th>Created At</th>
+
         <th>Gmail</th>
         <th>Phone</th>
         <th>transactionId</th>
@@ -148,6 +150,8 @@
         </td>
         <td>{{ data.name || "-" | uppercase }}</td>
         <td>{{ data.username || "-" | uppercase }}</td>
+        <td>{{ data.createdAt || "-" | date }}</td>
+
         <td>{{ data.email || "-" | uppercase }}</td>
         <td>{{ data.phoneNo || "-" }}</td>
         <td>{{ data.transactionId || "-" }}</td>

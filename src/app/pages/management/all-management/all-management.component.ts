@@ -1,26 +1,31 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AdminPermissions} from "../../../enum/admin-permission.enum";
-import {Management} from "../../../interfaces/common/management.interface";
-import {MatCheckbox, MatCheckboxChange} from "@angular/material/checkbox";
-import {FormControl, FormGroup, NgForm} from "@angular/forms";
-import {EMPTY, Subscription} from "rxjs";
-import {AdminService} from "../../../services/admin/admin.service";
-import {ManagementService} from "../../../services/common/management.service";
-import {UiService} from "../../../services/core/ui.service";
-import {UtilsService} from "../../../services/core/utils.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
-import {NgxSpinnerService} from "ngx-spinner";
-import {ReloadService} from "../../../services/core/reload.service";
-import {debounceTime, distinctUntilChanged, pluck, switchMap} from "rxjs/operators";
-import {Pagination} from "../../../interfaces/core/pagination";
-import {FilterData} from "../../../interfaces/gallery/filter-data";
-import {ConfirmDialogComponent} from "../../../shared/components/ui/confirm-dialog/confirm-dialog.component";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AdminPermissions } from '../../../enum/admin-permission.enum';
+import { Management } from '../../../interfaces/common/management.interface';
+import { MatCheckbox, MatCheckboxChange } from '@angular/material/checkbox';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { EMPTY, Subscription } from 'rxjs';
+import { AdminService } from '../../../services/admin/admin.service';
+import { ManagementService } from '../../../services/common/management.service';
+import { UiService } from '../../../services/core/ui.service';
+import { UtilsService } from '../../../services/core/utils.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ReloadService } from '../../../services/core/reload.service';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  pluck,
+  switchMap,
+} from 'rxjs/operators';
+import { Pagination } from '../../../interfaces/core/pagination';
+import { FilterData } from '../../../interfaces/gallery/filter-data';
+import { ConfirmDialogComponent } from '../../../shared/components/ui/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-all-management',
   templateUrl: './all-management.component.html',
-  styleUrls: ['./all-management.component.scss']
+  styleUrls: ['./all-management.component.scss'],
 })
 export class AllManagementComponent implements OnInit {
   // Admin Base Data
@@ -50,7 +55,6 @@ export class AllManagementComponent implements OnInit {
   @ViewChild('searchForm') searchForm: NgForm;
   searchQuery = null;
   searchManagement: Management[] = [];
-
 
   // Pagination
   currentPage = 1;
@@ -82,12 +86,12 @@ export class AllManagementComponent implements OnInit {
     private dialog: MatDialog,
     private spinner: NgxSpinnerService,
     private reloadService: ReloadService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     // Reload Data
-    this.subReload =  this.reloadService.refreshBrand$.subscribe(() => {
+    this.subReload = this.reloadService.refreshBrand$.subscribe(() => {
       this.getAllManagement();
     });
 
@@ -136,7 +140,9 @@ export class AllManagementComponent implements OnInit {
             mobileImage: 1,
             createdAt: 1,
             managementType: 1,
+            updatedAt: 1,
             url: 1,
+            email: 1,
           };
 
           const filterData: FilterData = {
@@ -146,7 +152,10 @@ export class AllManagementComponent implements OnInit {
             sort: { createdAt: -1 },
           };
 
-          return this.managementService.getAllManagement(filterData, this.searchQuery);
+          return this.managementService.getAllManagement(
+            filterData,
+            this.searchQuery
+          );
         })
       )
       .subscribe({
@@ -162,8 +171,6 @@ export class AllManagementComponent implements OnInit {
         },
       });
   }
-
-
 
   /**
    * CHECK ADMIN PERMISSION
@@ -191,17 +198,14 @@ export class AllManagementComponent implements OnInit {
     return this.permissions.includes(AdminPermissions.EDIT);
   }
 
-
   /**
    * Pagination
    * onPageChanged()
    */
 
   public onPageChanged(event: any) {
-    this.router.navigate([], {queryParams: {page: event}});
+    this.router.navigate([], { queryParams: { page: event } });
   }
-
-
 
   /**
    * HTTP REQ HANDLE
@@ -217,6 +221,8 @@ export class AllManagementComponent implements OnInit {
       mobileImage: 1,
       createdAt: 1,
       managementType: 1,
+      updatedAt: 1,
+      email: 1,
       url: 1,
     };
 
@@ -227,19 +233,21 @@ export class AllManagementComponent implements OnInit {
       sort: { createdAt: -1 },
     };
 
-    this.subDataOne = this.managementService.getAllManagement(filter, null).subscribe({
-      next: (res) => {
-        if (res.success) {
-          this.managements = res.data;
-          this.managementCount = res.count;
-          this.holdPrevData = this.managements;
-          this.totalManagementsStore = this.managementCount;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.subDataOne = this.managementService
+      .getAllManagement(filter, null)
+      .subscribe({
+        next: (res) => {
+          if (res.success) {
+            this.managements = res.data;
+            this.managementCount = res.count;
+            this.holdPrevData = this.managements;
+            this.totalManagementsStore = this.managementCount;
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   private deleteMultipleManagementById() {
@@ -258,7 +266,6 @@ export class AllManagementComponent implements OnInit {
                 selectedManagement.push(fData);
               }
             });
-
 
             this.selectedIds = [];
             this.uiService.success(res.message);
@@ -279,20 +286,17 @@ export class AllManagementComponent implements OnInit {
       );
   }
 
-
   /**
    * DATA Sorting
    * sortData()
    * onRemoveAllQuery()
    */
 
-
   sortData(query: any, type: number) {
     this.sortQuery = query;
     this.activeSort = type;
     this.getAllManagement();
   }
-
 
   onRemoveAllQuery() {
     this.activeSort = null;
@@ -369,8 +373,6 @@ export class AllManagementComponent implements OnInit {
       }
     }
   }
-
-
 
   /**
    * ON DESTROY
