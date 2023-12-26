@@ -294,23 +294,10 @@ export class AllMatrimonialComponent implements OnInit {
   private getAllProduct() {
     // Select
     const mSelect = {
-      image: 1,
+      _id: 1,
       name: 1,
-      images: 1,
       createdAt: 1,
-
-      // costPrice: 1,
-      // salePrice: 1,
-      // discountType: 1,
-      // discountAmount: 1,
-      // quantity: 1,
-      // category: 1,
-      // subCategory: 1,
-      unit: 1,
       status: 1,
-      // threeMonth: 1,
-      // sixMonth: 1,
-      // twelveMonth: 1,
       bioDataType: 1,
       height: 1,
       weight: 1,
@@ -517,8 +504,6 @@ export class AllMatrimonialComponent implements OnInit {
     this.getAllProduct();
   }
 
-  
-
   public onPageChanged(event: any) {
     this.router.navigate([], { queryParams: { page: event } });
   }
@@ -568,27 +553,11 @@ export class AllMatrimonialComponent implements OnInit {
 
     // Select
     const mSelect = {
+      _id: 1,
       name: 1,
-
       createdAt: 1,
-      publisher: 1,
-      brand: 1,
-      costPrice: 1,
-      salePrice: 1,
-      discountType: 1,
-      discountAmount: 1,
-      quantity: 1,
-      category: 1,
-      subCategory: 1,
       unit: 1,
       status: 1,
-      threeMonth: 1,
-      sixMonth: 1,
-      twelveMonth: 1,
-
-      area: 1,
-      author: 1,
-
       bioDataType: 1,
       height: 1,
       weight: 1,
@@ -609,10 +578,13 @@ export class AllMatrimonialComponent implements OnInit {
           const mData = subscriptionReports.map((m) => {
             return {
               // image: m?.image,
+              _id: m?._id.slice(18, 24),
               name: m?.name,
               bioDataType: m?.bioDataType,
-
               createdAt: this.utilsService.getDateString(m.createdAt),
+              height: m?.height,
+              weight: m?.weight,
+              status: m?.status,
             };
           });
 
@@ -621,7 +593,7 @@ export class AllMatrimonialComponent implements OnInit {
           const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(mData);
           const wb: XLSX.WorkBook = XLSX.utils.book_new();
           XLSX.utils.book_append_sheet(wb, ws, 'Data');
-          XLSX.writeFile(wb, `Product Reports_${date}.xlsx`);
+          XLSX.writeFile(wb, `Matrimonial list Reports_${date}.xlsx`);
         },
         error: (error) => {
           console.log(error);
