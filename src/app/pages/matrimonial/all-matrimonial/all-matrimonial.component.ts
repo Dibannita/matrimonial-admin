@@ -441,14 +441,14 @@ export class AllMatrimonialComponent implements OnInit {
         this.activeFilter2 = index;
         break;
       }
-      case 'publishers': {
-        this.filter = { ...this.filter, ...{ publishers: value } };
-        this.activeFilter3 = index;
-        break;
-      }
-      default: {
-        break;
-      }
+      // case 'publishers': {
+      //   this.filter = { ...this.filter, ...{ publishers: value } };
+      //   this.activeFilter3 = index;
+      //   break;
+      // }
+      // default: {
+      //   break;
+      // }
     }
     // Re fetch Data
     if (this.currentPage > 1) {
