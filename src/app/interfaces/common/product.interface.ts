@@ -5,11 +5,11 @@ import { Publisher } from './publisher.interface';
 import { SubCategory } from './sub-category.interface';
 import { Tag } from './tag.interface';
 import { Variation, VariationOption } from './variation.interface';
-import {Area} from './area.interface';
+import { Area } from './area.interface';
 import { ChildCategory } from './child-category.interface';
-import {Division} from "./division.interface";
-import {Zone} from './zone.interface';
-import {User} from "./user.interface";
+import { Division } from './division.interface';
+import { Zone } from './zone.interface';
+import { User } from './user.interface';
 
 export interface Product {
   selectedVariation: any;
@@ -49,7 +49,7 @@ export interface Product {
   quantity?: number;
   category?: Category;
   subCategory?: SubCategory;
-  childCategory?:ChildCategory;
+  childCategory?: ChildCategory;
   author?: Author;
   brand?: Brand;
   totalPages?: number | any;
@@ -104,8 +104,6 @@ export interface Product {
   bedroom?: string;
   bathroom?: string;
   availableFrom?: string;
-
-
 
   bioDataType?: string;
   permanentAddress?: string;
@@ -176,63 +174,62 @@ export interface Product {
   salat?: string;
   physicalDiseases?: string;
   konYearDiploma?: string;
-  pordha?:string;
+  pordha?: string;
   readQuranSuddho?: string;
   readQuranDaily?: string;
   gunaho?: string;
   motamot?: string;
-  sarNoSami?:string;
-  sarSami?:string;
-  chakriSami?:string;
-  porasonaSami?:string;
-  montobboSami?:string;
-  sontanSami?:string;
-  obhibabokSami?:string;
-  pottshaSami?:string;
+  sarNoSami?: string;
+  sarSami?: string;
+  chakriSami?: string;
+  porasonaSami?: string;
+  montobboSami?: string;
+  sontanSami?: string;
+  obhibabokSami?: string;
+  pottshaSami?: string;
 
-  bisoiSar?:string;
-  compromise?:string;
-  chakri?:string;
-  porasonaMaya?:string;
-  pordaMaya?:string;
-  sontanMaya?:string;
-  rajiMaya?:string;
-  sundorjo?:string;
+  bisoiSar?: string;
+  compromise?: string;
+  chakri?: string;
+  porasonaMaya?: string;
+  pordaMaya?: string;
+  sontanMaya?: string;
+  rajiMaya?: string;
+  sundorjo?: string;
 
+  snakottoBisoi?: string;
+  snakonttoPassingYear?: string;
+  snatokPassingYear?: string;
+  snatokInstitute?: string;
+  snatokBisoi?: string;
+  doctoretPassingYear?: string;
+  doctoretInstitute?: string;
+  doctoretBisoi?: string;
+  ebadahoEducation?: string;
+  ebadahoFolafol?: string;
+  ebadahoPassingYear?: string;
+  taksuPassingYear?: string;
+  taksuEducation?: string;
+  taksuFolafol?: string;
+  taksuInstitution?: string;
+  takmilPassingYear?: string;
+  takmilFolafol?: string;
+  takmilEducation?: string;
+  fojilotPassingYear?: string;
+  fojilotFolafol?: string;
+  fojilotEducation?: string;
+  saniPassingYear?: string;
+  saniFolafol?: string;
+  saniEducation?: string;
+  muftiPassingYear?: string;
+  muftiFolafol?: string;
+  muftiEducation?: string;
+  snakottoBosor?: string;
+  snakottoInstiute?: string;
 
-  snakottoBisoi?:string;
-  snakonttoPassingYear?:string;
-  snatokPassingYear?:string;
-  snatokInstitute?:string;
-  snatokBisoi?:string;
-  doctoretPassingYear?:string;
-  doctoretInstitute?:string;
-  doctoretBisoi?:string;
-  ebadahoEducation?:string;
-  ebadahoFolafol?:string;
-  ebadahoPassingYear?:string;
-  taksuPassingYear?:string;
-  taksuEducation?:string;
-  taksuFolafol?:string;
-  taksuInstitution?:string;
-  takmilPassingYear?:string;
-  takmilFolafol?:string;
-  takmilEducation?:string;
-  fojilotPassingYear?:string;
-  fojilotFolafol?:string;
-  fojilotEducation?:string;
-  saniPassingYear?:string;
-  saniFolafol?:string;
-  saniEducation?:string;
-  muftiPassingYear?:string;
-  muftiFolafol?:string;
-  muftiEducation?:string;
-  snakottoBosor?:string;
-  snakottoInstiute?:string;
-
-// }
-//
-// export interface Product {
+  // }
+  //
+  // export interface Product {
 
   viewCount?: number;
   seoKeyword?: string;
@@ -245,7 +242,6 @@ export interface Product {
   requiredEducation?: string;
 
   jobPostBy?: string;
-
 
   // To Let
   balcony?: string;
@@ -262,7 +258,6 @@ export interface Product {
   permanentAddressArea?: string;
 
   presentAddressArea?: string;
-
 
   highestEducation?: string;
   sscPassingYear?: string;
