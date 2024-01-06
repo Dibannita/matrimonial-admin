@@ -1,7 +1,6 @@
 import { Product } from './product.interface';
 import { User } from './user.interface';
 
-
 export interface ContactRequest {
   _id?: string;
   user?: string | User;
@@ -11,4 +10,5 @@ export interface ContactRequest {
   status: boolean;
   guardianPhoneNo: string;
   replyDate: string;
+  images?: string;
 }

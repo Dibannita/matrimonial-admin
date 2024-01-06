@@ -3,7 +3,10 @@
     <div class="line-bar-parent">
       <div class="line-bar-child">
         <ul>
-          <li routerLink="/add-biodata/general-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/general-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">1</div>
             </div>
@@ -17,22 +20,30 @@
             <p class="text">ঠিকানা</p>
           </li>
 
-          <li routerLink="/add-biodata/educational-qualification" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/educational-qualification"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">3</div>
             </div>
             <p class="text">শিক্ষাগত যোগ্যতা</p>
           </li>
 
-          <li routerLink="/add-biodata/family-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/family-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">4</div>
             </div>
             <p class="text">পারিবারিক তথ্য</p>
           </li>
 
-
-          <li routerLink="/add-biodata/life-partner" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/life-partner"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">5</div>
             </div>
@@ -46,7 +57,10 @@
             <p class="text">ব্যাক্তিগত তথ্য</p>
           </li>
 
-          <li routerLink="/add-biodata/marriage-info" [queryParamsHandling]="'merge'">
+          <li
+            routerLink="/add-biodata/marriage-info"
+            [queryParamsHandling]="'merge'"
+          >
             <div class="circle-top">
               <div class="circle-top-child active">7</div>
             </div>
@@ -75,7 +89,6 @@
 
       <div class="add-new-product">
         <form (ngSubmit)="onFormSubmit()" [formGroup]="dataForm">
-
           <div class="page-slug">
             <div class="checkbox">
               <mat-checkbox
@@ -83,13 +96,12 @@
                 (change)="autoGenerateSlug()"
                 [ngModelOptions]="{ standalone: true }"
                 color="primary"
-              >Auto Slug</mat-checkbox
+                >Auto Slug</mat-checkbox
               >
             </div>
           </div>
           <div class="main-form-area">
             <div class="form-one-grid">
-
               <div class="input-box">
                 <p>
                   <label for="Bride_name">
@@ -110,15 +122,13 @@
                 <p
                   class="required"
                   *ngIf="
-                    dataForm.get('name').touched &&
-                    dataForm.get('name').invalid
+                    dataForm.get('name').touched && dataForm.get('name').invalid
                   "
                 >
                   <i>This felid is required</i>
                 </p>
               </div>
               <!-- END! input-box -->
-
 
               <div class="input-box">
                 <p>
@@ -137,14 +147,12 @@
                 <p
                   class="required"
                   *ngIf="
-                dataForm.get('name').touched &&
-                dataForm.get('name').invalid
-              "
+                    dataForm.get('name').touched && dataForm.get('name').invalid
+                  "
                 >
                   <i>This felid is required</i>
                 </p>
               </div>
-
 
               <div class="input-box">
                 <p>
@@ -177,7 +185,75 @@
                 </p>
               </div>
               <!-- END! input-box -->
+              <mat-card class="content-main content-2">
+                <div class="title">
+                  <h4>Media</h4>
+                </div>
 
+                <div class="content-main content-2">
+                  <div
+                    class="image-container"
+                    [ngClass]="{ 'border-dashed': !chooseImage.length }"
+                  >
+                    <div class="picker" *ngIf="!chooseImage.length">
+                      <div class="action">
+                        <div class="icon">
+                          <span class="material-icons">cloud_upload</span>
+                        </div>
+                        <button
+                          type="button"
+                          mat-stroked-button
+                          color="accent"
+                          (click)="openGalleryDialog()"
+                        >
+                          Pick Images
+                        </button>
+                        <p>Maximum 10 Image you can upload</p>
+                      </div>
+                    </div>
+                    <!-- END Picker Area -->
+
+                    <div
+                      *ngIf="chooseImage && chooseImage.length"
+                      class="img-preview-container"
+                      cdkDropList
+                      cdkDropListOrientation="horizontal"
+                      (cdkDropListDropped)="drop($event)"
+                    >
+                      <div
+                        class="preview"
+                        *ngFor="let data of chooseImage"
+                        cdkDrag
+                      >
+                        <img [src]="data" [alt]="data" />
+                        <div class="overlay-ac">
+                          <button
+                            type="button"
+                            mat-icon-button
+                            color="warn"
+                            (click)="removeSelectImage(data)"
+                          >
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="add-more" *ngIf="chooseImage.length < 10">
+                        <div class="icon">
+                          <span class="material-icons">cloud_upload</span>
+                        </div>
+                        <button
+                          type="button"
+                          mat-stroked-button
+                          color="accent"
+                          (click)="openGalleryDialog()"
+                        >
+                          Pick Images
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
               <div class="input-box">
                 <p>
                   <label for="relationshipGuardian">
@@ -235,7 +311,6 @@
                 </p>
               </div>
               <!-- END! input-box -->
-
             </div>
 
             <!-- END! form-four-grid -->
@@ -246,7 +321,9 @@
               </button>
               <button class="sub-btn" type="submit" [disabled]="isLoader">
                 <div class="loader" *ngIf="isLoader"></div>
-                <span *ngIf="!isLoader">{{id ? 'Update': 'Save'}} & Next</span>
+                <span *ngIf="!isLoader"
+                  >{{ id ? "Update" : "Save" }} & Next</span
+                >
               </button>
             </div>
             <!-- END! submit-btn -->

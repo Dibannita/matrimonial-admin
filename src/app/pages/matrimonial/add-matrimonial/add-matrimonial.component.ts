@@ -1,13 +1,24 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators, } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/interfaces/common/category.interface';
 import { FileUploadService } from 'src/app/services/gallery/file-upload.service';
-import { DISCOUNT_TYPES, EMI_MONTHS, PRODUCT_STATUS, } from '../../../core/utils/app-data';
+import {
+  DISCOUNT_TYPES,
+  EMI_MONTHS,
+  PRODUCT_STATUS,
+} from '../../../core/utils/app-data';
 import { Product } from '../../../interfaces/common/product.interface';
 import { Tag } from '../../../interfaces/common/tag.interface';
 import { FilterData } from '../../../interfaces/core/filter-data';
@@ -22,17 +33,15 @@ import { Pagination } from '../../../interfaces/core/pagination';
 import { Area } from '../../../interfaces/common/area.interface';
 import { AreaService } from '../../../services/common/area.service';
 import { SubCategory } from 'src/app/interfaces/common/sub-category.interface';
-import {JobType} from "../../../interfaces/common/jobType.interface";
-import {JobTypeService} from "../../../services/common/jobType.service";
+import { JobType } from '../../../interfaces/common/jobType.interface';
+import { JobTypeService } from '../../../services/common/jobType.service';
 
 @Component({
   selector: 'app-add-matrimonial',
   templateUrl: './add-matrimonial.component.html',
-  styleUrls: ['./add-matrimonial.component.scss']
+  styleUrls: ['./add-matrimonial.component.scss'],
 })
 export class AddMatrimonialComponent implements OnInit {
-
-
   // Ngx Quill
   modules: any = null;
   // Data Form
@@ -56,7 +65,7 @@ export class AddMatrimonialComponent implements OnInit {
   area: Area[] = [];
   id?: string;
   product?: Product;
-  postType: string = 'matrimonial'
+  postType: string = 'matrimonial';
   selectedCategory: Category = null;
   selectedSubCategory: SubCategory = null;
   autoSlug = true;
@@ -94,9 +103,8 @@ export class AddMatrimonialComponent implements OnInit {
     private dialog: MatDialog,
     private utilsService: UtilsService,
     private jobTypeService: JobTypeService,
-    private areaService: AreaService,
-  ) {
-  }
+    private areaService: AreaService
+  ) {}
 
   ngOnInit(): void {
     // Init Data Form
@@ -125,12 +133,13 @@ export class AddMatrimonialComponent implements OnInit {
    */
   autoGenerateSlug() {
     if (this.autoSlug === true) {
-      this.productAutoSlug = this.dataForm.get('name').valueChanges
-        .pipe(
-        ).subscribe(d => {
+      this.productAutoSlug = this.dataForm
+        .get('name')
+        .valueChanges.pipe()
+        .subscribe((d) => {
           const res = d?.trim().replace(/\s+/g, '-').toLowerCase();
           this.dataForm.patchValue({
-            slug: res
+            slug: res,
           });
         });
     } else {
@@ -140,7 +149,6 @@ export class AddMatrimonialComponent implements OnInit {
       this.productAutoSlug?.unsubscribe();
     }
   }
-
 
   /**
    * FORMS METHODS
@@ -156,62 +164,60 @@ export class AddMatrimonialComponent implements OnInit {
     this.dataForm = this.fb.group({
       name: [null, Validators.required],
 
-      birthDay:null,
-      height:null,
-      weight:null,
-      bloodGroup:null,
-      bioDataType:null,
-      permanentAddress:null,
-      presentAddress:null,
-      whereDidYouGrowUp:null,
-      yourEducationMethod:null,
-      passingYear:null,
-      group:null,
-      result:null,
-      graduationStudySubject:null,
-      nameOfEducationalInstitutions:null,
-      otherEducationalQualifications:null,
-      isYourFatherAlive:null,
-      descriptionOfFathersProfession:null,
-      isYourMotherAlive:null,
-      descriptionOfMothersProfession:null,
-      howManyBrothersDoYouHave:null,
-      brothersInformation:null,
-      howManySistersDoYouHave:null,
-      sistersInformation:null,
-      professionsOfUncles:null,
-      familyFinancialStatus:null,
-      descriptionOfFinancialCondition:null,
-      howIsYourFamilysReligiousCondition:null,
-      whatKindOfClothesDoYouUsuallyWearOutsideTheHouse:null,
-      doYouHaveBeardAccordingToSunnahSinceWhen:null,
-      doYouWearClothesAboveTheAnkles:null,
-      doYouPrayFiveTimesADaySinceWhen:null,
-      doYouComplyWithMahramNonMahram:null,
-      areYouAbleToReciteTheQuranCorrectly:null,
-      whichFiqhDoYouFollow:null,
-      doYouWatchOrListenToDramasMoviesSerialsSongs:null,
-      doYouHaveAnyMentalOrPhysicalDiseases:null,
-      areYouInvolvedInAnySpecialWorkOfDeen:null,
-      whatAreYourIdeasOrBeliefsAboutTheShrineMazar:null,
-      writeTheNamesOfAtLeast3IslamicBooksYouHaveRead:null,
-      writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice:null,
-      writeAboutYourHobbiesLikesAndDislikesTastesDreamsAndSoOn:null,
-      occupation:null,
-      descriptionOfProfession:null,
-      monthlyIncome:null,
-      complexion:null,
-      nationality:null,
-      passingYearHSC:null,
-      groupHSC:null,
-      resultHSC:null,
-      passingYearBSc:null,
-      passingYearPost:null,
-      graduationStudySubjectPost:null,
-      nameOfEducationalInstitutionsPost:null,
-      maritalStatus:null,
-
-
+      birthDay: null,
+      height: null,
+      weight: null,
+      bloodGroup: null,
+      bioDataType: null,
+      permanentAddress: null,
+      presentAddress: null,
+      whereDidYouGrowUp: null,
+      yourEducationMethod: null,
+      passingYear: null,
+      group: null,
+      result: null,
+      graduationStudySubject: null,
+      nameOfEducationalInstitutions: null,
+      otherEducationalQualifications: null,
+      isYourFatherAlive: null,
+      descriptionOfFathersProfession: null,
+      isYourMotherAlive: null,
+      descriptionOfMothersProfession: null,
+      howManyBrothersDoYouHave: null,
+      brothersInformation: null,
+      howManySistersDoYouHave: null,
+      sistersInformation: null,
+      professionsOfUncles: null,
+      familyFinancialStatus: null,
+      descriptionOfFinancialCondition: null,
+      howIsYourFamilysReligiousCondition: null,
+      whatKindOfClothesDoYouUsuallyWearOutsideTheHouse: null,
+      doYouHaveBeardAccordingToSunnahSinceWhen: null,
+      doYouWearClothesAboveTheAnkles: null,
+      doYouPrayFiveTimesADaySinceWhen: null,
+      doYouComplyWithMahramNonMahram: null,
+      areYouAbleToReciteTheQuranCorrectly: null,
+      whichFiqhDoYouFollow: null,
+      doYouWatchOrListenToDramasMoviesSerialsSongs: null,
+      doYouHaveAnyMentalOrPhysicalDiseases: null,
+      areYouInvolvedInAnySpecialWorkOfDeen: null,
+      whatAreYourIdeasOrBeliefsAboutTheShrineMazar: null,
+      writeTheNamesOfAtLeast3IslamicBooksYouHaveRead: null,
+      writeTheNamesOfAtLeast3IslamicScholarsOfYourChoice: null,
+      writeAboutYourHobbiesLikesAndDislikesTastesDreamsAndSoOn: null,
+      occupation: null,
+      descriptionOfProfession: null,
+      monthlyIncome: null,
+      complexion: null,
+      nationality: null,
+      passingYearHSC: null,
+      groupHSC: null,
+      resultHSC: null,
+      passingYearBSc: null,
+      passingYearPost: null,
+      graduationStudySubjectPost: null,
+      nameOfEducationalInstitutionsPost: null,
+      maritalStatus: null,
 
       nameBn: [null],
       nameIt: [null],
@@ -253,10 +259,6 @@ export class AddMatrimonialComponent implements OnInit {
       seoKeywords: [null],
       category: this.categoryCtrl,
       subCategory: this.subCategoryCtrl,
-      // childCategory: this.childCategoryCtrl,
-      // publisher: this.publisherCtrl,
-      // author: this.authorCtrl,
-      // brand: this.brandCtrl,
       tags: [null],
       area: [null],
       earnPoint: [null],
@@ -282,9 +284,7 @@ export class AddMatrimonialComponent implements OnInit {
     this.specificationDataArray = this.dataForm.get(
       'specifications'
     ) as FormArray;
-    this.featuresDataArray = this.dataForm.get(
-      'features'
-    ) as FormArray;
+    this.featuresDataArray = this.dataForm.get('features') as FormArray;
   }
 
   private setFormValue() {
@@ -298,7 +298,6 @@ export class AddMatrimonialComponent implements OnInit {
       this.selectedSubCategory = this.product.subCategory;
     }
 
-
     // Set Image
     if (this.product.images && this.product.images.length) {
       this.chooseImage = this.product.images;
@@ -307,7 +306,7 @@ export class AddMatrimonialComponent implements OnInit {
     // Tags
     if (this.product.tags && this.product.tags.length) {
       this.dataForm.patchValue({
-        tags: this.product.tags.map((m) => m._id)
+        tags: this.product.tags.map((m) => m._id),
       });
     }
 
@@ -332,14 +331,20 @@ export class AddMatrimonialComponent implements OnInit {
         (this.dataForm?.get('features') as FormArray).push(f);
       });
     }
-
   }
 
   onAddNewSpecifications() {
     const f = this.fb.group({
       name: [null],
       value: [null],
-      type: [this.dataForm.value.specifications.length ? this.dataForm.value.specifications[this.dataForm.value.specifications.length - 1].type : null, Validators.required],
+      type: [
+        this.dataForm.value.specifications.length
+          ? this.dataForm.value.specifications[
+              this.dataForm.value.specifications.length - 1
+            ].type
+          : null,
+        Validators.required,
+      ],
     });
     (this.dataForm?.get('specifications') as FormArray).push(f);
   }
@@ -383,7 +388,6 @@ export class AddMatrimonialComponent implements OnInit {
     }
     formDataArray?.removeAt(index);
   }
-
 
   onSubmit() {
     if (this.dataForm.invalid) {
@@ -457,19 +461,13 @@ export class AddMatrimonialComponent implements OnInit {
     //   })
     // }
 
-
     // Main Function
     if (this.product) {
-
       this.updateProductById(mData);
-
     } else {
-
       this.addProduct(mData);
-
     }
   }
-
 
   /**
    * HTTP REQ HANDLE
@@ -497,13 +495,12 @@ export class AddMatrimonialComponent implements OnInit {
     };
 
     this.subDataOne = this.tagService.getAllTag(filterData, null).subscribe({
-      next: res => {
+      next: (res) => {
         this.tags = res.data;
-
       },
-      error: error => {
+      error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 
@@ -519,19 +516,21 @@ export class AddMatrimonialComponent implements OnInit {
       filter: null,
       pagination: null,
       select: mSelect,
-      sort: {createdAt: -1},
+      sort: { createdAt: -1 },
     };
 
-    this.subDataOne = this.jobTypeService.getAllJobType(filter, null).subscribe({
-      next: (res) => {
-        if (res.success) {
-          this.jobTypes = res.data;
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.subDataOne = this.jobTypeService
+      .getAllJobType(filter, null)
+      .subscribe({
+        next: (res) => {
+          if (res.success) {
+            this.jobTypes = res.data;
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   private getAllAreas() {
@@ -548,67 +547,61 @@ export class AddMatrimonialComponent implements OnInit {
       priority: 1,
       status: 1,
       createdAt: 1,
-    }
+    };
 
     const filterData: FilterData = {
       pagination: null,
       filter: null,
       select: mSelect,
-      sort: { name: 1 }
-    }
+      sort: { name: 1 },
+    };
 
+    this.subDataOne = this.areaService.getAllAreas(filterData, null).subscribe({
+      next: (res) => {
+        this.area = res.data;
 
-    this.subDataOne = this.areaService.getAllAreas(filterData, null)
-      .subscribe({
-        next: (res => {
-
-          this.area = res.data;
-
-          // if (this.areas && this.areas.length) {
-          //   this.areas.forEach((m, i) => {
-          //     const index = this.selectedIds.findIndex(f => f === m._id);
-          //     this.areas[i].select = index !== -1;
-          //   });
-          //
-          //   this.totalAreas = res.count;
-          //   if (!this.searchQuery) {
-          //     this.holdPrevData = res.data;
-          //     this.totalAreasStore = res.count;
-          //   }
-          //   this.checkSelectionData();
-          // }
-        }),
-        error: (error => {
-          // this.spinner.hide();
-          console.log(error);
-        })
-      });
+        // if (this.areas && this.areas.length) {
+        //   this.areas.forEach((m, i) => {
+        //     const index = this.selectedIds.findIndex(f => f === m._id);
+        //     this.areas[i].select = index !== -1;
+        //   });
+        //
+        //   this.totalAreas = res.count;
+        //   if (!this.searchQuery) {
+        //     this.holdPrevData = res.data;
+        //     this.totalAreasStore = res.count;
+        //   }
+        //   this.checkSelectionData();
+        // }
+      },
+      error: (error) => {
+        // this.spinner.hide();
+        console.log(error);
+      },
+    });
   }
-
 
   private getProductById() {
     this.spinnerService.show();
     this.subDataThree = this.productService.getProductById(this.id).subscribe({
-      next: res => {
+      next: (res) => {
         this.spinnerService.hide();
         if (res.success) {
           this.product = res.data;
           this.setFormValue();
         }
       },
-      error: error => {
+      error: (error) => {
         this.spinnerService.hide();
         console.log(error);
-      }
-
-    })
-
+      },
+    });
   }
 
   private addProduct(data: any) {
     this.spinnerService.show();
     this.subDataTwo = this.productService.addProduct(data).subscribe({
-      next: res => {
+      next: (res) => {
         this.spinnerService.hide();
         if (res.success) {
           this.uiService.success(res.message);
@@ -618,10 +611,10 @@ export class AddMatrimonialComponent implements OnInit {
           this.uiService.warn(res.message);
         }
       },
-      error: error => {
+      error: (error) => {
         this.spinnerService.hide();
         console.log(error);
-      }
+      },
     });
   }
 
@@ -630,11 +623,10 @@ export class AddMatrimonialComponent implements OnInit {
     this.subDataFour = this.productService
       .updateProductById(this.product._id, data)
       .subscribe({
-        next: res => {
+        next: (res) => {
           this.spinnerService.hide();
           if (res.success) {
             this.uiService.success(res.message);
-
 
             // Remove Old Image from Backend
             if (this.removeImages && this.removeImages.length) {
@@ -646,24 +638,22 @@ export class AddMatrimonialComponent implements OnInit {
             this.uiService.warn(res.message);
           }
         },
-        error: error => {
+        error: (error) => {
           this.spinnerService.hide();
           console.log(error);
-        }
+        },
       });
-
   }
 
-
   private deleteMultipleFile(data: string[]) {
-    this.subDataFive = this.fileUploadService.deleteMultipleFile(data).subscribe({
-      next: (res) => {
-
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+    this.subDataFive = this.fileUploadService
+      .deleteMultipleFile(data)
+      .subscribe({
+        next: (res) => {},
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
   /**
@@ -679,19 +669,18 @@ export class AddMatrimonialComponent implements OnInit {
     this.files.push(...event.addedFiles);
   }
 
-
   private patchPickedImagesUnique(images: Gallery[]) {
     if (this.chooseImage && this.chooseImage.length > 0) {
-      const nImages = images.map(m => m.url);
-      this.chooseImage = this.utilsService.mergeArrayString(nImages, this.chooseImage);
+      const nImages = images.map((m) => m.url);
+      this.chooseImage = this.utilsService.mergeArrayString(
+        nImages,
+        this.chooseImage
+      );
     } else {
-      this.chooseImage = images.map(m => m.url);
+      this.chooseImage = images.map((m) => m.url);
     }
-    this.dataForm.patchValue(
-      { images: this.chooseImage }
-    );
+    this.dataForm.patchValue({ images: this.chooseImage });
   }
-
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.chooseImage, event.previousIndex, event.currentIndex);
@@ -701,7 +690,7 @@ export class AddMatrimonialComponent implements OnInit {
     this.files.splice(this.files.indexOf(event), 1);
   }
   removeSelectImage(s: string) {
-    const index = this.chooseImage.findIndex(x => x === s);
+    const index = this.chooseImage.findIndex((x) => x === s);
     this.chooseImage.splice(index, 1);
   }
 
@@ -725,7 +714,7 @@ export class AddMatrimonialComponent implements OnInit {
 
   getEmiInput(value: number) {
     if (this.dataForm.value.emiMonth && this.dataForm.value.emiMonth.length) {
-      const fIndex = this.dataForm.value.emiMonth.findIndex(f => f == value)
+      const fIndex = this.dataForm.value.emiMonth.findIndex((f) => f == value);
       if (fIndex > -1) {
         return value;
       } else {
@@ -736,7 +725,6 @@ export class AddMatrimonialComponent implements OnInit {
     }
   }
 
-
   /**
    * OPEN COMPONENT DIALOG
    * openGalleryDialog()
@@ -744,14 +732,17 @@ export class AddMatrimonialComponent implements OnInit {
 
   public openGalleryDialog() {
     const dialogRef = this.dialog.open(AllImagesDialogComponent, {
-      data: { type: 'multiple', count: this.chooseImage.length ? (10 - this.chooseImage.length) : 10 },
+      data: {
+        type: 'multiple',
+        count: this.chooseImage.length ? 10 - this.chooseImage.length : 10,
+      },
       panelClass: ['theme-dialog', 'full-screen-modal-lg'],
       width: '100%',
       minHeight: '100%',
       autoFocus: false,
-      disableClose: true
+      disableClose: true,
     });
-    dialogRef.afterClosed().subscribe(dialogResult => {
+    dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
         if (dialogResult.data && dialogResult.data.length > 0) {
           this.patchPickedImagesUnique(dialogResult.data);
@@ -759,7 +750,6 @@ export class AddMatrimonialComponent implements OnInit {
       }
     });
   }
-
 
   /**
    * ON DESTROY
