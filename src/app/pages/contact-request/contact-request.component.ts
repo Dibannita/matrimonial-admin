@@ -19,7 +19,7 @@ export class ContactRequestComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private contactRequestService: ContactRequestService,
-    private uiService: UiService,
+
     private reloadService: ReloadService
   ) {}
 
@@ -50,10 +50,6 @@ export class ContactRequestComponent implements OnInit {
     });
   }
 
-  // openComponentDialog(product: string) {
-  //
-  // }
-
   /**
    * HTTP REQ HANDLE
    */
@@ -69,9 +65,9 @@ export class ContactRequestComponent implements OnInit {
         console.log('idddd+++', this.contactRequestId);
         console.log('contactRequestDat+++a', this.contactRequestData);
 
-        if (this.contactRequestData) {
-          this.updateContactRequestAndDelete();
-        }
+        // if (this.contactRequestData) {
+        //   // this.updateContactRequestAndDelete();
+        // }
       },
       (error) => {
         console.log(error);
@@ -79,37 +75,37 @@ export class ContactRequestComponent implements OnInit {
     );
   }
 
-  private updateContactRequestAndDelete() {
-    console.log('hhhh');
-    console.log('idddd', this.contactRequestId);
-    console.log('contactRequestData', this.contactRequestData);
-    this.contactRequestService
-      .updateContactRequestAndDelete(this.contactRequestData)
-      .subscribe(
-        (res) => {
-          // this.uiService.success(res.message);
-          this.deleteContactRequestByContactRequestId();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+  // private updateContactRequestAndDelete() {
+  //   console.log('hhhh');
+  //   console.log('idddd', this.contactRequestId);
+  //   console.log('contactRequestData', this.contactRequestData);
+  //   this.contactRequestService
+  //     .updateContactRequestAndDelete(this.contactRequestData)
+  //     .subscribe(
+  //       (res) => {
+  //         // this.uiService.success(res.message);
+  //         this.deleteContactRequestByContactRequestId();
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 
   /**
    * DELETE METHOD HERE
    */
-  private deleteContactRequestByContactRequestId() {
-    this.contactRequestService
-      .deleteContactRequestByContactRequestId(this.contactRequestId)
-      .subscribe(
-        (res) => {
-          this.uiService.success(res.message);
-          this.reloadService.needRefreshData$();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+  // private deleteContactRequestByContactRequestId() {
+  //   this.contactRequestService
+  //     .deleteContactRequestByContactRequestId(this.contactRequestId)
+  //     .subscribe(
+  //       (res) => {
+  //         this.uiService.success(res.message);
+  //         this.reloadService.needRefreshData$();
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
 }
